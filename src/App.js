@@ -30,7 +30,7 @@ const App = () => {
             !user ? <Login/> : <Navigate to="/" />
           }/>
         <Route path='/register' element={
-            !user ? <Register/> : <Navigate to="/" />
+            !user ? <Register setUser={setUser}/> : <Navigate to="/" />
             }/>
         </Routes>
         </BrowserRouter>

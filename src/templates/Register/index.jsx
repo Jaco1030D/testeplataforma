@@ -3,7 +3,7 @@ import { useAuthentication } from '../../hooks/useAuthentication.js'
 
 // import './styles.css';
 
-function Register() {
+function Register({setUser}) {
   const [displayName, setDisplayName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setpassword] = useState("")
@@ -27,7 +27,7 @@ function Register() {
         }
 
         const res = await createUser(user)
-        console.log(res);
+        setUser(res)
     }
     useEffect(() =>{
         if (errorAuth) {
