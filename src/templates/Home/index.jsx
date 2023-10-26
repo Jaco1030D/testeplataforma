@@ -2,6 +2,7 @@ import { useAuthentication } from '../../hooks/useAuthentication.js';
 import './styles.css';
 
 function Home({user, loadingUser}) {
+  console.log(user);
   const {logout} = useAuthentication()
   return (
     <div className='forms'>

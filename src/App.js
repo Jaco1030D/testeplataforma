@@ -10,13 +10,15 @@ import Navbar from './components/layout/Navbar/index.jsx';
 const App = () => {
     const [user, setUser] = useState(undefined)
     const {auth} = useAuthentication()
-    const  loadingUser = user === undefined //devolve true ou false
+    const  loadingUser = user === undefined
 
     useEffect(() =>{
         onAuthStateChanged(auth, async (user) =>{
         await setUser(user)
         })
     }, [auth])
+
+    console.log(user);
     
   return (
     <div>
