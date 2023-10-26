@@ -38,7 +38,8 @@ export const useAuthentication = () =>{
             const {user} = await createUserWithEmailAndPassword(
                 auth,
                 data.email,
-                data.password
+                data.password,
+                data.displayName
             )
             await updateProfile(user, {
                 displayName: data.displayName
