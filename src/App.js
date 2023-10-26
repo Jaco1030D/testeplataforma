@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Home from './templates/Home.js';
+import Home from './templates/Home';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Login from './templates/Login.js';
-import Register from './templates/Register.js';
+import Login from './templates/Login';
+import Register from './templates/Register';
 import { useAuthentication } from './hooks/useAuthentication.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import Navbar from './components/layout/Navbar/index.jsx';
