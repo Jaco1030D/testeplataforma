@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useAuthentication } from '../../hooks/useAuthentication'
+import { useAuthentication } from '../../hooks/useAuthentication.js'
 
 // import './styles.css';
 

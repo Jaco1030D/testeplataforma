@@ -1,4 +1,4 @@
-import { useAuthentication } from '../../hooks/useAuthentication';
+import { useAuthentication } from '../../hooks/useAuthentication.js';
 import './styles.css';
 
 function Home({user, loadingUser}) {
