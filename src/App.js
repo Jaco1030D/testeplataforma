@@ -5,7 +5,7 @@ import Login from './templates/Login.js';
 import Register from './templates/Register.js';
 import { useAuthentication } from './hooks/useAuthentication.js';
 import { onAuthStateChanged } from 'firebase/auth';
-import Navbar from './components/layout/Navbar';
+import Navbar from './components/layout/Navbar/index.jsx';
 
 const App = () => {
     const [user, setUser] = useState(undefined)
