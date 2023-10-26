@@ -26,7 +26,8 @@ function Register() {
             password
         }
 
-        const res = await createUser(user) 
+        const res = await createUser(user)
+        console.log(res);
     }
     useEffect(() =>{
         if (errorAuth) {
