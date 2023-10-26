@@ -17,8 +17,6 @@ const App = () => {
         await setUser(user)
         })
     }, [auth])
-
-    console.log(user);
     
   return (
     <div>

@@ -39,10 +39,11 @@ export const useAuthentication = () =>{
                 auth,
                 data.email,
                 data.password,
-                data.displayName
             )
             await updateProfile(user, {
                 displayName: data.displayName
+            }).then(() => {
+                user.reload()
             })
             
             setLoading(false)
