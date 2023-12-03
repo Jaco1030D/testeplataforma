@@ -1,0 +1,78 @@
+.input.file {
+    border: 3px dashed #eaedf0;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 15px;
+    width: 700px;
+}
+
+#icon {
+    font-size: 60px;
+}
+
+.input.file input {
+    display: none;
+}
+
+.input.file label {
+    cursor: pointer;
+}
+
+.input.file label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 700px) {
+    .table, .input.file, .inputs-select, .list-items {
+        width: 500px;
+    }
+    .App {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .table, .input.file, .inputs-select, .list-items, .value-box {
+        width: 300px;
+    }
+    .value-per-word {
+        flex-direction: column;
+    }
+    input[type="number"] {
+        text-align: left;
+    }
+    .App {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    td:nth-child(1),
+    th:nth-child(1),
+    td:nth-child(2),
+    th:nth-child(2) {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .table, .input.file, .inputs-select, .list-items, .value-box {
+        width: 200px;
+    }
+    .App {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}

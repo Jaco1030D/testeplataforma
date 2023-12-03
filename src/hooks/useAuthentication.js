@@ -1,5 +1,3 @@
-import {db} from '../firebase/Config'
-
 import{
     getAuth,
     createUserWithEmailAndPassword,
@@ -25,6 +23,7 @@ export const useAuthentication = () =>{
             return
         }
     }
+    
     function config() {
         
         checkifCancelled()
@@ -59,6 +58,7 @@ export const useAuthentication = () =>{
             } else if(error.message.includes("email-already")){
                 systemErrorMessage = "E-mail ja cadastrado"
             } else{
+                console.log(error.message);
                 systemErrorMessage = "Tente novamente mais tarde"
             }
 
@@ -84,7 +84,7 @@ export const useAuthentication = () =>{
                 systemErrorMessage = "Senha esta errada"
             } else{
                 console.log(error.message);
-                systemErrorMessage = "Tente novamente mais tarde"
+                systemErrorMessage = "Senha/e-mail estão incorreto"
             }
             
             setError(systemErrorMessage)

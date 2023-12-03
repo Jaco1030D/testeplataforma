@@ -1,0 +1,14 @@
+.inputs-select {
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+}
+
+.select-input {
+    width: 49%;
+    height: 50px;
+    border-radius: 15px;
+}
+.open{
+    opacity: 0.5;
+}

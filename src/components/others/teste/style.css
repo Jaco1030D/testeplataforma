@@ -1,0 +1,47 @@
+.box {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    align-items: center;
+}
+
+.archive-infos-number {
+    display: flex;
+    gap: 10px;
+}
+
+.archive-infos,
+.translation-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+.languages-infos {
+    display: flex;
+}
+
+.archive-infos-number {
+    display: flex;
+}
+
+.type-document{
+    height: 60px;
+    width: 60px;
+
+}
+
+.value-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}

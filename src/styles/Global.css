@@ -7,13 +7,17 @@
     sans-serif;
 }
 
-nav {
+nav,
+nav div {
     display: flex;
     align-items: center;
     height: 80px;
-    justify-content: right;
+    /* justify-content: right; */
     gap: 25px;
     padding: 0 100px;
+}
+nav {
+  justify-content: space-between;
 }
 
 nav li {
@@ -27,6 +31,7 @@ nav li a {
 .home {
     padding: 20px;
 }
+
 .forms {
     max-width: 400px;
     margin: 0 auto;
@@ -41,12 +46,6 @@ nav li a {
     font-size: 24px;
     margin-bottom: 10px;
     color: #333;
-  }
-  
-  p {
-    font-size: 14px;
-    margin-bottom: 20px;
-    color: #555;
   }
   
   form {
@@ -65,7 +64,7 @@ nav li a {
     color: #333;
   }
   
-  input {
+  label input {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
