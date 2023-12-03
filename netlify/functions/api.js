@@ -21,8 +21,8 @@ exports.handler = async (event, context) => {
           quantity: item.quantity,
         };
       }),
-      success_url: `http://localhost:8888/order`,
-      cancel_url: `http://localhost:8888/order`,
+      success_url: `https://glowing-profiterole-535857.netlify.app/order`,
+      cancel_url: `https://glowing-profiterole-535857.netlify.app/order`,
     });
 
     // const testamento = await stripe.checkout.sessions.retrieve('cs_test_a12yfvIPc1sDgk3UoFxCDX0flp3homtCX0IET8qVUl5SWAH2KxpBm77Yt2')
