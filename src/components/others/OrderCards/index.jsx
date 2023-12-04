@@ -48,7 +48,7 @@ const OrdersCards = ({orders, admin = false}) => {
     <p>{orders.numPages}</p>
     <a href={orders.archivelink}>arquivo selecionado</a>
     {url !== null ? <p>Ainda não pago</p> : <p>Ja pago</p>}
-    {url !== null && !admin && <button><a href={url}>Pagar</a></button>}
+    {!admin && url !== null && <button><a href={url}>Pagar</a></button>}
     </div>
   )
 }

@@ -31,7 +31,7 @@ const AdminCard = ({uid}) => {
     <>
     { orders && orders.map((order) => (
       <div key={order.id} >
-        <OrdersCards orders={order} />
+        <OrdersCards orders={order} admin={true} />
       </div>
     ))}
     </>
