@@ -32,7 +32,6 @@ const Admin = () => {
           return (
             <div key={index}>
               {item.email}
-              {process.env.REACT_APP_ADMIN_EMAIL}
               <AdminCard uid={item.uid} />
             </div>
           )
