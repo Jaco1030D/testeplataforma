@@ -27,12 +27,17 @@ const Admin = () => {
 
   return (
     <div>
-      {data && data.users.map((item, index) => (
-        <div key={index}>
-          {item.email}
-          <AdminCard uid={item.uid} />
-        </div>
-      ))}
+      {data && data.users.map((item, index) => {
+        if (item.email !== process.env.REACT_APP_ADMIN_EMAIL) {
+          return (
+            <div key={index}>
+              {item.email}
+              {process.env.REACT_APP_ADMIN_EMAIL}
+              <AdminCard uid={item.uid} />
+            </div>
+          )
+        }
+      })}
       <button onClick={handleClick}>Proxima pagina</button>
     </div>
   )
