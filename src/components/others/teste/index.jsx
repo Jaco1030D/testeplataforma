@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import { useCalculateValue } from '../../../hooks/useCalculateValue';
+import { calculateValues, getCountWord, getExtension, getNumWordsDOCX, getNumWordsPDF, getTextFromDocx, getTextFromPDF } from '../../../hooks/useCalculateValue';
 import { useMainContext } from '../../../context/MainContext';
 import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import { useInsertDocuments } from '../../../hooks/useInsertDocuments';
 import axios from 'axios';
+import { getInfos } from '../../../utils/getInfos';
 
 export const Box = ({file, origin, translated}) => {
   const [state] = useMainContext()
-  const {getNumWordsPDF, getNumWordsDOCX, calculateValues, getExtension } = useCalculateValue()
     const [numWords, setNumWords] = useState('Calculando...')
     const [value, setValue] = useState([])
     const [numPages, setNumPages] = useState(0)
     const {nameWithout, extension} = getExtension(file)
     const navigate = useNavigate()
-    const {insertDocument, insertFiles, response} = useInsertDocuments("archives")
+    const {insertDocument, insertFiles} = useInsertDocuments("archives")
 
     const handleClick = async () => {
         // fetch("/.netlify/functions/api", {
@@ -67,7 +67,7 @@ export const Box = ({file, origin, translated}) => {
           });
           
           const downloadArchive = await insertFiles(file)
-
+          console.log(response.data);
           await insertDocument({
             id_payment: response.data.sessionId,
             file: file.name,
@@ -78,6 +78,8 @@ export const Box = ({file, origin, translated}) => {
             deadlines: state.deadlines,
             value,
             archivelink:downloadArchive,
+            status: response.data.status,
+            statusPayment: response.data.paymentStatus,
             uid: state.user.uid
           })
     
@@ -125,8 +127,6 @@ export const Box = ({file, origin, translated}) => {
           });
         } else {
 
-          // const {numWords, numPages} = getNumWordsDOCX(file)
-          // console.log(numWords, numPages);
           getNumWordsDOCX(file)
           .then((res) => {
             setNumWords(res.numWords);
@@ -141,7 +141,7 @@ export const Box = ({file, origin, translated}) => {
       }
     }, [file, origin, translated]);
     useEffect(() => {
-      // insertFiles(file)
+
     },[])
   return (
     <div className="archive-conatiner">
@@ -152,7 +152,7 @@ export const Box = ({file, origin, translated}) => {
       <p>{state.selectValues.translation}</p>
       <p>{value}</p>
       {state.user === null ? (
-        <Button handleClick={() => navigate('/login')} text={'se logue para continuar'}/>
+        <Button handleClick={() => navigate('/register')} text={'se cadastre para continuar'}/>
       ) : (
       <button onClick={handleClick}>Pagar</button>
       )}

@@ -2,3 +2,6 @@
     color: red !important;
     background-color: red !important;
 }
+.container-itens {
+    display: flex;
+}

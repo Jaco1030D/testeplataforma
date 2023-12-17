@@ -15,17 +15,19 @@ const App = () => {
     const [user, setUser] = useState(undefined)
     const {auth} = useAuthentication()
     const [isAdmin, setIsAdmin] = useState(false)
+    console.log(user);
     const  loadingUser = user === undefined
 
     useEffect(() =>{
         onAuthStateChanged(auth, (user) =>{
         setUser(user)
+        console.log(user !== null);
         if(user !== null) {
           user.email === process.env.REACT_APP_ADMIN_EMAIL && setIsAdmin(true)
+          actions.setAccountInfo(user)
         } else {
           setIsAdmin(false)
         }
-        actions.setAccountInfo(user)
         })
     }, [auth, actions])
     console.log(state);

@@ -1,5 +1,5 @@
 export const initialState = {
-    user: {},
+    user: null,
     filePending: [],
     selectValues: {
         origin: '',
@@ -29,4 +29,6 @@ export const initialState = {
         "Grego",
         "Dinamarquês"
       ],
+    archiveTypes: ['arquivo 1', 'arquivo2', 'arquivo3', 'Área certificada'],
+    archiveTypeSelected: ''
 };

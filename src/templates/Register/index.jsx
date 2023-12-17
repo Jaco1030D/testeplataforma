@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useAuthentication } from '../../hooks/useAuthentication.js'
 
-// import './styles.css';
-
 function Register({setUser}) {
   const [displayName, setDisplayName] = useState("")
     const [email, setEmail] = useState("")
@@ -27,7 +25,8 @@ function Register({setUser}) {
         }
 
         const res = await createUser(user)
-        setUser(res)
+        
+        setUser(res || null)
     }
     useEffect(() =>{
         if (errorAuth) {

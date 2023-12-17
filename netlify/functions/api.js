@@ -21,6 +21,7 @@ exports.handler = async (event, context) => {
           quantity: item.quantity,
         };
       }),
+      customer_email: 'asdfghjklasdfghjkl@gmail.com',
       success_url: `https://glowing-profiterole-535857.netlify.app/order`,
       cancel_url: `https://glowing-profiterole-535857.netlify.app/order`,
     });
@@ -31,7 +32,7 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ sessionId: session.id, url: session.url }),
+      body: JSON.stringify({ sessionId: session.id, url: session.url, status: session.status, paymentStatus: session.payment_status }),
     };
   } catch (e) {
     return {

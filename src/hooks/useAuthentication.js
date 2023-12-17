@@ -39,11 +39,6 @@ export const useAuthentication = () =>{
                 data.email,
                 data.password,
             )
-            await updateProfile(user, {
-                displayName: data.displayName
-            }).then(() => {
-                user.reload()
-            })
             
             setLoading(false)
             console.log(user);
@@ -63,6 +58,7 @@ export const useAuthentication = () =>{
             }
 
             setError(systemErrorMessage)
+
         }
         setLoading(false)
     }

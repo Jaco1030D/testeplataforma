@@ -8,8 +8,9 @@ export const reducer = (state, action) => {
       return {...state, filePending: action.payload}
     case actionTypes.CHANGEDEADLINES:
       return {...state, deadlines: action.payload}
+    case actionTypes.CHANGEARCHIVETYPE:
+      return {...state, archiveTypeSelected: action.payload}
     case actionTypes.CHANGESELECTED:
-      console.log(action.payload);
       return {...state, selectValues: {...state.selectValues, ...action.payload}}
     default:
       break;

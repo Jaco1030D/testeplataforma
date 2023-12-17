@@ -33,7 +33,6 @@ import axios from 'axios';
 function Home() {
   const [state, actions] = useMainContext()
 
-  console.log(state);
   return (
     <div className='app'>
       <DropIntput />

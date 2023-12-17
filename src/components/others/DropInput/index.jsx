@@ -43,7 +43,7 @@ const DropIntput = ({ inputsValue}) => {
         Adicione seus arquivos:
         </label>
         Adicionados: {numArchives}
-        <input ref={input} onDragOver={(e) => e.preventDefault()} type="file" id='file' name='archive8' onDrop={handleDrop} onChange={handleFileChange} accept=".pdf, .docx" multiple/>
+        <input ref={input} onDragOver={(e) => e.preventDefault()} type="file" id='file' name='archive8' onDrop={handleDrop} onChange={handleFileChange} accept=".pdf, .docx"/>
         {state.selectValues.origin === "" && <p>Selecione o idima de origem</p>}
         {state.selectValues.translation.length === 0 && <p>Selecione o idioma da tradução</p>}
         {messageError && <div>{messageError}</div>}

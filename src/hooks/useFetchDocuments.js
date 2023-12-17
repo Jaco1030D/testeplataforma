@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { db } from "../firebase/Config";
-import { collection, query, orderBy, onSnapshot,where } from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot,where, limit } from "firebase/firestore";
 
 //para buscar varios
-export const useFetchDocuments = (docCollection, search = null, uid = null, admin = false) => {
+export const useFetchDocuments = (docCollection, search = null, uid = null, admin = false, onlyLast = false) => {
     const [documents, setDocuments] = useState(null)
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(null)
@@ -13,7 +13,6 @@ export const useFetchDocuments = (docCollection, search = null, uid = null, admi
     useEffect(() => {
         async function loadData(){
             if (cancelled && admin === false) return
-            console.log('pelo menos aqui');
             setLoading(true)
 
             const collectionRef = await collection(db, docCollection)
@@ -26,16 +25,16 @@ export const useFetchDocuments = (docCollection, search = null, uid = null, admi
                         orderBy("createdAt", "desc"))
 
                 }else if(uid){
-                    //Para mostrar todos os documentos do usuario logado
-                    console.log('ta aqui');
                     q = await query(collectionRef,
                         where("uid", "==", uid),
                         orderBy("createdAt", "desc"))
                         console.log(q);
 
+                } else if(onlyLast) {
+                    q = await query(collectionRef, orderBy("createdAt", "desc"), limit(1))
+
                 } else {
                     q = await query(collectionRef, orderBy("createdAt", "desc"))
-
                 }
                 
                 await onSnapshot(q, (querySnapshot) =>{
@@ -56,7 +55,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null, admi
             }
         }
         loadData()
-    }, [docCollection, search, uid, cancelled])
+    }, [docCollection, search, uid, cancelled, onlyLast, admin])
 
     useEffect(() =>{
         return () => setCancelled(true)
