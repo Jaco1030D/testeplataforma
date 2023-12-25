@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useFetchDocuments } from '../../../hooks/useFetchDocuments'
 import OrdersCards from '../OrderCards';
 
-const AdminCard = ({uid}) => {
+const AdminCard = ({item}) => {
+  console.log(item);
   const [orders, setOrders] = useState()
-  const {documents, loading} = useFetchDocuments("archives", null, uid, true)
-  console.log(uid, orders);
+  const {documents, loading} = useFetchDocuments("archives", null, item.uid, true)
 
   useEffect(() => {
     if (documents) {

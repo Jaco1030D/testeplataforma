@@ -12,21 +12,21 @@ const Deadlines = ({selectedValue, actionState}) => {
           value="option1"
           checked={selectedValue === 'option1'}
           onChange={handleRadioChange} 
-        /> <label htmlFor="">Prazo 1</label>
+        /> <label htmlFor="">2 dias</label>
 
         <input type="radio"
           value="option2"
           checked={selectedValue === 'option2'}
           onChange={handleRadioChange} 
         /> 
-        <label htmlFor="">Prazo 2</label>
+        <label htmlFor="">5 dias</label>
 
         <input type="radio"
           value="option3"
           checked={selectedValue === 'option3'}
           onChange={handleRadioChange} 
         /> 
-        <label htmlFor="">Prazo 3</label>
+        <label htmlFor="">9 dias</label>
     </div>
   )
 }

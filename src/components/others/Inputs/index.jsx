@@ -11,7 +11,7 @@ const Inputs = () => {
     action.changeSelectedLanguages(key)
   }
   const updateArchiveType = (value) => {
-    action.changeArchiveType(value)
+    action.changeArchiveType(value.archiveType)
   }
   return (
     <div>
@@ -19,7 +19,7 @@ const Inputs = () => {
           <SelectInput languages={state.languages} id={'origin'} title='Traduzir de' name='origin' values={state.selectValues.origin} update={update} oneElement={true}/>
           <SelectInputMultiple languages={state.languages} id={'translation'} title='Traduzir para' values={state.selectValues.origin} name='translation' update={update}/>
       </div>
-      <SelectInput languages={state.archiveTypes} id={'archiveTypes'} title='tipo de arquivo:' name='archiveType' update={updateArchiveType} oneElement={true}/>
+      <SelectInput languages={state.archiveTypes} id={'archiveTypes'} title='tipo de arquivo:' name='archiveType' values={state.archiveTypeSelected} update={updateArchiveType} oneElement={true}/>
     </div>
   )
 }

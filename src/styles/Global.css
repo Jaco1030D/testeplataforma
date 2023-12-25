@@ -32,14 +32,24 @@ nav li a {
     padding: 20px;
 }
 
-.forms {
-    max-width: 400px;
+.forms,
+.orders {
     margin: 0 auto;
     padding: 20px;
     background-color: #f4f4f4;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .forms {
+    max-width: 400px;
+  }
+  .orders,
+  .container-itens {
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
   }
   
   h1 {

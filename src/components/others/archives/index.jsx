@@ -5,7 +5,6 @@ import FileCard from '../filesCard'
 
 const Archives = () => {
     const [state] = useMainContext()
-    console.log(Object.keys(state.filePending));
   return (
     <div>
       <FileCard />

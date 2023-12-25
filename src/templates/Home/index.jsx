@@ -32,13 +32,22 @@ import axios from 'axios';
 
 function Home() {
   const [state, actions] = useMainContext()
+  console.log(state);
 
   return (
     <div className='app'>
       <DropIntput />
       <Inputs />
       <Deadlines selectedValue={state.deadlines} actionState={actions.changeDeadlines} />
-      {state.filePending.length !== 0 && state.selectValues.translation.length !== 0 && state.selectValues.origin !== "" && <Archives /> }
+      {
+      state.archiveTypeSelected !== "Área certificada" && 
+      state.filePending.length !== 0 && 
+      state.selectValues.translation.length !== 0 && 
+      state.selectValues.origin !== "" && 
+      state.archiveTypeSelected !== "" && 
+      <Archives /> 
+      }
+      {state.archiveTypeSelected === "Área certificada" && <p>Não trabalhamos com este tipo de arquivo ainda ainda</p>}
     </div>
   )
 }

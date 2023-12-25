@@ -2,6 +2,7 @@ import { pdfjs } from 'react-pdf';
 import { DOMParser } from "@xmldom/xmldom";
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
 import PizZip from 'pizzip';
+import axios from 'axios';
 
 pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
@@ -153,8 +154,6 @@ const getInfos = async (file, originLanguage, languagesTarget) => {
 
   const {numWords, numPages} = extension === "pdf" ? await getNumWordsPDF(file) : await getNumWordsDOCX(file)
 
-  console.log(numWords, originLanguage, languagesTarget)
-
   const value = calculateValues(numWords, originLanguage, languagesTarget)
 
   console.log(value);
@@ -162,13 +161,33 @@ const getInfos = async (file, originLanguage, languagesTarget) => {
   return {nameWithout, numWords, numPages, value}
 
 }
+const getNumWordsArchive = async (file) => {
+
+  const {nameWithout, extension} = getExtension(file)
+
+  const {numWords, numPages} = extension === "pdf" ? await getNumWordsPDF(file) : await getNumWordsDOCX(file)
+
+  return {nameWithout, numWords, numPages}
+}
+
+const getUser = async (uid) => {
+
+  const response = axios.post("/.netlify/functions/getUser", {
+    uid
+  })
+
+  return response
+}
+
 export {
     getCountWord,
+    getNumWordsArchive,
     getTextFromPDF,
     getNumWordsPDF,
     getTextFromDocx,
     getNumWordsDOCX,
     calculateValues,
     getExtension,
-    getInfos
+    getInfos,
+    getUser
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useUpdateDocument } from '../../../hooks/useUpdateDocument'
+import axios from 'axios'
 
 const apiUrl = 'https://api.stripe.com/v1/checkout/sessions/'
 
@@ -8,6 +9,11 @@ const token = 'sk_test_51OF205HR5yfE4YaFBUT1a4yatFHaX5PYhlFa4mpqRSadaqYngNuWDm9l
 const OrdersCards = ({orders, admin = false}) => {
   const {updateDocument} = useUpdateDocument("archives")
   const [url, setUrl] = useState("")
+
+  const handleClick = async (downloadURL) => {
+    const response = await fetch(downloadURL);
+    console.log(response);
+  }
 
   useEffect(() => {
     if (orders.status === 'open') {
@@ -26,7 +32,17 @@ const OrdersCards = ({orders, admin = false}) => {
         })
         .then(data => {
           const {url, payment_status, status} = data
-          updateDocument(orders.id, {statusPayment: payment_status, status })
+          const date = new Date();
+          const initialDate = new Date(date)
+          const finalDate = new Date(date)
+          finalDate.setDate(finalDate.getDate() + 2)
+          if (payment_status === 'paid') {
+            updateDocument(orders.id, {statusPayment: payment_status, status, initialDate: initialDate.toLocaleString(), finalDate: finalDate.toLocaleString() })
+            
+          } else {
+            updateDocument(orders.id, {statusPayment: payment_status, status })
+
+          }
           
           setUrl(url)
         })
@@ -51,10 +67,17 @@ const OrdersCards = ({orders, admin = false}) => {
     ))}</div>
     <hr />
     <p>{orders.numWords}</p>
-    <p>{orders.numPages}</p>
+    <p onClick={() => handleClick(orders.archivelink)}>{orders.numPages}</p>
     <a href={orders.archivelink}>arquivo selecionado</a>
     {orders.statusPayment !== "paid" ? <p>Ainda não pago</p> : <p>Ja pago</p>}
     {!admin && orders.statusPayment !== "paid" && orders.status !== "expired" && <button><a href={url}>Pagar</a></button>}
+    {orders.archivesTranslated && <p>Arquivo ja entregue</p>}
+    {orders?.archivesTranslated && orders.archivesTranslated.map(item => (
+      <>
+      <a href={item}>Arquivo traduzido</a>
+      <br />
+      </>
+    ))}
     </div>
   )
 }

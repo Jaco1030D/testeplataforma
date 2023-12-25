@@ -2,8 +2,8 @@ import{
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    updateProfile,
-    signOut
+    signOut,
+    updateProfile
 } from 'firebase/auth'
 
 import { useEffect, useState } from 'react'
@@ -39,9 +39,12 @@ export const useAuthentication = () =>{
                 data.email,
                 data.password,
             )
+
+            await updateProfile(user, {
+                displayName: data.displayName,
+            });
             
             setLoading(false)
-            console.log(user);
             return user
             
         } catch (error) {

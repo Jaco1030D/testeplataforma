@@ -6,7 +6,6 @@ import { useFetchDocuments } from '../../hooks/useFetchDocuments';
 import { useMainContext } from '../../context/MainContext';
 import { Link } from 'react-router-dom';
 import OrdersCards from '../../components/others/OrderCards';
-import { ordersRegitered } from '../../context/OrdersContext/build-actions';
 
 // const getValues = (uid) => {
 //   const{documents: orders, loading} = useFetchDocuments("archives", null, uid)
@@ -17,22 +16,17 @@ import { ordersRegitered } from '../../context/OrdersContext/build-actions';
 const Order = () => {
   const [state] = useMainContext()
 
-  const {documents: orders, loading} = useFetchDocuments("archives", null, state.user.uid)
-console.log(orders);
-  const paid = orders?.filter(doc => doc.status === "complete")
+  const {documents: orders, loading} = useFetchDocuments("archives", null, state.user?.uid)
+  console.log(orders);
+  const paid = orders?.filter(doc => doc.status === "complete" && doc?.finalized !== true)
   const pending = orders?.filter(doc => doc.status === "open")
   const finalized = orders?.filter(doc => doc.finalized === true)
-
-  useEffect(() => {
-    orders && ordersRegitered()
-  },[orders])
-
   if (loading) {
     return <p>Carregando...</p>
   }
 
       return (
-        <div className='forms'>
+        <div className='orders'>
           {orders && orders.length === 0 ? (
         <div >
           <p>Não foram encontrados orders</p>
@@ -42,17 +36,18 @@ console.log(orders);
         </div>
       ) : (
         <div className='container-itens'>
-        
         <div>
-          {paid && paid.map((order) => (
+        {pending && pending.map((order) => (
             <div>
+              <h2>não pagos</h2>
               <OrdersCards orders={order} />
             </div>
           ))}
         </div>
         <div>
-        {pending && pending.map((order) => (
+          {paid && paid.map((order) => (
             <div>
+              <h2>Pagos</h2>
               <OrdersCards orders={order} />
             </div>
           ))}
@@ -60,6 +55,7 @@ console.log(orders);
         <div>
         {finalized && finalized.map((order) => (
             <div>
+              <h2>Finalizados</h2>
               <OrdersCards orders={order} />
             </div>
           ))}

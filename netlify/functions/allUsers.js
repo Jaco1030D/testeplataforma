@@ -8,11 +8,11 @@ admin.initializeApp({
 
 exports.handler = async (event, context) => {
   const  body  = JSON.parse(event.body);
-  const listAllUsers = (nextPageToken) => {
+  const listAllUsers = () => {
     return new Promise((resolve, reject) => {
       const users = [];
       admin.auth()
-        .listUsers(5, nextPageToken)
+        .listUsers()
         .then((listUsersResult) => {
           listUsersResult.users.forEach((userRecord) => {
             users.push({
@@ -40,10 +40,8 @@ exports.handler = async (event, context) => {
     let response
 
     if (body.token) {
-      console.log('tem coisa no toke');
-      response = await listAllUsers(body.token);
+      response = await listAllUsers();
     } else {
-      console.log('não tem nada no toke');
       response = await listAllUsers();
     }
     return response;

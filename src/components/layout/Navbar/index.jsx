@@ -1,9 +1,16 @@
 import React from 'react'
 import { useAuthentication } from '../../../hooks/useAuthentication'
 import { NavLink } from 'react-router-dom'
+import { useMainContext } from '../../../context/MainContext'
 
 const Navbar = ({user, isAdmin}) => {
+    const [state, actions] = useMainContext()
     const {logout} = useAuthentication()
+    const handleClick = () => {
+        logout()
+        actions.setAccountInfo(null)
+        
+    }
     return (
     <nav>
         {isAdmin ? (
@@ -44,7 +51,7 @@ const Navbar = ({user, isAdmin}) => {
                     <NavLink to='/order'>Pedidos</NavLink>
                 </li>
                 <li>
-                    <button className='navButton' onClick={logout}>Logout</button>
+                    <button className='navButton' onClick={handleClick}>Logout</button>
                 </li>
             </>
         }

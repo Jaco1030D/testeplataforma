@@ -3,7 +3,7 @@ import { db } from "../firebase/Config";
 import { collection, query, orderBy, onSnapshot,where, limit } from "firebase/firestore";
 
 //para buscar varios
-export const useFetchDocuments = (docCollection, search = null, uid = null, admin = false, onlyLast = false) => {
+export const useFetchDocuments = (docCollection, search = null, uid = null, admin = false, onlyLast = false, limitValue = 0) => {
     const [documents, setDocuments] = useState(null)
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(null)
@@ -33,6 +33,9 @@ export const useFetchDocuments = (docCollection, search = null, uid = null, admi
                 } else if(onlyLast) {
                     q = await query(collectionRef, orderBy("createdAt", "desc"), limit(1))
 
+                } else if(limitValue) {
+                    q = await query(collectionRef, orderBy("createdAt", "desc"), limit(limitValue))
+
                 } else {
                     q = await query(collectionRef, orderBy("createdAt", "desc"))
                 }
@@ -49,13 +52,14 @@ export const useFetchDocuments = (docCollection, search = null, uid = null, admi
                 setLoading(false)
                  
             } catch (error) {
+                console.log(error);
                 setError(error.message)
                 
                 setLoading(false)
             }
         }
         loadData()
-    }, [docCollection, search, uid, cancelled, onlyLast, admin])
+    }, [docCollection, search, uid, cancelled, onlyLast, admin, limitValue])
 
     useEffect(() =>{
         return () => setCancelled(true)

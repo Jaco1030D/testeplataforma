@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getInfos } from '../../../hooks/useCalculateValue'
+import { calculateValues, getNumWordsArchive } from '../../../hooks/useCalculateValue'
 import { useMainContext } from '../../../context/MainContext'
 import Button from '../Button'
 import { useNavigate } from 'react-router-dom'
@@ -13,18 +13,20 @@ const FileCard = () => {
     const [nameFile, setNameFile] = useState()
     const [numWords, setNumWords] = useState()
     const [numPages, setNumPages] = useState()
+    const [loading, setLoading] = useState(false)
+    const [textLoading, setTextLoading] = useState(0)
     const [value, setValue] = useState()
+    const [messageError, setMessageError] = useState('')
     const navigate = useNavigate()
     const {insertDocument, insertFiles} = useInsertDocuments("archives")
     const {documents: last_order} = useFetchDocuments("archives", null, null, false, true)
 
-
-
     const handleClick = async () => {
         try {
-
+          setLoading(true)
+          setTextLoading(0)
           const response = await axios.post("/.netlify/functions/api", {
-
+            email: state.user.email,
             items: [
               {
                 name: nameFile,
@@ -39,11 +41,15 @@ const FileCard = () => {
             ],
 
           });
+
+          setTextLoading(30)
           
           const downloadArchive = await insertFiles(file)
 
+          setTextLoading(80)
+
           await insertDocument({
-            id_payment: response.data.sessionId,
+            id_payment: response?.data.sessionId,
             file: file.name,
             numWords,
             numPages,
@@ -51,35 +57,50 @@ const FileCard = () => {
             language_translation: state.selectValues.translation,
             deadlines: state.deadlines,
             value,
+            archiveType: state.archiveTypeSelected,
             archivelink:downloadArchive,
-            status: response.data.status,
-            numOrder: last_order[0].numOrder ? last_order[0].numOrder + 1 : 1,
-            statusPayment: response.data.paymentStatus,
+            status: response?.data.status,
+            numOrder: last_order[0]?.numOrder ? last_order[0].numOrder + 1 : 1,
+            statusPayment: response?.data.paymentStatus,
             uid: state.user.uid
           })
-    
+
           const { url } = response.data;
+          
           window.location = url;
 
+          setTextLoading(100)
+
         } catch (error) {
-          console.error(error.response.data.error || error.message);
+          setMessageError("Ocorreu um erro, tente novamente mais tarde")
         }
     }
 
     useEffect(() => {
-        getInfos(file, state.selectValues.origin, state.selectValues.translation).then(res => {
+        getNumWordsArchive(file).then(res => {
             setNameFile(res.nameWithout)
             setNumWords(res.numWords)
             setNumPages(res.numPages)
-            setValue(res.value)
         })
-    },[state, file])
+    },[file])
+
+    useEffect(() => {
+
+      const value = calculateValues(numWords, state.selectValues.origin, state.selectValues.translation)
+
+      setValue(value)
+
+    },[numWords, state.selectValues])
 
   return (
     <div className="archive-conatiner">
+      {loading && <h2>Carregando...</h2>}
+      {loading && <h3>{textLoading}%</h3>}
       <p>{file.name}</p>
       <p>{numWords}</p>
       <p>{numPages}</p>
+      <p>{state.archiveTypeSelected}</p>
+      <p>{state.deadlines}</p>
       <p>{state.selectValues.origin}</p>
       <p>{state.selectValues.translation}</p>
       <p>{value}</p>
@@ -88,6 +109,8 @@ const FileCard = () => {
       ) : (
       <button onClick={handleClick}>Pagar</button>
       )}
+      {messageError && <h2>{messageError}</h2>}
+      
     </div>
   )
 }

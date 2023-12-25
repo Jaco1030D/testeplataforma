@@ -9,6 +9,7 @@ import Navbar from './components/layout/Navbar/index.jsx';
 import { useMainContext } from './context/MainContext/index.jsx';
 import Order from './templates/Order/index.jsx';
 import Admin from './templates/Admin/index.jsx';
+import Terms from './components/layout/Terms/index.jsx';
 
 const App = () => {
     const [state, actions] = useMainContext()
@@ -59,6 +60,7 @@ const App = () => {
               <Route path='/login' element={
                   !user ? <Login/> : <Navigate to="/" />
                 }/>
+                <Route path='/terms' element={<Terms />} />
               <Route path='/register' element={
                   !user ? <Register setUser={setUser}/> : <Navigate to="/" />
                   }/>
