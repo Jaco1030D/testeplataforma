@@ -14,11 +14,12 @@ const Admin = () => {
           <tr>
               <th>Numero do pedido</th>
               <th>Nome do Arquivo</th>
-              <th>Link</th>
-              <th>Nome</th>
+              <th>Arquivo</th>
+              <th>Cliente</th>
               <th>Email</th>
-              <th>Data com Hora (Início)</th>
-              <th>Data com Hora (Fim)</th>
+              <th>Inicio</th>
+              <th>Data entrega</th>
+              <th>traduzir de</th>
               <th>traduzir para</th>
               <th>Valor</th>
               <th>Status</th>
