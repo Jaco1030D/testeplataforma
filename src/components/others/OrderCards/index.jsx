@@ -11,6 +11,7 @@ const OrdersCards = ({orders, admin = false}) => {
   const [url, setUrl] = useState("")
 
   const handleClick = async (downloadURL, fileName) => {
+
     const response = await axios.get(downloadURL, { responseType: 'blob' })
 
     console.log(response);
@@ -70,7 +71,7 @@ const OrdersCards = ({orders, admin = false}) => {
   },[orders])
   return (
     <div>
-    <h2>{orders.file}</h2>
+    <h2>{orders.file.slice(0, 10)}</h2>
     Prazo
     <p>{orders.numOrder}</p>
     <p>{orders.deadlines}</p>
@@ -84,13 +85,13 @@ const OrdersCards = ({orders, admin = false}) => {
     <hr />
     <p>{orders.numWords}</p>
     <p>{orders.numPages}</p>
-    <p onClick={() => handleClick(orders.archivelink)} style={{cursor: 'pointer'}}>download arquivo</p>
+    <p onClick={() => handleClick(orders.archivelink)} style={{cursor: 'pointer', color: 'blue'}}>download arquivo</p>
     {orders.statusPayment !== "paid" ? <p>Ainda não pago</p> : <p>Ja pago</p>}
     {!admin && orders.statusPayment !== "paid" && orders.status !== "expired" && <button><a href={url}>Pagar</a></button>}
     {orders.archivesTranslated && <p>Arquivos ja Traduzidos:</p>}
     {orders?.archivesTranslated && orders.archivesTranslated.map(item => (
       <>
-      <p style={{cursor: 'pointer'}} onClick={() => handleClick(item.downloadArchive, item.fileName)}>{item.fileName}</p>
+      <p style={{cursor: 'pointer', color: 'blue'}} onClick={() => handleClick(item.downloadArchive, item.fileName)}>{item.fileName}</p>
       <br />
       </>
     ))}

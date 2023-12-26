@@ -88,7 +88,7 @@ const RowTableAdmin = ({order}) => {
         <tr>
             <td>{order.numOrder}</td>
             <td>{order.file}</td>
-            <td><p onClick={() => handleDownload(order.archivelink)} >Link</p></td>
+            <td><p style={{cursor: 'pointer', color: 'blue'}} onClick={() => handleDownload(order.archivelink)} >Link</p></td>
             <td>{user.displayName}</td>
             <td>{user.email}</td>
             {
@@ -129,7 +129,7 @@ const RowTableAdmin = ({order}) => {
                         <div>
                             <p>Já entregue:</p>
                             {order.archivesTranslated.map(item => (
-                                <p onClick={() => handleDownload(item.downloadArchive, item.fileName)} >{item.fileName}</p>
+                                <p style={{cursor: 'pointer', color: 'blue'}} onClick={() => handleDownload(item.downloadArchive, item.fileName) } >{item.fileName}</p>
                             ))}
                         </div>
                     ) : <input type="file" onChange={handleFileChange} multiple />}

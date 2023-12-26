@@ -1,22 +1,11 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import AdminCard from '../../components/others/AdminCard'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
 import RowTableAdmin from '../../components/others/rowTableAdmin'
-import { getInfos } from '../../hooks/useCalculateValue'
 
 const Admin = () => {
-  const [numWordsPerPage, setNumWordsPerPage] = useState(2)
-
-  const {documents: orders, loading} = useFetchDocuments("archives", null, null, false, false)
+  const {documents: orders} = useFetchDocuments("archives", null, null, false, false)
 
   console.log(orders);
 
-
-  const handleClick = () => {
-    setNumWordsPerPage(prev => prev * 2)
-    console.log(numWordsPerPage);
-  }
 
   return (
     <div>
