@@ -108,6 +108,7 @@ const RowTableAdmin = ({order}) => {
                     </>
                 )
             }
+            <td>{order.language_origin}</td>
             <td>{order.language_translation.length} idioma(s)</td>
             <td>{order.value}</td>
             <td>{order?.finalized ? 'Entregue' : order.statusPayment}</td>
