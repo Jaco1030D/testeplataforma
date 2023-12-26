@@ -46,11 +46,12 @@ const OrdersCards = ({orders, admin = false}) => {
           return response.json();
         })
         .then(data => {
+          let deadlines = orders.deadlines === "option1" ? 2 : orders.deadlines === "option2" ? 5 : 9 
           const {url, payment_status, status} = data
           const date = new Date();
           const initialDate = new Date(date)
           const finalDate = new Date(date)
-          finalDate.setDate(finalDate.getDate() + 2)
+          finalDate.setDate(finalDate.getDate() + deadlines)
           if (payment_status === 'paid') {
             updateDocument(orders.id, {statusPayment: payment_status, status, initialDate: initialDate.toLocaleString(), finalDate: finalDate.toLocaleString() })
             

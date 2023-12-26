@@ -37,25 +37,25 @@ const Order = () => {
       ) : (
         <div className='container-itens'>
         <div>
+        <h2>não pagos</h2>
         {pending && pending.map((order) => (
-            <div>
-              <h2>não pagos</h2>
-              <OrdersCards orders={order} />
-            </div>
-          ))}
+          <div>
+            <OrdersCards orders={order} />
+          </div>
+        ))}
         </div>
         <div>
-          {paid && paid.map((order) => (
-            <div>
-              <h2>Pagos</h2>
-              <OrdersCards orders={order} />
-            </div>
-          ))}
+        <h2>Pagos</h2>
+        {paid && paid.map((order) => (
+          <div>
+            <OrdersCards orders={order} />
+          </div>
+        ))}
         </div>
         <div>
+        <h2>Finalizados</h2>
         {finalized && finalized.map((order) => (
             <div>
-              <h2>Finalizados</h2>
               <OrdersCards orders={order} />
             </div>
           ))}
