@@ -14,9 +14,9 @@ const Admin = () => {
           <tr>
               <th>Numero do pedido</th>
               <th>Nome do Arquivo</th>
-              <th>Link do PDF</th>
-              <th>Nome da Pessoa</th>
-              <th>Email da Pessoa</th>
+              <th>Link</th>
+              <th>Nome</th>
+              <th>Email</th>
               <th>Data com Hora (Início)</th>
               <th>Data com Hora (Fim)</th>
               <th>traduzir para</th>
