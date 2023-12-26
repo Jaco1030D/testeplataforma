@@ -6,10 +6,9 @@ import RowTableAdmin from '../../components/others/rowTableAdmin'
 import { getInfos } from '../../hooks/useCalculateValue'
 
 const Admin = () => {
-  const [data, setData] = useState()
   const [numWordsPerPage, setNumWordsPerPage] = useState(2)
 
-  const {documents: orders, loading} = useFetchDocuments("archives", null, null, false, false, 15)
+  const {documents: orders, loading} = useFetchDocuments("archives", null, null, false, false)
 
   console.log(orders);
 

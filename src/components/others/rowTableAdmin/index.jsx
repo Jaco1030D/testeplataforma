@@ -4,6 +4,7 @@ import Modal from '@mui/material/Modal';
 import './style.css'
 import { getUser } from '../../../hooks/useCalculateValue';
 import { useInsertDocuments } from '../../../hooks/useInsertDocuments';
+import axios from 'axios';
 
 const RowTableAdmin = ({order}) => {
     console.log(order);
@@ -16,6 +17,26 @@ const RowTableAdmin = ({order}) => {
     const {updateDocument} = useUpdateDocument("archives")
     const { insertFiles, response} = useInsertDocuments("archives")
 
+    const handleDownload = async (downloadURL, fileName) => {
+        const response = await axios.get(downloadURL, { responseType: 'blob' })
+    
+        console.log(response);
+    
+        const blobUrl = URL.createObjectURL(response.data);
+    
+        const link = document.createElement('a');
+    
+        link.href = blobUrl;
+    
+        link.download = fileName || order.file;
+    
+        document.body.appendChild(link);
+    
+        link.click();
+    
+        document.body.removeChild(link);
+      }
+
 
     const handleClick = async () => {
         const arrayArchive = []
@@ -26,7 +47,7 @@ const RowTableAdmin = ({order}) => {
 
             const downloadArchive = await insertFiles(files[index])
 
-            arrayArchive.push(downloadArchive)
+            arrayArchive.push({downloadArchive, fileName: files[index].name})
             
         }
 
@@ -67,7 +88,7 @@ const RowTableAdmin = ({order}) => {
         <tr>
             <td>{order.numOrder}</td>
             <td>{order.file}</td>
-            <td><a href={order.archivelink} download={order.file}>Link</a></td>
+            <td><p onClick={() => handleDownload(order.archivelink)} >Link</p></td>
             <td>{user.displayName}</td>
             <td>{user.email}</td>
             {
@@ -106,9 +127,9 @@ const RowTableAdmin = ({order}) => {
                     <br />
                     {order?.archivesTranslated ? (
                         <div>
-                            <p>Já entregue</p>
+                            <p>Já entregue:</p>
                             {order.archivesTranslated.map(item => (
-                                <a href={item}>Arquivo entregue</a>
+                                <p onClick={() => handleDownload(item.downloadArchive, item.fileName)} >{item.fileName}</p>
                             ))}
                         </div>
                     ) : <input type="file" onChange={handleFileChange} multiple />}

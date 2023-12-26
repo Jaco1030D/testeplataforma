@@ -172,11 +172,31 @@ const getNumWordsArchive = async (file) => {
 
 const getUser = async (uid) => {
 
-  const response = axios.post("/.netlify/functions/getUser", {
+  const response = await axios.post("/.netlify/functions/getUser", {
     uid
   })
 
   return response
+}
+
+const downloadPdf = async (downloadURL, name) => {
+  const response = await axios.get(downloadURL, { responseType: 'blob' })
+
+    console.log(response);
+
+    const blobUrl = URL.createObjectURL(response.data);
+
+    const link = document.createElement('a');
+
+    link.href = blobUrl;
+
+    link.download = name + '.pdf';
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
 }
 
 export {

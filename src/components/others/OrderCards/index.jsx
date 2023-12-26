@@ -10,9 +10,24 @@ const OrdersCards = ({orders, admin = false}) => {
   const {updateDocument} = useUpdateDocument("archives")
   const [url, setUrl] = useState("")
 
-  const handleClick = async (downloadURL) => {
-    const response = await fetch(downloadURL);
+  const handleClick = async (downloadURL, fileName) => {
+    const response = await axios.get(downloadURL, { responseType: 'blob' })
+
     console.log(response);
+
+    const blobUrl = URL.createObjectURL(response.data);
+
+    const link = document.createElement('a');
+
+    link.href = blobUrl;
+
+    link.download = fileName || orders.file;
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
   }
 
   useEffect(() => {
@@ -67,14 +82,14 @@ const OrdersCards = ({orders, admin = false}) => {
     ))}</div>
     <hr />
     <p>{orders.numWords}</p>
-    <p onClick={() => handleClick(orders.archivelink)}>{orders.numPages}</p>
-    <a href={orders.archivelink}>arquivo selecionado</a>
+    <p>{orders.numPages}</p>
+    <p onClick={() => handleClick(orders.archivelink)} style={{cursor: 'pointer'}}>download arquivo</p>
     {orders.statusPayment !== "paid" ? <p>Ainda não pago</p> : <p>Ja pago</p>}
     {!admin && orders.statusPayment !== "paid" && orders.status !== "expired" && <button><a href={url}>Pagar</a></button>}
-    {orders.archivesTranslated && <p>Arquivo ja entregue</p>}
+    {orders.archivesTranslated && <p>Arquivos ja Traduzidos:</p>}
     {orders?.archivesTranslated && orders.archivesTranslated.map(item => (
       <>
-      <a href={item}>Arquivo traduzido</a>
+      <p style={{cursor: 'pointer'}} onClick={() => handleClick(item.downloadArchive, item.fileName)}>{item.fileName}</p>
       <br />
       </>
     ))}
