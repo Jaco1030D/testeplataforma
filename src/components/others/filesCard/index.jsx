@@ -103,7 +103,7 @@ const FileCard = () => {
       <p>{state.deadlines}</p>
       <p>{state.selectValues.origin}</p>
       <p>{state.selectValues.translation}</p>
-      <p>{value}</p>
+      <p>{value}&euro;</p>
       {state.user === null ? (
         <Button handleClick={() => navigate('/register')} text={'se cadastre para continuar'}/>
       ) : (

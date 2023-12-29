@@ -10,6 +10,7 @@ import { useMainContext } from './context/MainContext/index.jsx';
 import Order from './templates/Order/index.jsx';
 import Admin from './templates/Admin/index.jsx';
 import Terms from './components/layout/Terms/index.jsx';
+import Config from './templates/Config/index.jsx';
 
 const App = () => {
     const [state, actions] = useMainContext()
@@ -47,6 +48,7 @@ const App = () => {
             {isAdmin ? (
               <>
               <Route path='/' element={<Admin user={user} loadingUser={loadingUser}/>} />
+              <Route path='/config' element={<Config user={user} loadingUser={loadingUser}/>} />
               <Route path='*' element={<Navigate to="/" />} />
               </>
             ) : (

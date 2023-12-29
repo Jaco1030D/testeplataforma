@@ -17,7 +17,11 @@ const Navbar = ({user, isAdmin}) => {
         <div>
 
             <li>
-                <NavLink to='/admin'>Todos usuarios</NavLink>
+                <NavLink to='/admin'>Todos pedidos</NavLink>
+            </li>
+
+            <li>
+                <NavLink to='/config'>Configurações</NavLink>
             </li>
 
             <li>

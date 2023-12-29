@@ -4,17 +4,18 @@ import { updateDoc, doc } from "firebase/firestore";
 
 const initialstate = {
     loading: null,
-    error: null
+    error: null,
+    updatedDoc: null
 }
 const updateReducer = (state, action) =>{
     switch (action.type) {
         case "LOADING":
             
-            return {loading: true, error:null}
+            return {loading: true, error:null, updatedDoc: null}
         case "UPDATE_DOC":
-            return {loading: false, error:null}
+            return {loading: false, error:null, updatedDoc: action.payload}
         case "ERROR":
-            return {loading: false, error:action.payload}
+            return {loading: false, error:action.payload, updatedDoc: null}
         default:
             return state
     }
@@ -39,12 +40,16 @@ export const useUpdateDocument = (docCollection) => {
             const docref = await doc(db, docCollection, id)
             const updateDocument = await updateDoc(docref, dat)
 
+            console.log(updateDocument);
+            
             checkCancelBeforeDispatch({
                 type: "UPDATE_DOC",
                 payload: updateDocument,
             })
         } catch (error) {
-            checkCancelBeforeDispatch({
+
+            console.log(error.message);
+            dispatch({
                 type: "ERROR",
                 payload: error.message,
             })

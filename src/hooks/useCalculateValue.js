@@ -134,7 +134,7 @@ const calculateValues = (numWords, originLanguage, languagesTarget) => {
   
   });
   
-  return value
+  return value.toFixed(2)
 }
 
 const getExtension = (file) => {
