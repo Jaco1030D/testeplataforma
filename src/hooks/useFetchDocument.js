@@ -30,11 +30,11 @@ export const useFetchDocument = (docCollection, id) => {
 
             
         }
-        onSnapshot(collectionRef, (snapshot) => { 
-            console.log(snapshot);
-            // loadDocument()
-          })
-        loadDocument()
+        // onSnapshot(collectionRef, (snapshot) => { 
+        //     console.log(snapshot);
+        //     // loadDocument()
+        //   })
+        // loadDocument()
     }, [docCollection, cancelled, id, collectionRef])
 
     useEffect(() =>{
