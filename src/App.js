@@ -90,7 +90,7 @@ const App = () => {
               
               <>
               <Route path='/' element={<Home user={state?.user?.displayName} loadingUser={loadingUser}/>} />
-              <Route path='/teste' element={<Teste />} />
+              {/* <Route path='/teste' element={<Teste />} /> */}
 
               <Route path='/order' element={
                 user ? <Order/> : <Navigate to="/login" />
