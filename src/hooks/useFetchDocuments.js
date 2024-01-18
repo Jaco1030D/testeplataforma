@@ -25,18 +25,21 @@ export const useFetchDocuments = (docCollection, search = null, uid = null, admi
                         orderBy("createdAt", "desc"))
 
                 }else if(uid){
+                    console.log("Veio para ca uid");
                     q = await query(collectionRef,
-                        where("uid", "==", uid),
-                        orderBy("createdAt", "desc"))
+                        where("uid", "==", uid))
                         console.log(q);
 
                 } else if(onlyLast) {
+                    console.log("Seila meu é o ultimo ai");
                     q = await query(collectionRef, orderBy("createdAt", "desc"), limit(1))
 
                 } else if(limitValue) {
+                    console.log("Caiu no limite");
                     q = await query(collectionRef, orderBy("createdAt", "desc"), limit(limitValue))
 
                 } else {
+                    console.log("Ultimo");
                     q = await query(collectionRef, orderBy("createdAt", "desc"))
                 }
                 

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
 import { useInsertDocuments } from '../../../hooks/useInsertDocuments';
 import axios from 'axios';
-import { getInfos } from '../../../utils/getInfos';
+// import { getInfos } from '../../../utils';
 
 export const Box = ({file, origin, translated}) => {
   const [state] = useMainContext()

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useUpdateDocument } from '../../../hooks/useUpdateDocument'
 import axios from 'axios'
+import { useMainContext } from '../../../context/MainContext'
 
 const apiUrl = 'https://api.stripe.com/v1/checkout/sessions/'
 
 const token = 'sk_test_51OF205HR5yfE4YaFBUT1a4yatFHaX5PYhlFa4mpqRSadaqYngNuWDm9lBqQSgTykKZx519Xb4fMcFn1dZthlKgrK00AwSyXZQx'
 
 const OrdersCards = ({orders, admin = false}) => {
+  const [state] = useMainContext()
   const {updateDocument} = useUpdateDocument("archives")
   const [url, setUrl] = useState("")
 
@@ -31,9 +33,25 @@ const OrdersCards = ({orders, admin = false}) => {
     document.body.removeChild(link);
   }
 
+  
+  const calculateDates = (days, hours) => {
+
+    const date = new Date();
+
+    const initialDate = new Date(date)
+
+    const finalDate = new Date(date)
+
+    finalDate.setDate(finalDate.getDate() + days)
+
+    finalDate.setHours(finalDate.getHours() + hours)
+
+    return {initialDate: initialDate.toLocaleString(), finalDate: finalDate.toLocaleString()}
+  }
+
   useEffect(() => {
-    if (orders.status === 'open') {
-      fetch(apiUrl+orders.id_payment, {
+    if (orders.paymentInfos.statusURL === 'open') {
+      fetch(apiUrl+orders.paymentInfos.id_payment, {
         method: 'GET', 
         headers: {
           'Content-Type': 'application/json',
@@ -47,17 +65,30 @@ const OrdersCards = ({orders, admin = false}) => {
           return response.json();
         })
         .then(data => {
-          let deadlines = orders.deadlines === "option1" ? 2 : orders.deadlines === "option2" ? 5 : 9 
           const {url, payment_status, status} = data
-          const date = new Date();
-          const initialDate = new Date(date)
-          const finalDate = new Date(date)
-          finalDate.setDate(finalDate.getDate() + deadlines)
+          const {initialDate, finalDate} = calculateDates(orders.deadline?.days, orders.deadline?.hours)
           if (payment_status === 'paid') {
-            updateDocument(orders.id, {statusPayment: payment_status, status, initialDate: initialDate.toLocaleString(), finalDate: finalDate.toLocaleString() })
+            // const teste = {paymentInfos: {...orders.paymentInfos, statusPayment: payment_status, statusURL: status, url: null, datePayment: initialDate, dateDelivery: finalDate}}
+            updateDocument(orders.id, {paymentInfos: {...orders.paymentInfos, statusPayment: payment_status, statusURL: status, url: null, datePayment: initialDate, dateDelivery: finalDate}})
+            axios.post("/.netlify/functions/sendEmail", {
+                name: state.user.displayName,
+                email: state.user.email,
+                order: orders,
+                fromUser: true,
+                finalized: false
+            })
+            axios.post("/.netlify/functions/sendEmail", {
+                name: state.user.displayName,
+                email: state.user.email,
+                order: orders,
+                fromUser: false,
+                finalized: false
+            })
+
+            // updateDocument(orders.id, {statusPayment: payment_status, status, initialDate: initialDate.toLocaleString(), finalDate: finalDate.toLocaleString() })
             
           } else {
-            updateDocument(orders.id, {statusPayment: payment_status, status })
+            // updateDocument(orders.id, {statusPayment: payment_status, status })
 
           }
           
@@ -71,27 +102,31 @@ const OrdersCards = ({orders, admin = false}) => {
   },[orders])
   return (
     <div>
-    <h2>{orders.file.slice(0, 10)}</h2>
-    Prazo
-    <p>{orders.numOrder}</p>
-    <p>{orders.deadlines}</p>
+    <h2>#Tradução profissional {orders.numOrder}</h2>
     <hr />
     De
-    <p>{orders.language_origin}</p>
+    <p>{orders.languageSetings.origin}</p>
     para
-    <div>{orders.language_translation.map((language, index) => (
+    <div>{orders.languageSetings.translation.map((language, index) => (
       <p key={index} >{language}</p>
     ))}</div>
     <hr />
     <p>{orders.numWords}</p>
     <p>{orders.numPages}</p>
-    <p onClick={() => handleClick(orders.archivelink)} style={{cursor: 'pointer', color: 'blue'}}>download arquivo</p>
-    {orders.statusPayment !== "paid" ? <p>Ainda não pago</p> : <p>Ja pago</p>}
-    {!admin && orders.statusPayment !== "paid" && orders.status !== "expired" && <button><a href={url}>Pagar</a></button>}
+    <p>Prazo: {orders.deadline?.days} dias {orders.deadline?.hours ? `e ${orders.deadline?.hours} horas` : ''}</p>
+    {orders.paymentInfos.datePayment && <p>Data pagamento: {orders.paymentInfos.datePayment}</p>}
+    {orders.paymentInfos.dateDelivery && <p>Data entrega: {orders.paymentInfos.dateDelivery}</p>} 
+    <p>Arquivos para tradução:</p>
+    {orders.archivesURL.map((item, index) => (
+
+    <p key={index} onClick={() => handleClick(item.downloadArchive, item.fileName)} style={{cursor: 'pointer', color: 'blue'}}>{item.fileName}</p>
+    ))}
+    {orders.paymentInfos.statusPayment !== "paid" ? <p>Ainda não pago</p> : <p>Ja pago</p>}
+    {!admin && orders.paymentInfos.statusPayment !== "paid" && orders.paymentInfos.statusURL !== "expired" && <button><a href={orders.paymentInfos.url}>Pagar</a></button>}
     {orders.archivesTranslated && <p>Arquivos ja Traduzidos:</p>}
     {orders?.archivesTranslated && orders.archivesTranslated.map(item => (
       <>
-      <p style={{cursor: 'pointer', color: 'blue'}} onClick={() => handleClick(item.downloadArchive, item.fileName)}>{item.fileName}</p>
+      <p style={{cursor: 'pointer', color: 'blue'}} onClick={() => handleClick(item.downloadArchive, item.fileName)}>{item.fileName.slice(0, 10)}</p>
       <br />
       </>
     ))}

@@ -16,6 +16,7 @@ const RowTableAdmin = ({order}) => {
     const [messageError, setMessageError] = useState()
     const {updateDocument} = useUpdateDocument("archives")
     const { insertFiles, response} = useInsertDocuments("archives")
+    const archivesTotal = order.languageSetings.translation.length * order.names.length
 
     const handleDownload = async (downloadURL, fileName) => {
         const response = await axios.get(downloadURL, { responseType: 'blob' })
@@ -36,12 +37,12 @@ const RowTableAdmin = ({order}) => {
     
         document.body.removeChild(link);
       }
+    
+      
 
 
     const handleClick = async () => {
         const arrayArchive = []
-
-        console.log(files);
 
         for (let index = 0; index < files.length; index++) {
 
@@ -53,6 +54,14 @@ const RowTableAdmin = ({order}) => {
 
         updateDocument(order.id, {archivesTranslated: arrayArchive, finalized: true})
 
+        axios.post("/.netlify/functions/sendEmail", {
+            name: order.user.displayName,
+            email: order.user.email,
+            order,
+            fromUser: true,
+            finalized: true
+        })
+
         handleClose()
 
     }
@@ -61,38 +70,22 @@ const RowTableAdmin = ({order}) => {
         setMessageError("")
         const files = e.target.files
         console.log(files);
-        if (order.language_translation.length < files.length) {
-            setMessageError("Coloque apenas " + order.language_translation.length + " arquivo");
+        if (archivesTotal < files.length) {
+            setMessageError("Coloque apenas " + archivesTotal + " arquivo");
             e.target.value = ""
         }
         setFiles(files)
         
     }
 
-    const handleLoadUser = useCallback(async (uid) => {
-
-        const response = await getUser(uid)
-
-        console.log(response.data.user);
-
-        setUser(response.data.user)
-
-    }, [])
-
-    useEffect(() => {
-       handleLoadUser(order.uid)
-
-    },[handleLoadUser, order.uid])
-
   return (
         <tr>
             <td>{order.numOrder}</td>
-            <td>{order.file}</td>
-            <td><p style={{cursor: 'pointer', color: 'blue'}} onClick={() => handleDownload(order.archivelink)} >Link</p></td>
-            <td>{user.displayName}</td>
-            <td>{user.email}</td>
+            <td>{order.archivesURL.length}</td>
+            <td>{order.user.displayName}</td>
+            <td>{order.user.email}</td>
             {
-                order.statusPayment === 'unpaid'
+                order.paymentInfos.statusPayment === 'unpaid'
                 ?
                 (
                     <>
@@ -103,29 +96,35 @@ const RowTableAdmin = ({order}) => {
                 : 
                 (
                     <>
-                        <td>{order.initialDate.toLocaleString()}</td>
-                        <td>{order.finalDate.toLocaleString()}</td>
+                        <td>{order.paymentInfos.datePayment}</td>
+                        <td>{order.paymentInfos.dateDelivery}</td>
                     </>
                 )
             }
-            <td>{order.language_origin}</td>
-            <td>{order.language_translation.length} idioma(s)</td>
+            <td>{order.languageSetings.origin}</td>
+            <td>{order.languageSetings.translation.length} idioma(s)</td>
             <td>{order.value}</td>
             <td>{order?.finalized ? 'Entregue' : order.statusPayment}</td>
-            <button onClick={handleOpen} disabled={order.statusPayment === 'unpaid'}>Informações do arquivo</button>
+            <button onClick={handleOpen} disabled={order.paymentInfos.statusPayment === 'unpaid'}>Informações do arquivo</button>
             <Modal
             open={open}
             onClose={handleClose}            
             >
                 <div className='modal'>
-                    {order.language_origin}
+                    possui {order.names.length} arquivos <br />
+                    {order.languageSetings.origin}
                     <br />
-                    {order.language_translation}
+                    {order.languageSetings.translation}
                     <br />
                     {order.numPages}
                     <br />
                     {order.numWords}
                     <br />
+                    <p>Arquivos para tradução</p>
+                    {order.archivesURL.map((item, index) => (
+
+                    <p key={index} onClick={() => handleClick(item.downloadArchive, item.fileName)} style={{cursor: 'pointer', color: 'blue'}}>{item.fileName}</p>
+                    ))}
                     {order?.archivesTranslated ? (
                         <div>
                             <p>Já entregue:</p>
@@ -138,7 +137,7 @@ const RowTableAdmin = ({order}) => {
                     {response.loading && <p>Fazendo upload de arquivos...</p>}
                     {messageError && <p>{messageError}</p>}
                     <button onClick={handleClose}>Cancelar</button>
-                    {!order?.archivesTranslated && <button onClick={handleClick} disabled={order.language_translation.length !== files?.length}>Entregar</button>}
+                    {!order?.archivesTranslated && <button onClick={handleClick} disabled={archivesTotal !== files?.length}>Entregar</button>}
                 </div>
             </Modal>
         </tr>

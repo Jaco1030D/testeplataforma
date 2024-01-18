@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useMainContext } from '../../../context/MainContext';
 
-const Item = ({name, handleClick, id, oneElement, language, openItem, languageOrigin, checked}) => {
+const Item = ({name, handleClick, id, oneElement, language, openItem, languageOrigin, translation}) => {
   const [isChecked, setIsChecked] = useState(openItem);
   const liRef = useRef(null)
 
@@ -17,9 +17,18 @@ const Item = ({name, handleClick, id, oneElement, language, openItem, languageOr
 
   };
 
+  useEffect(() => {
+    translation.forEach((element) => {
+      if (element === name) {
+        setIsChecked(true)
+      }
+    })
+  },[translation, name])
+
   if (name == languageOrigin) {
     return null;
   }
+
 
   return (
     <li ref={liRef} className={`item ${isChecked ? 'checked' : ''}`} id={name} onClick={handleItemClick} >
@@ -58,6 +67,7 @@ const SelectInputMultiple = ({languages, update, name, values, id, title, oneEle
     if (!language) {
 
       const elements = document.getElementById(id).querySelectorAll('.checked');
+      console.log(elements);
 
       let itens = []
 
@@ -75,7 +85,7 @@ const SelectInputMultiple = ({languages, update, name, values, id, title, oneEle
         x = 1
         itens.forEach((language, index) => {
           if (language === "Chinês (Simplificado)") {
-            itens[index] = 'Chinês (S)';
+            itens[index] = 'Chinês (Simplificado)';
           }
         });
       }
@@ -104,7 +114,7 @@ const SelectInputMultiple = ({languages, update, name, values, id, title, oneEle
 
       if (language === "Chinês (Simplificado)") {
 
-        array[index] = 'Chinês (S)';
+        array[index] = 'Chinês (Simplificado)';
 
       }
 
@@ -154,11 +164,7 @@ const SelectInputMultiple = ({languages, update, name, values, id, title, oneEle
         </div>
         <ul className="list-items" id={id}>
             {languages.map((item, index) => (
-                <Item key={index} name={item} id={id} languageOrigin={values} checked={
-                  languages.forEach(element => {
-                    return 'oi'
-                  })
-                } oneElement={oneElement} handleClick={handleGetValue} openItem={false} />
+                <Item key={index} name={item} id={id} languageOrigin={values} translation={state.selectValues.translation} oneElement={oneElement} handleClick={handleGetValue} openItem={false} />
             ))}
         </ul>
     </div>  

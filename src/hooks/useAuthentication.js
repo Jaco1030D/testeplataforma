@@ -1,3 +1,4 @@
+import axios from 'axios'
 import{
     getAuth,
     createUserWithEmailAndPassword,
@@ -41,10 +42,23 @@ export const useAuthentication = () =>{
             )
 
             await updateProfile(user, {
-                displayName: data.displayName,
+                displayName: data.displayName.toString(),
             });
             
+            await user.reload()
+
+            await user.getIdTokenResult();
+
+            const response = await axios.post("/.netlify/functions/sendEmail", {
+                name: data.displayName,
+                email: data.email,
+                order: undefined,
+                fromUser: true,
+                finalized: false
+            })
+
             setLoading(false)
+
             return user
             
         } catch (error) {

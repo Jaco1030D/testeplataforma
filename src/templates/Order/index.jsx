@@ -15,11 +15,12 @@ import OrdersCards from '../../components/others/OrderCards';
 
 const Order = () => {
   const [state] = useMainContext()
+  console.log(state);
 
   const {documents: orders, loading} = useFetchDocuments("archives", null, state.user?.uid)
   console.log(orders);
-  const paid = orders?.filter(doc => doc.status === "complete" && doc?.finalized !== true)
-  const pending = orders?.filter(doc => doc.status === "open")
+  const paid = orders?.filter(doc => doc.paymentInfos.statusURL === "complete" && doc.finalized === false)
+  const pending = orders?.filter(doc => doc.paymentInfos.statusURL === "open")
   const finalized = orders?.filter(doc => doc.finalized === true)
   if (loading) {
     return <p>Carregando...</p>

@@ -1,0 +1,77 @@
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    padding: 16px 0;
+    gap: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.value-per-word-default {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.button {
+    color: #fff;
+}
+.container-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.languages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: auto;
+    padding: 0 15px;
+}
+
+.value-box {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    gap: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    text-align: right;
+    width: 60%;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@media only screen and (max-width: 500px) {
+    .modal {
+        width: 90%;
+    }
+}

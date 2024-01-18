@@ -1,0 +1,17 @@
+.language-names,
+.language-values {
+    display: flex;
+    justify-content: space-between;
+}
+.value-per-word {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.language-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #eaedf0;
+}

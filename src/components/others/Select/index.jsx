@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import './styles.css';
 
 
-const Item = ({ name, handleClick, id, oneElement, language, openItem, isSelected, handleItemClick, checked }) => {
+const Item = ({ name, isSelected, handleItemClick, checked, item }) => {
   return (
-    <li className={`item ${isSelected || checked === name ? 'checked' : ''}`} id={name} onClick={() => handleItemClick(name)}>
+    <li className={`item ${isSelected || checked === name ? 'checked' : ''}`} id={name} onClick={() => handleItemClick(item)}>
       <span className="checkbox">
         <i className="fa-solid fa-check check-icon"></i>
       </span>
@@ -23,7 +23,8 @@ const SelectInput = ({ languages, update, name, id, title, oneElement = false, v
   };
 
   const handleItemClick = (clickedItem) => {
-    setSelectedItem(clickedItem === selectedItem ? null : clickedItem);
+    console.log(clickedItem.name);
+    setSelectedItem(clickedItem.name === selectedItem ? selectedItem : (clickedItem.name || clickedItem));
     update({[name]: clickedItem})
   };
 
@@ -54,11 +55,10 @@ const SelectInput = ({ languages, update, name, id, title, oneElement = false, v
         {languages.map((item, index) => (
           <Item
             key={index}
-            name={item}
+            name={item.name || item}
             id={id}
-            oneElement={oneElement}
-            language={item.value}
-            isSelected={selectedItem === item}
+            isSelected={selectedItem === item.name}
+            item={item}
             handleItemClick={handleItemClick}
             checked={values}
           />

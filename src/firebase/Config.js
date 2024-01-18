@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {getFirestore} from 'firebase/firestore'
+import {collection, getFirestore, onSnapshot, query, where} from 'firebase/firestore'
 import { getStorage } from "firebase/storage";
 
 // const firebaseConfig = {
@@ -25,4 +25,17 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage(app)
 const db = getFirestore(app)
 
-export{db, storage}
+const collectionRef = collection(db, 'configSenting')
+
+const id = '2963'
+
+const documentQuery = query(collectionRef, where('id', '===', id));
+
+onSnapshot(collectionRef, (snapshot) => {
+
+  snapshot.docChanges().forEach((change) => {
+    console.log(change.doc.data());
+  })
+})
+
+export{db, storage, collectionRef}

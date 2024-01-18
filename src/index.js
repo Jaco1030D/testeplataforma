@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './styles/Global.css';
 import App from './App';
 import { MainContextProvider } from './context/MainContext';
+import { Elements } from '@stripe/react-stripe-js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <React.StrictMode> 
     <MainContextProvider>
-    <App/>
+        <App/>
     </MainContextProvider>
   </React.StrictMode>,
 );

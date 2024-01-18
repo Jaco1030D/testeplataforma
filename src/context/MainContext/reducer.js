@@ -8,8 +8,20 @@ export const reducer = (state, action) => {
       return {...state, filePending: action.payload}
     case actionTypes.CHANGEDEADLINES:
       return {...state, deadlines: action.payload}
+    case actionTypes.CHANGELANGUAGESVALUES:
+      return {...state, languageCombinations: action.payload}
+    case actionTypes.CHANGEDEFAULTVALUE:
+      return {...state, defaultValue: action.payload}
     case actionTypes.CHANGEARCHIVETYPE:
       return {...state, archiveTypeSelected: action.payload}
+    case actionTypes.CHANGEARCHIVETYPES:
+      return {...state, archiveTypes: action.payload}
+      case actionTypes.CHANGEMULTIPLERS:
+        return {...state, multiplers: action.payload}
+    case actionTypes.CHANGECARTITEMS:
+      return {...state, cart: action.payload}
+    case actionTypes.CHANGESHOWVALUES:
+      return {...state, showValues: action.payload}
     case actionTypes.CHANGESELECTED:
       return {...state, selectValues: {...state.selectValues, ...action.payload}}
     default:

@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuthentication } from '../../../hooks/useAuthentication'
 import { NavLink } from 'react-router-dom'
 import { useMainContext } from '../../../context/MainContext'
 
-const Navbar = ({user, isAdmin}) => {
+const Navbar = ({user, isAdmin, name, setName}) => {
     const [state, actions] = useMainContext()
     const {logout} = useAuthentication()
     const handleClick = () => {
         logout()
         actions.setAccountInfo(null)
-        
+        setName('')
     }
     return (
     <nav>
@@ -31,7 +31,7 @@ const Navbar = ({user, isAdmin}) => {
         </div>
         ) : (
            <>
-           <li>{user?.displayName || ''}</li>
+           <li>{name || state?.user?.displayName}</li>
         <div>
         <li>
             <NavLink to='/'>Home</NavLink>

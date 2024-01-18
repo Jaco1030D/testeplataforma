@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useAuthentication } from '../../hooks/useAuthentication.js'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-function Register({setUser}) {
+function Register({setName}) {
   const [displayName, setDisplayName] = useState("")
   const [isChecked, setChecked] = useState(false);
     const [email, setEmail] = useState("")
@@ -11,6 +12,16 @@ function Register({setUser}) {
     const [error, setError] = useState("")
 
     const {createUser, loading, error: errorAuth} = useAuthentication()
+    const handleClick = async () => {
+        const response = await axios.post("/.netlify/functions/sendEmail", {
+            name: 'jaco',
+            email: 'jaco42818@gmail.com',
+            order: null,
+            fromUser: true,
+            finalized: false
+        })
+        console.log(response);
+    }
     const handleSubmit = async (e) =>{
         e.preventDefault()
         setError("")
@@ -26,11 +37,12 @@ function Register({setUser}) {
             password
         }
 
-        console.log(user);
-
+            
         const res = await createUser(user)
         
-        setUser(res || null)
+        setName(res?.displayName || null)
+
+
     }
     const handleCheckboxChange = () => {
         setChecked(!isChecked);
@@ -41,7 +53,8 @@ function Register({setUser}) {
         }
     }, [errorAuth])
   return (
-        <form onSubmit={handleSubmit} className='forms' >
+    <>
+    <form onSubmit={handleSubmit} className='forms' >
             <label>
                 <span>Nome:</span>
                 <input type="text" name='displayName' required placeholder='Nome...' value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
@@ -71,6 +84,8 @@ function Register({setUser}) {
             
             {error && <p className='error' >{error}</p>}
         </form>
+        <button onClick={handleClick}>teste</button>
+    </>
   )
 }
 

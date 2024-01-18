@@ -4,16 +4,12 @@ import RowTableAdmin from '../../components/others/rowTableAdmin'
 const Admin = () => {
   const {documents: orders} = useFetchDocuments("archives", null, null, false, false)
 
-  console.log(orders);
-
-
   return (
     <div>
       <table>
         <thead>
           <tr>
               <th>Numero do pedido</th>
-              <th>Nome do Arquivo</th>
               <th>Arquivo</th>
               <th>Cliente</th>
               <th>Email</th>

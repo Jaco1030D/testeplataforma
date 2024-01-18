@@ -199,15 +199,29 @@ const downloadPdf = async (downloadURL, name) => {
     document.body.removeChild(link);
 }
 
+const getDeadLine = (baseDeadLine, numWords, numHours, numWordsArchive) => {
+
+  const hoursCalculated = parseInt(numWordsArchive / numWords) * numHours
+
+  const hoursTotal = hoursCalculated + parseInt(baseDeadLine)
+
+  const days = Math.trunc(hoursTotal / 24)
+
+  const hours = hoursTotal % 24
+
+  return {days, hours}
+}
+
 export {
-    getCountWord,
     getNumWordsArchive,
-    getTextFromPDF,
-    getNumWordsPDF,
     getTextFromDocx,
     getNumWordsDOCX,
     calculateValues,
+    getTextFromPDF,
+    getNumWordsPDF,
+    getCountWord,
     getExtension,
+    getDeadLine,
     getInfos,
-    getUser
+    getUser,
 }
