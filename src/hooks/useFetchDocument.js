@@ -32,7 +32,7 @@ export const useFetchDocument = (docCollection, id) => {
         }
         onSnapshot(collectionRef, (snapshot) => { 
             console.log(snapshot);
-            // loadDocument()
+            loadDocument()
           })
         loadDocument()
     }, [])
