@@ -26,6 +26,7 @@ const App = () => {
 
     useEffect(() =>{
         onAuthStateChanged(auth, async (user) =>{
+          console.log("ta mudando o usuario");
 
           setUser(user)
 
@@ -79,7 +80,7 @@ const App = () => {
     <div>
           <BrowserRouter>
             <Navbar user={user} name={name} isAdmin={isAdmin} setName={setName} /> 
-            {/* <Routes>
+            <Routes>
             {isAdmin ? (
               <>
               <Route path='/' element={<Admin user={user} loadingUser={loadingUser}/>} />
@@ -111,7 +112,7 @@ const App = () => {
               </>
             )}
             <Route path='/*' element={<Navigate to={'/'}/>} />
-            </Routes> */}
+            </Routes>
           </BrowserRouter>
     </div>
   )
