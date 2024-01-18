@@ -26,7 +26,6 @@ const App = () => {
 
     useEffect(() =>{
         onAuthStateChanged(auth, async (user) =>{
-          console.log("ta mudando o usuario");
 
           setUser(user)
 
