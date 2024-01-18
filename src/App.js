@@ -79,7 +79,7 @@ const App = () => {
     <div>
           <BrowserRouter>
             <Navbar user={user} name={name} isAdmin={isAdmin} setName={setName} /> 
-            <Routes>
+            {/* <Routes>
             {isAdmin ? (
               <>
               <Route path='/' element={<Admin user={user} loadingUser={loadingUser}/>} />
@@ -90,7 +90,7 @@ const App = () => {
               
               <>
               <Route path='/' element={<Home user={state?.user?.displayName} loadingUser={loadingUser}/>} />
-              {/* <Route path='/teste' element={<Teste />} /> */}
+              <Route path='/teste' element={<Teste />} />
 
               <Route path='/order' element={
                 user ? <Order/> : <Navigate to="/login" />
@@ -111,7 +111,7 @@ const App = () => {
               </>
             )}
             <Route path='/*' element={<Navigate to={'/'}/>} />
-            </Routes>
+            </Routes> */}
           </BrowserRouter>
     </div>
   )
