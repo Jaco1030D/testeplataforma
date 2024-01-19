@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import imageLogo  from './turian.png'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useMainContext } from '../../../context/MainContext'
 import { useAuthentication } from '../../../hooks/useAuthentication'
 import 'boxicons'
@@ -8,6 +8,7 @@ import 'boxicons'
 const Navbar = ({user, isAdmin, name, setName, hidden}) => {
   const [state, actions] = useMainContext()
   const [openMenu, setOpenMenu] = useState(false)
+  const navigate = useNavigate()
     const {logout} = useAuthentication()
     const handleClick = () => {
         logout()
@@ -21,7 +22,8 @@ const Navbar = ({user, isAdmin, name, setName, hidden}) => {
     <header>
         <div className="content_navbar">
             <div className="container_image">
-                <img className="logo" alt="Turian" src={imageLogo} />
+             <img className="logo" alt="Turian" onClick={() => navigate('/')} src={imageLogo} />
+                
             </div>
             <label className='icon' onClick={handleOpenMenu}>
               {openMenu ? (
@@ -31,7 +33,7 @@ const Navbar = ({user, isAdmin, name, setName, hidden}) => {
               )}
             </label>
             {!hidden && 
-            <nav className={`menu_itens ${openMenu && 'flex'}`} onClick={handleOpenMenu}>
+            <nav className={`menu_itens ${openMenu && 'open-dropMenu'}`} onClick={handleOpenMenu}>
               {isAdmin ? (
                 <>
                   <li>
