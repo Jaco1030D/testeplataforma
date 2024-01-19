@@ -14,6 +14,7 @@ import Config from './templates/Config/index.jsx';
 import { useFetchDocument } from './hooks/useFetchDocument.js';
 import Checkout from './templates/Checkout/index.jsx';
 import { Teste } from './templates/teste/index.jsx';
+import { MenuAutomatic } from './components/layout/Navbar/navbar2.jsx';
 
 const App = () => {
     const {document: allSetings} = useFetchDocument("configSenting", '2963')
@@ -78,6 +79,7 @@ const App = () => {
   return (
     <div>
           <BrowserRouter>
+          {/* <MenuAutomatic /> */}
             <Navbar user={user} name={name} isAdmin={isAdmin} setName={setName} /> 
             <Routes>
             {isAdmin ? (

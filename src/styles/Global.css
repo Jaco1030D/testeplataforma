@@ -7,15 +7,10 @@
     sans-serif;
 }
 
-nav,
-nav div {
-    display: flex;
-    align-items: center;
-    height: 80px;
-    /* justify-content: right; */
-    gap: 25px;
-    padding: 0 100px;
+body {
+  background-color: #E6F1FE;
 }
+
 nav {
   justify-content: space-between;
 }

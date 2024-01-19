@@ -15,6 +15,7 @@
     "@xmldom/xmldom": "^0.8.10",
     "any-text": "^1.2.0",
     "axios": "^1.6.2",
+    "boxicons": "^2.1.4",
     "docx4js": "^3.2.20",
     "firebase": "^10.7.0",
     "firebase-admin": "^11.11.1",
