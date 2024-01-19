@@ -84,7 +84,6 @@ function Register({setName}) {
             
             {error && <p className='error' >{error}</p>}
         </form>
-        <button onClick={handleClick}>teste</button>
     </>
   )
 }
