@@ -124,7 +124,8 @@ const Checkout = () => {
         <li><strong>Número de Palavras:</strong> {cart.numWords}</li>
         <li><strong>Número de Páginas:</strong> {cart.numPages}</li>
         <li><strong>Tipo de Serviço:</strong> {cart.typeService}</li>
-        <li><strong>Prazo:</strong> {cart.deadline.days}</li>
+        <li><strong>Prazo:</strong> {cart.deadline.days} dias e {cart.deadline.hours} horas</li>
+        <li><strong>Caso pagamento seja feito agora:</strong> {cart.finalDate}h</li>
         <li><strong>Configurações de Idioma:</strong> {cart.languageSetings.origin}</li>
         <li><strong>Valor:</strong> {cart.value}</li>
       </ul>

@@ -1,14 +1,287 @@
-.orders-container {
-    background: #f7f7f7;
-	padding: 40px;
+.box {
+	height: 416px;
+	position: relative;
+	width: 784px;
+  }
+  
+  .box .group {
+	height: 416px;
+	width: 784px;
+  }
+  
+  .box .caixadepreos {
+	align-items: center;
+	background-color: #ffffff01;
+	border: 1px solid;
+	border-color: #c59318;
+	border-radius: 6px;
+	box-shadow: 0px 20px 200px #00000014;
 	display: flex;
-	flex-wrap: wrap;
-	align-items: flex-end;
-}
-
-.order-card-preview {
-	flex: 1 1 260px;
-	border: 4px solid white;
-	padding: 20px;
-	margin: 10px;
-}
+	flex-direction: column;
+	gap: 16px;
+	height: 415px;
+	left: 0;
+	padding: 32px 43px 24px;
+	position: absolute;
+	top: 1px;
+	width: 256px;
+  }
+  
+  .box .frame {
+	align-items: center;
+	display: inline-flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	gap: 4px;
+	margin-left: -20.5px;
+	margin-right: -20.5px;
+	position: relative;
+  }
+  
+  .box .text-wrapper {
+	color: #000000;
+	font-family: "Atten New-Bold", Helvetica;
+	font-size: 22px;
+	font-weight: 700;
+	letter-spacing: 0;
+	line-height: 31.5px;
+	margin-top: -1px;
+	position: relative;
+	white-space: nowrap;
+	width: fit-content;
+  }
+  
+  .box .tradutorsenior {
+	background-color: #f0f0f0;
+	border-radius: 8px;
+	height: 30px;
+	position: relative;
+	width: 211px;
+  }
+  
+  .box .tradutorseniortexto {
+	color: #000000;
+	font-family: "Atten New-Medium", Helvetica;
+	font-size: 14px;
+	font-weight: 500;
+	height: 16px;
+	left: 11px;
+	letter-spacing: 0;
+	line-height: 20px;
+	position: absolute;
+	text-align: center;
+	top: 6px;
+	white-space: nowrap;
+	width: 190px;
+  }
+  
+  .box .div {
+	color: #000000de;
+	font-family: "Atten New-Book", Helvetica;
+	font-size: 16px;
+	font-weight: 400;
+	height: 16px;
+	letter-spacing: 0.15px;
+	line-height: 24px;
+	position: relative;
+	text-align: center;
+	white-space: nowrap;
+	width: 205px;
+  }
+  
+  .box .frame-2 {
+	align-items: center;
+	display: inline-flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	gap: 4px;
+	position: relative;
+  }
+  
+  .box .textoentrega {
+	color: #7f999b;
+	font-family: "Atten New-Book", Helvetica;
+	font-size: 14.4px;
+	font-weight: 400;
+	letter-spacing: 0;
+	line-height: 21.6px;
+	margin-top: -1px;
+	position: relative;
+	white-space: nowrap;
+	width: fit-content;
+  }
+  
+  .box .dataentrega {
+	color: #007bff;
+	font-family: "Atten New-Bold", Helvetica;
+	font-size: 14px;
+	font-weight: 700;
+	height: 21px;
+	letter-spacing: 0;
+	line-height: 25.2px;
+	position: relative;
+	text-align: center;
+	white-space: nowrap;
+	width: 142px;
+  }
+  
+  .box .caixadepreco {
+	color: #000000;
+	font-family: "Atten New-Bold", Helvetica;
+	font-size: 22px;
+	font-weight: 700;
+	letter-spacing: 0;
+	line-height: 31.5px;
+	position: relative;
+	white-space: nowrap;
+	width: fit-content;
+  }
+  
+  .box .botao-selecionar {
+	background-color: #c59318;
+	border-radius: 21.61px;
+	height: 49.05px;
+	margin-bottom: -0.05px;
+	position: relative;
+	width: 143.64px;
+  }
+  
+  .box .text-wrapper-2 {
+	color: #ffffff;
+	font-family: "Atten New-Medium", Helvetica;
+	font-size: 16px;
+	font-weight: 500;
+	height: 25px;
+	left: 37px;
+	letter-spacing: 0;
+	line-height: 24.2px;
+	position: absolute;
+	text-align: center;
+	top: 11px;
+	white-space: nowrap;
+  }
+  
+  .box .caixadepreos-2 {
+	align-items: center;
+	background-color: #ffffff01;
+	border: 1px solid;
+	border-color: #c59318;
+	border-radius: 6px;
+	box-shadow: 0px 20px 200px #00000014;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	left: 264px;
+	padding: 32px 43px 24px;
+	position: absolute;
+	top: 0;
+	width: 256px;
+  }
+  
+  .box .frame-3 {
+	align-items: center;
+	display: inline-flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	gap: 4px;
+	margin-left: -21.5px;
+	margin-right: -21.5px;
+	position: relative;
+  }
+  
+  .box .tradutorseniortexto-wrapper {
+	background-color: #f0f0f0;
+	border-radius: 8px;
+	height: 30px;
+	position: relative;
+	width: 213px;
+  }
+  
+  .box .tradutorseniortexto-2 {
+	color: #000000;
+	font-family: "Atten New-Medium", Helvetica;
+	font-size: 14px;
+	font-weight: 500;
+	height: 16px;
+	left: 5px;
+	letter-spacing: 0;
+	line-height: 20px;
+	position: absolute;
+	text-align: center;
+	top: 6px;
+	white-space: nowrap;
+	width: 205px;
+  }
+  
+  .box .caixaparaautolayout {
+	border-radius: 8px;
+	height: 30.01px;
+	position: relative;
+	width: 170.01px;
+  }
+  
+  .box .div-wrapper {
+	background-color: #c59318;
+	border-radius: 21.61px;
+	height: 49.05px;
+	position: relative;
+	width: 143.64px;
+  }
+  
+  .box .caixadepreos-3 {
+	align-items: center;
+	background-color: #ffffff01;
+	border: 1px solid;
+	border-color: #c59318;
+	border-radius: 6px;
+	box-shadow: 0px 20px 200px #00000014;
+	display: inline-flex;
+	flex-direction: column;
+	gap: 16px;
+	height: 414px;
+	left: 528px;
+	padding: 32px 43px 26px;
+	position: absolute;
+	top: 1px;
+  }
+  
+  .box .tradutorsenior-2 {
+	background-color: #f0f0f0;
+	border-radius: 8px;
+	height: 30.01px;
+	position: relative;
+	width: 170.01px;
+  }
+  
+  .box .tradutorseniortexto-3 {
+	color: #000000;
+	font-family: "Atten New-Medium", Helvetica;
+	font-size: 14px;
+	font-weight: 500;
+	height: 17px;
+	left: 10px;
+	letter-spacing: 0;
+	line-height: 20px;
+	position: absolute;
+	text-align: center;
+	top: 6px;
+	white-space: nowrap;
+	width: 150px;
+  }
+  
+  .box .caixaparaautolayout-2 {
+	border-radius: 8px;
+	height: 14px;
+	position: relative;
+	width: 170px;
+  }
+  
+  .box .botao-selecionar-2 {
+	background-color: #c59318;
+	border-radius: 21.61px;
+	height: 49.05px;
+	margin-bottom: -1.07px;
+	position: relative;
+	width: 143.64px;
+  }
+  

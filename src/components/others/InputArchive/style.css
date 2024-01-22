@@ -1,0 +1,25 @@
+.content-list-archive { /*estiliza o container, a parte branca onde vai as outras div dentro */
+    background-color: #ffffff;
+    height: 690px;
+    width: 550px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column; /*colocado para ficar em formato de coluna*/
+    padding: 10px 20px;
+}
+.content-list-archive .header-list-archive,
+.content-list-archive .item-list-archive { /*estiliza cata um dos items*/
+    display: flex;
+    padding: 8px 21px;
+    height: 36px;
+    align-items: center;
+}
+
+.content-list-archive .item-list-archive:hover { /*quando usuario passar o mouse em cima fica mais claro*/
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.selected { /*quando usuario selecionar essa cor ficara no back ground*/
+    background-color: #EBEBEB;
+}

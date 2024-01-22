@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import imageLogo  from './turian.png'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useMainContext } from '../../../context/MainContext'
 import { useAuthentication } from '../../../hooks/useAuthentication'
 import 'boxicons'
@@ -8,6 +8,12 @@ import 'boxicons'
 const Navbar = ({user, isAdmin, name, setName, hidden}) => {
   const [state, actions] = useMainContext()
   const [openMenu, setOpenMenu] = useState(false)
+
+  const location = useLocation();
+
+  const isLoginPage = location.pathname === '/login';
+  const isRegisterPage = location.pathname === '/register';
+
   const navigate = useNavigate()
     const {logout} = useAuthentication()
     const handleClick = () => {
@@ -21,7 +27,7 @@ const Navbar = ({user, isAdmin, name, setName, hidden}) => {
   return (
     <header>
         <div className="content_navbar">
-            <div className="container_image">
+            <div className="container_image pointer">
              <img className="logo" alt="Turian" onClick={() => navigate('/')} src={imageLogo} />
                 
             </div>
@@ -50,10 +56,12 @@ const Navbar = ({user, isAdmin, name, setName, hidden}) => {
                 </>
               ) : (
                 <>
-                <li id='home'>
+                {!isLoginPage && !isRegisterPage && 
+                  <li id='home'>
                   <NavLink to='/'>Home</NavLink>
                 </li>
-                {!user && (
+                }
+                {/* {!user && (
                     <>
                         <li>
                             <NavLink to='/login'>Login</NavLink>
@@ -62,7 +70,7 @@ const Navbar = ({user, isAdmin, name, setName, hidden}) => {
                             <NavLink to='/register'>Registrar</NavLink>
                         </li>
                     </>
-                ) }
+                ) } */}
 
                 {user && 
                   <li>
@@ -71,9 +79,14 @@ const Navbar = ({user, isAdmin, name, setName, hidden}) => {
                 }
                 </>
               )}
+              {!isLoginPage && !isRegisterPage &&
+                <>
                 <li>Tradutores</li>
                 
                 <li id='contrast'>Contato</li>
+                </>
+              }
+                
 
                 {user && 
 

@@ -29,7 +29,7 @@ const languages = [
     "Holandês",
     "Russo",
     "Japonês",
-    "Chinês (Simplificado)",
+    "Chinês",
     "Árabe",
     "Hindi",
     "Coreano",

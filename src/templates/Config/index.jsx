@@ -17,7 +17,7 @@ const languagesOrigin = [
   { value: 0, label: "Holandês" },
   { value: 0, label: "Russo" },
   { value: 0, label: "Japonês" },
-  { value: 0, label: "Chinês (Simplificado)" },
+  { value: 0, label: "Chinês" },
   { value: 0, label: "Árabe" },
   { value: 0, label: "Hindi" },
   { value: 0, label: "Coreano" },

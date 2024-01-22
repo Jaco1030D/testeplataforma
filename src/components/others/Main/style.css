@@ -1,0 +1,17 @@
+.main_hero {
+    margin-top: 37px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.hero-section {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.main_rigth,
+.main_left {
+    width: 50%;
+}

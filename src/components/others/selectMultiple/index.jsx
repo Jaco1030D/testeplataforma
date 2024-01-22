@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useMainContext } from '../../../context/MainContext';
+import './style.css'
 
 const Item = ({name, handleClick, id, oneElement, language, openItem, languageOrigin, translation}) => {
   const [isChecked, setIsChecked] = useState(openItem);
@@ -159,8 +160,8 @@ const SelectInputMultiple = ({languages, update, name, values, id, title, oneEle
   },[openFirst])
   return (
     <div className="select-input" ref={selectRef}>
-        <div  className={`select select-btn ${openFirst && 'open'}`} onClick={handleClick}>
-            <span className="btn-text">{title} {Array.isArray(state.selectValues.translation) ? displayLanguages(state.selectValues.translation, 3) : ''}</span>
+        <div  className={`select select-btn open`} onClick={handleClick}>
+            
         </div>
         <ul className="list-items" id={id}>
             {languages.map((item, index) => (

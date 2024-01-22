@@ -24,6 +24,7 @@ const App = () => {
     const {auth} = useAuthentication()
     const [isAdmin, setIsAdmin] = useState(false)
     const  loadingUser = user === undefined
+    console.log(state);
 
     useEffect(() =>{
         onAuthStateChanged(auth, async (user) =>{

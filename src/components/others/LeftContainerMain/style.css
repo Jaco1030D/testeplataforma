@@ -1,0 +1,28 @@
+.title_left_container {
+    font-size: 30px;
+    font-family: 'attenExtrabold' !important;
+}
+
+.main_left {
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+}
+
+.title_left_container span {
+    color: #c8982A;
+}
+
+.texts_left {
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+}
+
+.texts_left .subtitle_left_container {
+    font-size: 22px;
+}
+
+.main_left {
+    position: relative;
+}
