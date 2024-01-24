@@ -56,7 +56,7 @@ function Register({setName}) {
         </label>
         </div>
         
-        {!loading && <button className='btn' disabled={!displayName | !email | !password | !confirmpassword | !isChecked} >Cadastrar</button> }
+        {!loading && <button className='btn' disabled={!displayName | !email | !password | !isChecked} >Cadastrar</button> }
         {loading && <button className='btn' disabled>Aguarde...</button> }
         <div className='term-checkbox' >
             <label htmlFor="checkbox" className='checkbox-label' onClick={handleCheckboxChange}>
