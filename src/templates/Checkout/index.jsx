@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useInsertDocuments } from '../../hooks/useInsertDocuments'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
+import OrderResume from '../../components/others/OrderResume'
+import './style.css'
+import PaymentSection from '../../components/others/PaymentSection'
 
 const Checkout = () => {
   const [state, actions] = useMainContext()
@@ -108,15 +111,15 @@ const Checkout = () => {
     }  
   }
 
-  useEffect(() => {
-    uploadMultipleArchives(state.filePending).then(res =>
-      setArchivesURL(res)
-      )
-  },[state.filePending])
+  // useEffect(() => {
+  //   uploadMultipleArchives(state.filePending).then(res =>
+  //     setArchivesURL(res)
+  //     )
+  // },[state.filePending])
 
   return (
     <div>
-      <h2>Detalhes do Carrinho</h2>
+      {/* <h2>Detalhes do Carrinho</h2>
       <button onClick={() => navigate('/')}>Editar Pedido</button>
       <ul>
         <li><strong>Nomes:</strong> {cart.names}</li>
@@ -129,7 +132,15 @@ const Checkout = () => {
         <li><strong>Configurações de Idioma:</strong> {cart.languageSetings.origin}</li>
         <li><strong>Valor:</strong> {cart.value}</li>
       </ul>
-      <button onClick={handleClick}>Pagar</button>
+      <button onClick={handleClick}>Pagar</button> */}
+      <div className="checkout-main">
+        <PaymentSection value={cart.value}/>
+
+        <OrderResume deadline={cart.deadline} arrayValues={cart.arrayValuesLanguage} archiveType={state.archiveTypeSelected.name} numWords={cart.numWords} typeService={cart.typeService} finalDate={cart.finalDate} translation={cart.languageSetings.translation} origin={cart.languageSetings.origin} value={cart.value} />
+      </div>
+      <div className="footer">
+        <p>Direitos</p>
+      </div>
     </div>
   )
 }

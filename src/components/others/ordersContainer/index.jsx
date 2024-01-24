@@ -11,6 +11,7 @@ const OrdersContainer = () => {
     const [state, actions] = useMainContext()
     console.log(state);
     const [numWords, setNumWords] = useState(1000)
+    const [arrayValues, setArrayValues] = useState([])
     const [numPages, setNumPages] = useState(10)
     const [finalDate, setFinalDate] = useState()
     const [value, setValue] = useState(0)
@@ -62,9 +63,11 @@ const OrdersContainer = () => {
       return { numWords, numPages}
     }
 
-    const handleSelect = async (valueResult, name) => {
+    const handleSelect = async (valueResult, name, multipler) => {
         const files = state.filePending
         const names = []
+
+        const arrayValuesLanguage = arrayValues.map(num => num * multipler);
     
         for (let index = 0; index < files.length; index++) {
           const file = files[index];
@@ -81,6 +84,7 @@ const OrdersContainer = () => {
           languageSetings: state.selectValues,
           value: valueResult,
           user: state.user,
+          arrayValuesLanguage,
           paymentInfos: {
             id_payment: '',
             statusURL: '',
@@ -155,9 +159,10 @@ const OrdersContainer = () => {
 
       useEffect(() => {
 
-        const value = calculateValues(numWords, state.selectValues, state.defaultValue, state.languageCombinations, state.archiveTypeSelected)
+        const {arrayValues, finalValue} = calculateValues(numWords, state.selectValues, state.defaultValue, state.languageCombinations, state.archiveTypeSelected)
 
-        setValue(value)
+        setValue(finalValue)
+        setArrayValues(arrayValues)
   
       },[numWords, state.selectValues, state.languageCombinations, state.defaultValue, state.archiveTypeSelected])
 
@@ -190,7 +195,7 @@ const OrdersContainer = () => {
             </div>
             <div className="caixadepreco">&euro; {(value * state.multiplers.premiun).toFixed(2)} </div>
             <div className="botao-selecionar">
-              <div className="text-wrapper-2 pointer" onClick={() => handleSelect((value * state.multiplers.premiun).toFixed(2), 'Premium')}>Selecionar</div>
+              <div className="text-wrapper-2 pointer" onClick={() => handleSelect((value * state.multiplers.premiun).toFixed(2), 'Premium', state.multiplers.premiun)}>Selecionar</div>
             </div>
           </div>
           <div className="caixadepreos-2">
@@ -212,7 +217,7 @@ const OrdersContainer = () => {
             </div>
             <div className="caixadepreco">&euro; {(value * state.multiplers.expert).toFixed(2)} </div>
             <div className="div-wrapper">
-              <div className="text-wrapper-2 pointer" onClick={() => handleSelect((value * state.multiplers.expert).toFixed(2), 'Expert')}>Selecionar</div>
+              <div className="text-wrapper-2 pointer" onClick={() => handleSelect((value * state.multiplers.expert).toFixed(2), 'Expert', state.multiplers.expert)}>Selecionar</div>
             </div>
           </div>
           <div className="caixadepreos-3">
@@ -234,7 +239,7 @@ const OrdersContainer = () => {
             </div>
             <div className="caixadepreco">&euro; {(value * state.multiplers.economy).toFixed(2)} </div>
             <div className="botao-selecionar-2">
-              <div className="text-wrapper-2 pointer" onClick={() => handleSelect((value * state.multiplers.economy).toFixed(2), 'Economica')}>Selecionar</div>
+              <div className="text-wrapper-2 pointer" onClick={() => handleSelect((value * state.multiplers.economy).toFixed(2), 'Economica', state.multiplers.economy)}>Selecionar</div>
             </div>
           </div>
         </div>

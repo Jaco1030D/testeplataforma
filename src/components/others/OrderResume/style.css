@@ -1,0 +1,73 @@
+.checkout-rigth {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+.title-rigth-container {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.item-resume {
+  font-family: 'attenBook';
+  font-size: 16px;
+}
+.total-item-resume,
+.title-item-resume {
+  font-family: 'attenBold';
+  font-size: 18px;
+}
+
+.total-item-resume {
+  font-size: 16px;
+}
+.item-resume .language-item {
+  font-family: 'attenBold';
+  font-size: 14px;
+  padding: 6px 9px;
+  background-color: #f2f2f2;
+  border-radius: 18px;
+}
+
+.languages-resume,
+.data-documents,
+.deadline {
+    border: 2px solid #CCD6D7; /* Adicione uma borda para visualização */
+    overflow: hidden; /* Limpa a float para garantir que as divs se alinhem corretamente */
+  }
+
+  .content-checkout-rigth {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 19px;
+    padding-left: 100px;
+  }
+  .item-resume {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 42px;
+    padding: 0 24px;
+    box-sizing: border-box; /* Inclui a borda e o padding no tamanho total */
+    border-bottom: 2px solid #CCD6D7; /* Adiciona uma borda inferior entre as divs */
+  }
+
+  /* Remove a borda inferior da última item-resumeisão */
+  .item-resume:last-child {
+    border-bottom: none;
+  }
+
+.btn-back {
+  width: 193px;
+  height: 28px;
+  border-radius: 18px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'attenBold';
+  align-self: flex-end;
+  margin-top: 50px;
+}

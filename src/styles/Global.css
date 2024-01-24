@@ -22,6 +22,12 @@
   font-weight: bolder;
 }
 
+@font-face {
+  font-family: 'attenBold';
+  src: url('./atten-new/AttenNewBold.otf');
+  font-weight: bold;
+}
+
 *{
     margin: 0;
     padding: 0;

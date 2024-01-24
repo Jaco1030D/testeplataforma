@@ -1,25 +1,25 @@
-.title_left_container {
+.title_left_container { /*definir fonte e tamanho do titulo*/
     font-size: 30px;
     font-family: 'attenExtrabold' !important;
 }
 
-.main_left {
+.main_left { /*colocar em coluna os elementos*/
     display: flex;
     flex-direction: column;
     gap: 33px;
 }
 
-.title_left_container span {
+.title_left_container span { /*colocar cor na palavra online*/
     color: #c8982A;
 }
 
-.texts_left {
+.texts_left { /*colocar em coluna os textos dentro da div e dar um espaçamento*/
     display: flex;
     flex-direction: column;
     gap: 27px;
 }
 
-.texts_left .subtitle_left_container {
+.texts_left .subtitle_left_container { /*diminuir a fonte para o subtitulo, a fonte é a mesma do titulo*/
     font-size: 22px;
 }
 

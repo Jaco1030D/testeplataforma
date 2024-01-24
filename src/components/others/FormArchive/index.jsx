@@ -4,8 +4,6 @@ import arrow from './arrow.svg'
 import { useMainContext } from '../../../context/MainContext'
 import arrowDown from './arrow-down.svg'
 import Modal from '@mui/material/Modal';
-import DropIntput from '../DropInput'
-import SelectInputMultiple from '../selectMultiple'
 import InputSelect from '../inputsSelect'
 import InputDrop from '../InputDrop'
 import InputSelectMultiple from '../inputSelectMultiple'
@@ -27,19 +25,6 @@ const FormArchive = () => {
         block: 'start',
       });
     }
-  }
-
-  const update = (key) => {
-    console.log(key + 'aqui');
-    actions.changeSelectedLanguages(key)
-  }
-  const updateArchiveType = (value) => {
-    
-    actions.changeArchiveType(value?.archiveType)
-  }
-
-  const handleClick = () => {
-    console.log('entrou');
   }
 
   const displayLanguages = (array, x) => {

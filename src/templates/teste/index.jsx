@@ -3,26 +3,35 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
 import CheckoutForm from "./checkout";
-// import "./style.css";
+import "./style.css";
 import axios from "axios";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
 // This is your test publishable API key.
-const stripePromise = loadStripe("pk_test_51OF205HR5yfE4YaF3DfcIVdTvDSgPQcOkpYu7UIVWok5smXOwpTFSvSzvhQ3qHjmolLaCRUB37rtmZOthsnPdmfY00Od0mpp7K");
+const stripePromise = loadStripe("pk_test_51Obph4JGY6R57eKcvgP1L73hodzcTKxzq0LDU6Y66PePYDEU45h8a3AwfmtskFxLmWxigeNFZboclrixOaznmTjy00pUucHq0Q");
 
-export function Teste() {
+export function Teste({value}) {
+
   const [clientSecret, setClientSecret] = useState("");
+
   const chamarDados = async () => {
-    const response = await axios.post("/.netlify/functions/teste")
+
+    const response = await axios.post("/.netlify/functions/teste", {
+      value: value
+    })
 
     console.log(response);
+
     return response.data
+
   }
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     chamarDados().then(res => setClientSecret(res.clientSecret))
+
+    console.log(clientSecret);
     
   //   fetch("/create-payment-intent", {
   //     method: "POST",

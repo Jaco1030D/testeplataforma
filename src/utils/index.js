@@ -1,6 +1,8 @@
 export const calculateValues = (numWords, infos, valueWords, languages, perCent) => {
     let value = 0
 
+    const arrayValues = []
+
     const languagesTarget = infos.translation
 
     const originLanguage = infos.origin
@@ -14,7 +16,15 @@ export const calculateValues = (numWords, infos, valueWords, languages, perCent)
 
       const valueFinally = numWords * valueTranslation
 
+      let valueLanguage = valueFinally
+
       value += valueFinally
+
+      if (perCent.value !== 0) {
+        valueLanguage += valueFinally * (perCent.value / 100)
+      }
+
+      arrayValues.push(valueLanguage)
     
     });
 
@@ -24,7 +34,7 @@ export const calculateValues = (numWords, infos, valueWords, languages, perCent)
       finalValue += value * (perCent.value / 100)
     }
     
-    return finalValue.toFixed(2)
+    return {finalValue: finalValue.toFixed(2), arrayValues}
   }
 
   const getValueTranslation = (origin, translated, languagesArray, value) => {

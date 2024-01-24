@@ -2,7 +2,8 @@ import React from 'react'
 import './style.css'
 import { useMainContext } from '../../../context/MainContext'
 
-const InputArchive = ({handleClose}) => {
+const 
+InputArchive = ({handleClose}) => {
     const [state, action] = useMainContext()
 
     const handleClick = (item) => {

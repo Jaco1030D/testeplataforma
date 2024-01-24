@@ -1,0 +1,28 @@
+.container-payment-section {
+    padding-left: 150px;
+}
+
+.title-paymant-section {
+    font-size: 24px;
+    font-family: 'attenExtraBold';
+    margin-top: 40px;
+    margin-bottom: 42px;
+}
+
+.pad-lock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 26px;
+}
+.pad-lock-buy {
+    display: flex;
+    gap: 12px;
+    margin-top: 41px;
+    margin-left: 15px;
+}
+.pad-lock p {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 14px;
+}

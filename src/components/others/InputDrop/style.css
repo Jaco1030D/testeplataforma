@@ -1,4 +1,4 @@
-.div .content-div {
+.div .content-div { /*usado para estilizar o retangulo do meio */
     border: 1px solid #000;
     width: 80%;
     height: 250px;
@@ -6,14 +6,8 @@
     align-items: center;
     justify-content: center;
   }
-.content-div .itens-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.itens-div label {
+.itens-div label,
+.content-div .itens-div { /*centralizar tudo que a dentro do retangulo, tanto a label como o proprio retangulo*/
     display: flex;
     flex-direction: column;
     align-items: center;

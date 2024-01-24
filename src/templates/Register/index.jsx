@@ -19,11 +19,6 @@ function Register({setName}) {
         e.preventDefault()
         setError("")
 
-        if (password !== confirmpassword) {
-            setError("As senhas precisão ser iguais")
-            return
-        }
-
         const user = {
             displayName,
             email,
@@ -58,9 +53,6 @@ function Register({setName}) {
         </label>
         <label>
             <input type="password" name='password' required placeholder='Senha...' value={password} onChange={(e) => setpassword(e.target.value)} />
-        </label>
-        <label>
-            <input type="password" name='confirmpassword' required placeholder='Senha novamente...' value={confirmpassword} onChange={(e) => setconfirmpassword(e.target.value)}/>
         </label>
         </div>
         

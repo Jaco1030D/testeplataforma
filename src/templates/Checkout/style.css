@@ -1,0 +1,7 @@
+.checkout-main {
+    width: 100%;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100vh;
+}

@@ -123,7 +123,7 @@ const RowTableAdmin = ({order}) => {
                     <p>Arquivos para tradução</p>
                     {order.archivesURL.map((item, index) => (
 
-                    <p key={index} onClick={() => handleClick(item.downloadArchive, item.fileName)} style={{cursor: 'pointer', color: 'blue'}}>{item.fileName}</p>
+                    <p key={index} onClick={() => handleDownload(item.downloadArchive, item.fileName)} style={{cursor: 'pointer', color: 'blue'}}>{item.fileName}</p>
                     ))}
                     {order?.archivesTranslated ? (
                         <div>

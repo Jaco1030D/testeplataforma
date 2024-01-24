@@ -45,7 +45,7 @@ const Login = () => {
         {loading && <button className='btn' disabled>Aguarde...</button> }
         <p className='reset_password'>Esqueceu a senha?</p>
 
-        <div id='login_link' onClick={() => navigate('/register')}><p> Já tem uma conta? Faça login </p> <img src={svg} alt="" /></div>
+        <div id='login_link' onClick={() => navigate('/register')}><p> Não tem uma conta? Cadastre-se </p> <img src={svg} alt="" /></div>
         
         {error && <p className='error' >{error}</p>}
     </form>

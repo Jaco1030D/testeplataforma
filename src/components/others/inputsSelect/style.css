@@ -1,13 +1,10 @@
-.destinoidiomas {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    align-items: center;
-    height: 100Vh;
-    z-index: 1;
+.destinoidiomas { 
+  position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
   }
-  .destinoidiomas .container-inputSelect {
+  .destinoidiomas .container-inputSelect {  /*container onde ficaram as linguagens para selecionar*/
     height: 50%;
     width: 100%;
     overflow-y: auto;
@@ -16,48 +13,48 @@
     justify-content: center;
   }
 
-  .header_language_languages_group {
+  .header_language_languages_group { /*alinhar o texto com check*/
     display: flex;
     align-items: center;
   }
 
-  .container-inputSelect .content-inputSelect {
+  .container-inputSelect .content-inputSelect { /*coloca o display grid para criar a tabela*/
     height: 100%;
     width: 80%;
     margin-top: 52px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 1fr);/*divide a div em 5 partes iguais e depois quebra a linha*/
     gap: 38px;
   }
-  .languages_group {
+  .languages_group { /*muda a fonte*/
     font-family: 'attenBook';
     z-index: 1;
   }
-  .languages_group p {
+  .languages_group p { /*muda o tamanho da fonte*/
     margin-left: 5px;
     font-size: 14px;
   }
 
-  .languages_group {
+  .languages_group { /**/
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
-  .languages_group div {
+  .languages_group div { /*todas as divs dentro de languages_group seram flex*/
     display:flex;
   }
-  .languages_group div.l {
+  .languages_group div.l { /*estiliza aquele detalhe em L do lado do tipo da linguagem*/
     width: 10px;
     height: 15px;
     border-left: 2px solid #E9E9F2;
     border-bottom: 2px solid #E9E9F2;
   }
 
-  .languages_group .name-language {
+  .languages_group .name-language { /*muda a cor e o tamanho da fonte do nome da linguagem*/
     color: #40676A;
     font-size: 16px;
   }
-  .inputbusca input {
+  .inputbusca input { /*estilizando o input */
     width: 100%;
     height: 19px;
     font-family: 'attenBook';
@@ -65,6 +62,7 @@
     border: none;
     outline: none;
   }
+  /*anima fez a partir daqui*/
   .destinoidiomas .div {
     background-color: #ffffff;
     height: 527.9px;
@@ -92,7 +90,7 @@
     top: 22px;
     width: 68px;
   }
-  
+
   .destinoidiomas .text-wrapper {
     color: #000000de;
     font-family: "Atten New-Book", Helvetica;
@@ -711,4 +709,5 @@
     top: 0;
     width: 1020px;
   }
+  
   
