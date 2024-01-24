@@ -79,7 +79,7 @@ const Navbar = ({user, isAdmin, name, setName, hidden}) => {
         {isCheckoutPage && (
           <>
           <li><img src={userImage} alt="" /></li>
-          <li>{state.user.displayName || name}</li>
+          <li>{state.user?.displayName || name}</li>
           </>
         )}
       </nav>
