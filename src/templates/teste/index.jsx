@@ -5,15 +5,41 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./checkout";
 import "./style.css";
 import axios from "axios";
+import { useMainContext } from "../../context/MainContext";
+import { useFetchDocuments } from "../../hooks/useFetchDocuments";
+import { useInsertDocuments } from "../../hooks/useInsertDocuments";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
 // This is your test publishable API key.
 const stripePromise = loadStripe("pk_test_51Obph4JGY6R57eKcvgP1L73hodzcTKxzq0LDU6Y66PePYDEU45h8a3AwfmtskFxLmWxigeNFZboclrixOaznmTjy00pUucHq0Q");
+// const stripePromise = loadStripe("pk_test_51OF205HR5yfE4YaF3DfcIVdTvDSgPQcOkpYu7UIVWok5smXOwpTFSvSzvhQ3qHjmolLaCRUB37rtmZOthsnPdmfY00Od0mpp7K"); //minha
 
-export function Teste({value}) {
+export function Teste({value, clientSecretUser, setDocument, handleClick, archivesURL, setArchivesURL}) {
+  const [state, actions] = useMainContext()
 
-  const [clientSecret, setClientSecret] = useState("");
+  const [id_payment, setId_payment] = useState("")
+  const [clientSecret, setClientSecret] = useState("")
+  const {insertDocument, insertFiles} = useInsertDocuments("archives")
+  const {documents: last_order} = useFetchDocuments("archives", null, null, false, true)
+  const [status, setStatus] = useState()
+
+
+  console.log(clientSecret);
+
+  const uploadMultipleArchives = async (files) => {
+    const arrayArchive = []
+
+    for (let index = 0; index < files.length; index++) {
+
+        const downloadArchive = await insertFiles(files[index])
+
+        arrayArchive.push({downloadArchive, fileName: files[index].name})
+        
+    }
+
+    return arrayArchive
+  }
 
   const chamarDados = async () => {
 
@@ -29,9 +55,15 @@ export function Teste({value}) {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    chamarDados().then(res => setClientSecret(res.clientSecret))
-
-    console.log(clientSecret);
+    if (clientSecretUser) {
+      setClientSecret(clientSecretUser)
+    } else {
+      chamarDados().then(res =>{
+        setClientSecret(res.clientSecret)
+        setId_payment(res.id_payment)
+        setStatus(res.status)
+      })
+    }
     
   //   fetch("/create-payment-intent", {
   //     method: "POST",
@@ -50,14 +82,35 @@ export function Teste({value}) {
     appearance,
   };
 
+  useEffect(() => {
+    if (!archivesURL || !last_order) {
+      return
+    }
+
+    const cartWithPaymentInfos = {
+      ...state.cart,
+      paymentInfos: {id_payment, clientSecret, status},
+      numOrder: last_order[0]?.numOrder ? last_order[0].numOrder + 1 : 2963,
+      finalized: false,
+      uid: state.cart.user.uid,
+      archivesURL
+    }
+
+    setDocument(cartWithPaymentInfos)
+
+  },[state.cart, id_payment, clientSecret, status, archivesURL, last_order])
+
+  useEffect(() => {
+      uploadMultipleArchives(state.filePending).then(res =>
+        setArchivesURL(res)
+        )
+    },[state.filePending])
+
   return (
     <div className="App">
       {clientSecret && (
-        // <Elements options={options} >
-        //   <CheckoutForm />
-        // </Elements>
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm clientSecret={clientSecret} archivesURL={archivesURL} handleClick={handleClick} />
         </Elements>
       )}
     </div>

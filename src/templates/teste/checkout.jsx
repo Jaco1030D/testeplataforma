@@ -4,11 +4,14 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
+import { useMainContext } from "../../context/MainContext";
+import { useFetchDocuments } from "../../hooks/useFetchDocuments";
+import { useInsertDocuments } from "../../hooks/useInsertDocuments";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({archivesURL, handleClick}) {
   const stripe = useStripe();
   const elements = useElements();
-
+  const [state, actions] = useMainContext()
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -46,9 +49,9 @@ export default function CheckoutForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    await handleClick()
+
     if (!stripe || !elements) {
-      // Stripe.js hasn't yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
@@ -64,11 +67,6 @@ export default function CheckoutForm() {
 
     console.log(response);
 
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your `return_url`. For some payment methods like iDEAL, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the `return_url`.
     if (response.error.type === "card_error" || response.error.type === "validation_error") {
       setMessage(response.error.message);
     } else {
@@ -86,7 +84,7 @@ export default function CheckoutForm() {
     <form className="pay" id="payment-form" onSubmit={handleSubmit}>
 
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button className="pay" disabled={isLoading || !stripe || !elements} id="submit">
+      <button className="pay" disabled={isLoading || !stripe || !elements || !archivesURL} id="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>

@@ -5,11 +5,11 @@ import padlock from './padlock.svg'
 import padlockbuy from './padlock-buy.svg'
 import pci from './pci.svg'
 
-const PaymentSection = ({value}) => {
+const PaymentSection = ({value, setDocument, handleClick, archivesURL, setArchivesURL}) => {
   return (
     <div className='container-payment-section'>
         <h2 className='title-paymant-section'>Pagamento do projeto</h2>
-      <Teste value={parseFloat(value)} />
+      <Teste value={parseFloat(value)} setDocument={setDocument} handleClick={handleClick} archivesURL={archivesURL} setArchivesURL={setArchivesURL}/>
 
       <div className="texts">
         <div className="pad-lock">

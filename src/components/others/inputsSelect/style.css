@@ -132,6 +132,10 @@
     white-space: nowrap;
     width: 63px;
   }
+
+  .destinoidiomas .text-wrapper-2.drop {
+    left: 34px;
+  }
   
   .destinoidiomas .text-wrapper-3 {
     color: #ffffff;

@@ -99,7 +99,7 @@ const App = () => {
                 user ? <Order/> : <Navigate to="/login" />
               } />
               <Route path='/checkout' element={
-                (user && state.cart !== undefined) ? <Checkout/> : <Navigate to="/login" />
+                (user && state.cart !== undefined) ? <Checkout name={name}/> : <Navigate to="/login" />
               } />
               <Route path='/login' element={
                   !user ? <Login/> : state.cart === undefined ? <Navigate to="/" /> : <Navigate to="/checkout" />

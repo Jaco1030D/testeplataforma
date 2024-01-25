@@ -66,7 +66,7 @@ const InputDrop = ({handleClose}) => {
             <div className="text-wrapper pointer" onClick={handleReset}>Resetar</div>
           </div>
           <div className="button pointer" onClick={handleClose}>
-            <div className="text-wrapper-2" >Concluido</div>
+            <div className="text-wrapper-2 drop" >Concluido</div>
           </div>
         </div>
       </div>

@@ -2,8 +2,13 @@ import React from 'react'
 import './style.css'
 import { useNavigate } from 'react-router-dom'
 
-const OrderResume = ({deadline, translation, origin, value, finalDate, typeService, numWords, archiveType, arrayValues}) => {
+const OrderResume = ({deadline, translation, origin, value, finalDate, typeService, numWords, archiveType, arrayValues, handleSubmitValues, archiveURL}) => {
   const navigate = useNavigate()
+
+  const handleClick = async () => {
+    await handleSubmitValues()
+    navigate('/')
+  }
   return (
     <div className='checkout-rigth'>
         <div className="content-checkout-rigth">
@@ -33,7 +38,7 @@ const OrderResume = ({deadline, translation, origin, value, finalDate, typeServi
   <div className="item-resume"><p>Area do arquivo</p> <p>{archiveType}</p></div>
 </div>
 
-<button className='btn-back' onClick={() => navigate('/')}>Retornar para etapa anterior</button>
+<button className='btn-back' onClick={handleClick} disabled={!archiveURL}>Retornar para etapa anterior</button>
         </div>
     </div>
   )

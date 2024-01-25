@@ -13,6 +13,10 @@ import OrdersCards from '../../components/others/OrderCards';
 //   return {orders, loading}
 // }
 
+const apiUrl = 'https://api.stripe.com/v1/checkout/sessions/'
+
+const token = 'sk_test_51OF205HR5yfE4YaFBUT1a4yatFHaX5PYhlFa4mpqRSadaqYngNuWDm9lBqQSgTykKZx519Xb4fMcFn1dZthlKgrK00AwSyXZQx'
+
 const Order = () => {
   const [state] = useMainContext()
   console.log(state);
@@ -22,10 +26,27 @@ const Order = () => {
   const paid = orders?.filter(doc => doc.paymentInfos.statusURL === "complete" && doc.finalized === false)
   const pending = orders?.filter(doc => doc.paymentInfos.statusURL === "open")
   const finalized = orders?.filter(doc => doc.finalized === true)
+  useEffect(() => {
+
+    fetch(apiUrl+'', {
+            method: 'GET', 
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status} - ${response.statusText}`);
+              }
+              return response.json();
+            }).then((data) => {
+              console.log(data);
+            })
+  },[])
   if (loading) {
     return <p>Carregando...</p>
   }
-
       return (
         <div className='orders'>
           {orders && orders.length === 0 ? (

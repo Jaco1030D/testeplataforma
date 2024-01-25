@@ -49,57 +49,57 @@ const OrdersCards = ({orders, admin = false}) => {
     return {initialDate: initialDate.toLocaleString(), finalDate: finalDate.toLocaleString()}
   }
 
-  useEffect(() => {
-    if (orders.paymentInfos.statusURL === 'open') {
-      fetch(apiUrl+orders.paymentInfos.id_payment, {
-        method: 'GET', 
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`Erro na requisição: ${response.status} - ${response.statusText}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          const {url, payment_status, status} = data
-          const {initialDate, finalDate} = calculateDates(orders.deadline?.days, orders.deadline?.hours)
-          if (payment_status === 'paid') {
-            // const teste = {paymentInfos: {...orders.paymentInfos, statusPayment: payment_status, statusURL: status, url: null, datePayment: initialDate, dateDelivery: finalDate}}
-            updateDocument(orders.id, {paymentInfos: {...orders.paymentInfos, statusPayment: payment_status, statusURL: status, url: null, datePayment: initialDate, dateDelivery: finalDate}})
-            axios.post("/.netlify/functions/sendEmail", {
-                name: state.user.displayName,
-                email: state.user.email,
-                order: orders,
-                fromUser: true,
-                finalized: false
-            })
-            axios.post("/.netlify/functions/sendEmail", {
-                name: state.user.displayName,
-                email: state.user.email,
-                order: orders,
-                fromUser: false,
-                finalized: false
-            })
+  // useEffect(() => {
+  //   if (orders.paymentInfos.statusURL === 'open') {
+  //     fetch(apiUrl+orders.paymentInfos.id_payment, {
+  //       method: 'GET', 
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': `Bearer ${token}`,
+  //       },
+  //     })
+  //       .then(response => {
+  //         if (!response.ok) {
+  //           throw new Error(`Erro na requisição: ${response.status} - ${response.statusText}`);
+  //         }
+  //         return response.json();
+  //       })
+  //       .then(data => {
+  //         const {url, payment_status, status} = data
+  //         const {initialDate, finalDate} = calculateDates(orders.deadline?.days, orders.deadline?.hours)
+  //         if (payment_status === 'paid') {
+  //           // const teste = {paymentInfos: {...orders.paymentInfos, statusPayment: payment_status, statusURL: status, url: null, datePayment: initialDate, dateDelivery: finalDate}}
+  //           updateDocument(orders.id, {paymentInfos: {...orders.paymentInfos, statusPayment: payment_status, statusURL: status, url: null, datePayment: initialDate, dateDelivery: finalDate}})
+  //           axios.post("/.netlify/functions/sendEmail", {
+  //               name: state.user.displayName,
+  //               email: state.user.email,
+  //               order: orders,
+  //               fromUser: true,
+  //               finalized: false
+  //           })
+  //           axios.post("/.netlify/functions/sendEmail", {
+  //               name: state.user.displayName,
+  //               email: state.user.email,
+  //               order: orders,
+  //               fromUser: false,
+  //               finalized: false
+  //           })
 
-            // updateDocument(orders.id, {statusPayment: payment_status, status, initialDate: initialDate.toLocaleString(), finalDate: finalDate.toLocaleString() })
+  //           // updateDocument(orders.id, {statusPayment: payment_status, status, initialDate: initialDate.toLocaleString(), finalDate: finalDate.toLocaleString() })
             
-          } else {
-            // updateDocument(orders.id, {statusPayment: payment_status, status })
+  //         } else {
+  //           // updateDocument(orders.id, {statusPayment: payment_status, status })
 
-          }
+  //         }
           
-          setUrl(url)
-        })
-        .catch(error => {
-          console.error('Erro na requisição:', error);
-        });
-    }
+  //         setUrl(url)
+  //       })
+  //       .catch(error => {
+  //         console.error('Erro na requisição:', error);
+  //       });
+  //   }
     
-  },[orders])
+  // },[orders])
   return (
     <div>
     <h2>#Tradução profissional {orders.numOrder}</h2>

@@ -8,24 +8,26 @@ import OrderResume from '../../components/others/OrderResume'
 import './style.css'
 import PaymentSection from '../../components/others/PaymentSection'
 
-const Checkout = () => {
+const Checkout = ({name}) => {
   const [state, actions] = useMainContext()
   const [textLoading, setTextLoading] = useState(0)
   const [loading, setLoading] = useState(false)
   const {insertDocument, insertFiles} = useInsertDocuments("archives")
   const [archivesURL, setArchivesURL] = useState()
+  const [newDocument, setNewDocument] = useState()
   const {documents: last_order} = useFetchDocuments("archives", null, null, false, true)
 
-
   console.log(archivesURL);
+
 
   const navigate = useNavigate()
   const cartInitial = state.cart
 
   const cart = {
     ...cartInitial,
-    user: state.user
+    user: {...state.user, displayName: state.user.displayName || name}
   }
+  console.log(cart);
   const uploadMultipleArchives = async (files) => {
     const arrayArchive = []
 
@@ -42,40 +44,8 @@ const Checkout = () => {
 
   const handleClick = async () => {
     try {
-      setLoading(true)
-      setTextLoading(0)
-      const response = await axios.post("/.netlify/functions/api", {
-        email: state.user.email,
-        items: [
-          {
-            name: cart.names,
-            numWords: cart.numWords,
-            numPages: cart.numPages,
-            value: Math.round(cart.value * 100),
-            deadlines: state.deadlines,
-            origin: state.selectValues.origin,
-            translation: state.selectValues.translation.join(", "),
-            quantity: 1,
-          },
-        ],
-
-      });
 
       // setTextLoading(30)
-
-      const newDocument = {
-        ...cart, 
-        numOrder: last_order[0]?.numOrder ? last_order[0].numOrder + 1 : 2963,
-        paymentInfos: {
-          id_payment: response?.data.sessionId,
-          statusURL: response?.data.status,
-          statusPayment: response?.data.paymentStatus,
-          url: response?.data.url
-        },
-        uid: cart.user.uid ,
-        finalized: false,
-        archivesURL
-      }
 
       await insertDocument(newDocument)
 
@@ -91,18 +61,12 @@ const Checkout = () => {
       //   deadline,
       //   value,
       //   archiveType: state.archiveTypeSelected,
-      //   archivelink:downloadArchive,
+      //   archivelink:downloadArchi ve,
       //   status: response?.data.status,
       //   numOrder: last_order[0]?.numOrder ? last_order[0].numOrder + 1 : 2963,
       //   statusPayment: response?.data.paymentStatus,
       //   uid: state.user.uid
       // })
-
-      const { url } = response.data;
-
-      console.log(url);
-      
-      window.location = url;
 
       // setTextLoading(100)
 
@@ -134,12 +98,12 @@ const Checkout = () => {
       </ul>
       <button onClick={handleClick}>Pagar</button> */}
       <div className="checkout-main">
-        <PaymentSection value={cart.value}/>
+        <PaymentSection value={cart.value} archivesURL={archivesURL} setArchivesURL={setArchivesURL} setDocument={setNewDocument} handleClick={handleClick} />
 
-        <OrderResume deadline={cart.deadline} arrayValues={cart.arrayValuesLanguage} archiveType={state.archiveTypeSelected.name} numWords={cart.numWords} typeService={cart.typeService} finalDate={cart.finalDate} translation={cart.languageSetings.translation} origin={cart.languageSetings.origin} value={cart.value} />
+        <OrderResume archiveURL={archivesURL} handleSubmitValues={handleClick} deadline={cart.deadline} arrayValues={cart.arrayValuesLanguage} archiveType={state.archiveTypeSelected.name} numWords={cart.numWords} typeService={cart.typeService} finalDate={cart.finalDate} translation={cart.languageSetings.translation} origin={cart.languageSetings.origin} value={cart.value} />
       </div>
-      <div className="footer">
-        <p>Direitos</p>
+      <div className="checkout-footer">
+        <p>2008 - 2024 Magma Translation<span>TM</span> Todos os Direitos Reservados </p>
       </div>
     </div>
   )
