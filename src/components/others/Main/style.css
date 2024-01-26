@@ -1,5 +1,4 @@
 .main_hero { /*usa o display flex para colocar os elementos em coluna, é o container da main*/
-    margin-top: 37px;
     display: flex;
     flex-direction: column;
     width: 100%;
