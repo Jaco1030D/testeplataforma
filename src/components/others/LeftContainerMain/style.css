@@ -21,6 +21,9 @@
 
 .texts_left .subtitle_left_container { /*diminuir a fonte para o subtitulo, a fonte é a mesma do titulo*/
     font-size: 22px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 31.46px; 
 }
 
 .main_left {

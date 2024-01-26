@@ -1,9 +1,11 @@
 .main_hero { /*usa o display flex para colocar os elementos em coluna, é o container da main*/
+    margin-top: 37px;
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
 }
+
 .hero-section { /*Aqui é para separar os conteudos da direita e esquerda*/
     display: flex;
     width: 80%;
