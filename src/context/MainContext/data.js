@@ -56,6 +56,6 @@ export const initialState = {
     languageCombinations: createLanguageCombination(languages),
     multiplers: {economy: 0.37, expert: 1, premium: 1.37},
     defaultValue: 0.11,
-    archiveTypes: [{name: 'arqiuvo1', value: 10}, {name: 'Área certificada', value: 5}],
-    archiveTypeSelected: {name: 'arquivo1', value: '2'}
+    archiveTypes: [],
+    archiveTypeSelected: {}
 };
