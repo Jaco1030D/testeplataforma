@@ -85,6 +85,7 @@ const OrdersContainer = () => {
           value: valueResult,
           user: state.user,
           arrayValuesLanguage,
+          archiveType: state.archiveTypeSelected.name,
           paymentInfos: {
             id_payment: '',
             statusURL: '',

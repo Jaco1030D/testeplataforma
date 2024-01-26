@@ -5,3 +5,27 @@
 .container-itens {
     display: flex;
 }
+
+.orders-main {
+    display: flex;
+    padding-bottom: 50px;
+}
+
+.orders-container { 
+    margin-left: calc(18% + 50px);
+    margin-top: 93px;
+}
+
+.orders-content {
+   display: flex;
+   flex-direction: column;
+   gap: 39px;
+
+}
+
+.orders-title{
+    font-size: 31px;
+    color: #000;
+    font-family: 'attenExtraBold';
+    margin-bottom: 56px;
+}

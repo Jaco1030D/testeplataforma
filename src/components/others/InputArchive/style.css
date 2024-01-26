@@ -13,6 +13,7 @@
     padding: 8px 21px;
     height: 36px;
     align-items: center;
+    gap: 13px;
 }
 
 .content-list-archive .item-list-archive:hover { /*quando usuario passar o mouse em cima fica mais claro*/

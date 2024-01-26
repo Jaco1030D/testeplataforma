@@ -83,7 +83,7 @@ const FormArchive = () => {
         </div>
         <div className="text-wrapper-5">Idioma de Origem</div>
         <div className="listaareas pointer" onClick={() => handleOpen(3)}>
-        <div className="text-wrapper-4">{state.archiveTypeSelected.name || 'Escolha na lista'}</div>
+        <div className="text-wrapper-4"> <img src={state.archiveTypeSelected.icon} alt={state.archiveTypeSelected.name} /> {state.archiveTypeSelected.name || 'Escolha na lista'}</div>
           <img className="img" alt="Frame" src={arrow} />
         </div>
         <p className="p">Sobre o que é seu conteúdo?</p>

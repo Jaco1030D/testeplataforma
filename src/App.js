@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Home from './templates/Home';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Login from './templates/Login';
 import Register from './templates/Register';
 import { useAuthentication } from './hooks/useAuthentication.js';
@@ -15,6 +15,7 @@ import { useFetchDocument } from './hooks/useFetchDocument.js';
 import Checkout from './templates/Checkout/index.jsx';
 import { Teste } from './templates/teste/index.jsx';
 import { MenuAutomatic } from './components/layout/Navbar/navbar2.jsx';
+import TesteDeComponentes from './templates/TesteDeComponentes/index.jsx';
 
 const App = () => {
     const {document: allSetings} = useFetchDocument("configSenting", '2963')
@@ -23,6 +24,7 @@ const App = () => {
     const [name, setName] = useState('')
     const {auth} = useAuthentication()
     const [isAdmin, setIsAdmin] = useState(false)
+    const [hiddenNavbar, setHiddenNavbar] = useState(false)
     const  loadingUser = user === undefined
     console.log(state);
 
@@ -81,7 +83,7 @@ const App = () => {
     <div>
           <BrowserRouter>
           {/* <MenuAutomatic /> */}
-            <Navbar user={user} name={name} isAdmin={isAdmin} setName={setName} /> 
+            <Navbar user={user} name={name} isAdmin={isAdmin} hiddenNavbar={hiddenNavbar} setName={setName} /> 
             <Routes>
             {isAdmin ? (
               <>
@@ -93,10 +95,10 @@ const App = () => {
               
               <>
               <Route path='/' element={<Home user={state?.user?.displayName} loadingUser={loadingUser}/>} />
-              <Route path='/teste' element={<Teste />} />
+              <Route path='/teste' element={<TesteDeComponentes />} />
 
               <Route path='/order' element={
-                user ? <Order/> : <Navigate to="/login" />
+                user ? <Order setHiddenNavbar={setHiddenNavbar}/> : <Navigate to="/login" />
               } />
               <Route path='/checkout' element={
                 (user && state.cart !== undefined) ? <Checkout name={name}/> : <Navigate to="/login" />

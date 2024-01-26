@@ -123,6 +123,8 @@
     font-weight: 400;
     height: 28px;
     left: 13px;
+    display: flex;
+    gap: 10px;
     letter-spacing: 0;
     line-height: 28px;
     position: absolute;

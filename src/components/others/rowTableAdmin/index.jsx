@@ -111,6 +111,7 @@ const RowTableAdmin = ({order}) => {
             onClose={handleClose}            
             >
                 <div className='modal'>
+                    {order.id}
                     possui {order.names.length} arquivos <br />
                     {order.languageSetings.origin}
                     <br />

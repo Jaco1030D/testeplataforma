@@ -1,6 +1,7 @@
 import React from 'react'
 import './style.css'
 import { useMainContext } from '../../../context/MainContext'
+import icon from './icon.svg'
 
 const 
 InputArchive = ({handleClose}) => {
@@ -18,7 +19,7 @@ InputArchive = ({handleClose}) => {
         </div>
         {state.archiveTypes && state.archiveTypes.map((item) => (
             <div key={item.name} onClick={() => handleClick(item)} className={`item-list-archive ${state.archiveTypeSelected.name === item.name && 'selected'}`}>
-                <img src="" alt="" />
+                <img src={item.icon} alt="" />
                 <p>{item.name}</p>
             </div>
         ))}

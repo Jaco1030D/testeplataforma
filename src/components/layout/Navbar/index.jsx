@@ -6,7 +6,7 @@ import { useAuthentication } from '../../../hooks/useAuthentication'
 import 'boxicons'
 import userImage from './User.svg'
 
-const Navbar = ({user, isAdmin, name, setName, hidden}) => {
+const Navbar = ({user, isAdmin, name, setName, hidden, hiddenNavbar = false}) => {
   const [state, actions] = useMainContext()
   const [openMenu, setOpenMenu] = useState(false)
 
@@ -27,7 +27,7 @@ const Navbar = ({user, isAdmin, name, setName, hidden}) => {
       setOpenMenu(!openMenu)
     }
   return (
-    <header style={{backgroundColor: `${isCheckoutPage ? '#fff' : '' }`}}>
+    <header style={{backgroundColor: `${isCheckoutPage ? '#fff' : '' }`, display: `${hiddenNavbar ? 'none' : ''}` }}>
   <div className="content_navbar">
     <div className="container_image pointer">
       <img className="logo" alt="Turian" onClick={() => navigate('/')} src={imageLogo} />

@@ -6,6 +6,7 @@ import { useMainContext } from '../../context/MainContext'
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 import LanguageValue from '../../components/others/languageValue'
 import Button from '../../components/others/Button'
+import { useInsertDocuments } from '../../hooks/useInsertDocuments'
 
 const languagesOrigin = [
   { value: 0, label: "Português" },
@@ -62,9 +63,10 @@ const Config = () => {
   const [baseDeadline, setBaseDeadline] = useState()
   const [multiplers, setMultiplers] = useState()
   const [valueWord, setValueWord] = useState(0.11)
-  const [typeArchives, setTypeArchives] = useState()
+  const [typeArchives, setTypeArchives] = useState([])
   const [languages, setLanguages] = useState(languagesOrigin.map(language => language.label))
   const [languageCombinations, setLanguageCombinations] = useState(createLanguageCombination(languages))
+  const {insertDocument, insertFiles} = useInsertDocuments("archives")
   const {updateDocument, response} = useUpdateDocument("configSenting")
   const [message, setMessage] = useState()
 
@@ -133,7 +135,7 @@ const Config = () => {
   const handleClick = (e) => {
     e.preventDefault()
 
-    const newItem = [...typeArchives, {name: '', value: 0}]
+    const newItem = [...typeArchives, {name: '', value: 0, icon: ''}]
 
     setTypeArchives(newItem)
 
@@ -147,7 +149,15 @@ const Config = () => {
     console.log('seila meu');
   }
 
-  const handleChange = (value, index, type) => {
+  const handleChange = async (valuesOrigin, index, type) => {
+    let value = valuesOrigin
+    if (type === 'icon') {
+      const downloadArchive = await insertFiles(valuesOrigin)
+
+      value = downloadArchive
+    }
+
+    console.log(value);
     setTypeArchives(prev => {
 
       const newArray = [...prev]
@@ -178,6 +188,13 @@ const Config = () => {
 
   }
 
+  const renderImage = (file) => {
+
+    const url = URL.createObjectURL(file)
+
+    return url
+  }
+
   useEffect(() => {
 
     setNumWords(document?.deadline.numWords)
@@ -191,7 +208,10 @@ const Config = () => {
       setMultiplers(document.multiplers)
     }
     console.log(document);
-    setTypeArchives(document?.archiveTypes)
+    if (document?.archiveTypes) {
+      
+      setTypeArchives(document?.archiveTypes)
+    }
 
   }, [document])
   return (
@@ -245,6 +265,9 @@ const Config = () => {
           <h2>Aumentar em:</h2>
           {typeArchives && typeArchives.map((item, index) => (
             <div>
+              <img src={item.icon} alt="" />
+              <label htmlFor="">Icon</label>
+              <input type="file" onChange={(e) => handleChange(e.target.files[0], index, 'icon')} multiple />
               <label htmlFor="">Tipo Arquivo</label>
               <input type="text" value={item.name} onChange={(e) => handleChange(e.target.value, index, 'name')} />
 
