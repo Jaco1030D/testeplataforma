@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import './style.css';
 import axios from 'axios';
 import { useUpdateDocument } from '../../../hooks/useUpdateDocument';
+import { useNavigate } from 'react-router-dom';
 
-const SmallRectangle = ({ withBorder, title, showDropdown, text, finalized = false, handleDonwload, arrayOriginArchives }) => {
+const SmallRectangle = ({ withBorder, title, showDropdown, text, finalized = false, handleDonwload, arrayOriginArchives, archivesTranslated }) => {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
     const dropdownRef = useRef(null);
   
@@ -47,7 +48,7 @@ const SmallRectangle = ({ withBorder, title, showDropdown, text, finalized = fal
           {showDropdown && isDropdownVisible && (
             <div className="dropdown">
               <div onClick={() => handleClcik(arrayOriginArchives)}>Download arquivos originais</div>
-              {finalized && <div>Download dos arquivos traduzidos</div>}
+              {finalized && <div onClick={() => handleClcik(archivesTranslated)}>Download dos arquivos traduzidos</div>}
             </div>
           )}
           {showDropdown && (
@@ -63,12 +64,13 @@ const SmallRectangle = ({ withBorder, title, showDropdown, text, finalized = fal
 const OrderCard = ({order}) => {
   const [status, setStatus] = useState()
   const {updateDocument} = useUpdateDocument("archives")
+  const navigate = useNavigate()
 
     const rectangles = [
         { withBorder: true, title: 'Número do projeto', text: order.numOrder },
         { withBorder: false, title: 'Par de idiomas', text: <div><p>{order.languageSetings.origin} &gt; <br/> {order.languageSetings.translation[0]}</p></div> },
         { withBorder: true, title: 'Tipo', text: <div><p className='typeService'>{order.typeService}</p><p className='numWords'>{order.numWords} palavras</p></div> },
-        { withBorder: false, title: 'Arquivos', showDropdown: true, text: '', finalized: order?.finalized, arrayOriginArchives: order.archivesURL },
+        { withBorder: false, title: 'Arquivos', showDropdown: true, text: '', finalized: order?.finalized, arrayOriginArchives: order.archivesURL, archivesTranslated: order.archivesTranslated},
         { withBorder: true, title: 'Entrega', text: `${order.finalDate}h`},
         { withBorder: false, title: 'Área', text: order.archiveType },
         { withBorder: false, title: 'Status', text: status },
@@ -101,6 +103,9 @@ const OrderCard = ({order}) => {
       document.body.removeChild(link);
     }
 
+    const handlePay = () => {
+      navigate('/checkout/'+order.paymentInfos.clientSecret)
+    }
     const multipleDownload = async (array) => {
       array.forEach(element => {
         handleDownload(element.downloadArchive, element.fileName)
@@ -114,6 +119,8 @@ const OrderCard = ({order}) => {
 
         } else if(order.paymentInfos.status === 'succeeded' && order.finalized) {
 
+          setStatus(<div className='status-actual finalized' >Finalizado</div>)
+
         } else {
           getAPIInfos().then(res => {
             if (res.status === 'succeeded') {
@@ -121,7 +128,7 @@ const OrderCard = ({order}) => {
 
               updateDocument(order.id, {paymentInfos: {...order.paymentInfos, status: 'succeeded'}})
             } else {
-              setStatus(<div className='status-actual button-start'>Iniciar</div>)
+              setStatus(<div className='status-actual button-start' onClick={handlePay}>Iniciar</div>)
             }
           })
         }
@@ -141,6 +148,7 @@ const OrderCard = ({order}) => {
               finalized = {rectangle.finalized}
               arrayOriginArchives = {rectangle.arrayOriginArchives}
               handleDonwload={multipleDownload}
+              archivesTranslated= {rectangle.archivesTranslated}
             />
           ))}
           <div className="large-rectangle">

@@ -13,8 +13,6 @@ import Terms from './components/layout/Terms/index.jsx';
 import Config from './templates/Config/index.jsx';
 import { useFetchDocument } from './hooks/useFetchDocument.js';
 import Checkout from './templates/Checkout/index.jsx';
-import { Teste } from './templates/teste/index.jsx';
-import { MenuAutomatic } from './components/layout/Navbar/navbar2.jsx';
 import TesteDeComponentes from './templates/TesteDeComponentes/index.jsx';
 
 const App = () => {
@@ -100,7 +98,10 @@ const App = () => {
               <Route path='/order' element={
                 user ? <Order setHiddenNavbar={setHiddenNavbar}/> : <Navigate to="/login" />
               } />
-              <Route path='/checkout' element={
+              <Route path='/checkout/' element={
+                (user && state.cart !== undefined) ? <Checkout name={name}/> : <Navigate to="/login" />
+              } />
+              <Route path='/checkout/:id' element={
                 (user && state.cart !== undefined) ? <Checkout name={name}/> : <Navigate to="/login" />
               } />
               <Route path='/login' element={

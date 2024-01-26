@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './style.css'
 import { useMainContext } from '../../../context/MainContext'
 import icon from './icon.svg'
@@ -11,6 +11,17 @@ InputArchive = ({handleClose}) => {
         action.changeArchiveType(item)
         handleClose()
     }
+
+    useEffect(() => {
+      const preloadImages = () => {
+        state.archiveTypes.forEach((item) => {
+          const img = new Image();
+          img.src = item.icon;
+        });
+      };
+  
+      preloadImages();
+    }, []); 
   return (
     <div className="destinoidiomas">
       <div className="content-list-archive">

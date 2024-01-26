@@ -8,6 +8,7 @@ import axios from "axios";
 import { useMainContext } from "../../context/MainContext";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useInsertDocuments } from "../../hooks/useInsertDocuments";
+import { useParams } from "react-router-dom";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
@@ -15,9 +16,9 @@ import { useInsertDocuments } from "../../hooks/useInsertDocuments";
 // const stripePromise = loadStripe("pk_test_51Obph4JGY6R57eKcvgP1L73hodzcTKxzq0LDU6Y66PePYDEU45h8a3AwfmtskFxLmWxigeNFZboclrixOaznmTjy00pUucHq0Q");
 const stripePromise = loadStripe("pk_test_51OF205HR5yfE4YaF3DfcIVdTvDSgPQcOkpYu7UIVWok5smXOwpTFSvSzvhQ3qHjmolLaCRUB37rtmZOthsnPdmfY00Od0mpp7K"); //minha
 
-export function Teste({value, clientSecretUser, setDocument, handleClick, archivesURL, setArchivesURL}) {
+export function Teste({value, setDocument, handleClick, archivesURL, setArchivesURL}) {
+  const {id} = useParams()
   const [state, actions] = useMainContext()
-
   const [id_payment, setId_payment] = useState("")
   const [clientSecret, setClientSecret] = useState("")
   const {insertDocument, insertFiles} = useInsertDocuments("archives")
@@ -55,8 +56,8 @@ export function Teste({value, clientSecretUser, setDocument, handleClick, archiv
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    if (clientSecretUser) {
-      setClientSecret(clientSecretUser)
+    if (id) {
+      setClientSecret(id)
     } else {
       chamarDados().then(res =>{
         setClientSecret(res.clientSecret)
@@ -83,7 +84,7 @@ export function Teste({value, clientSecretUser, setDocument, handleClick, archiv
   };
 
   useEffect(() => {
-    if (!archivesURL || !last_order) {
+    if (!archivesURL || !last_order || id) {
       return
     }
 
@@ -101,6 +102,9 @@ export function Teste({value, clientSecretUser, setDocument, handleClick, archiv
   },[state.cart, id_payment, clientSecret, status, archivesURL, last_order])
 
   useEffect(() => {
+    if (id) {
+      return
+    }
       uploadMultipleArchives(state.filePending).then(res =>
         setArchivesURL(res)
         )

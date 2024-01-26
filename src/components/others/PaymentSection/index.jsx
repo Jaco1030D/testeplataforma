@@ -4,6 +4,7 @@ import { Teste } from '../../../templates/teste'
 import padlock from './padlock.svg'
 import padlockbuy from './padlock-buy.svg'
 import pci from './pci.svg'
+import { useParams } from 'react-router-dom'
 
 const PaymentSection = ({value, setDocument, handleClick, archivesURL, setArchivesURL}) => {
   return (

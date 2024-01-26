@@ -7,8 +7,10 @@ import {
 import { useMainContext } from "../../context/MainContext";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useInsertDocuments } from "../../hooks/useInsertDocuments";
+import { useParams } from "react-router-dom";
 
 export default function CheckoutForm({archivesURL, handleClick}) {
+  const {id} = useParams()
   const stripe = useStripe();
   const elements = useElements();
   const [state, actions] = useMainContext()
@@ -49,7 +51,9 @@ export default function CheckoutForm({archivesURL, handleClick}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await handleClick()
+    if (!id) {
+      await handleClick()
+    }
 
     if (!stripe || !elements) {
       return;
@@ -84,7 +88,7 @@ export default function CheckoutForm({archivesURL, handleClick}) {
     <form className="pay" id="payment-form" onSubmit={handleSubmit}>
 
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button className="pay" disabled={isLoading || !stripe || !elements || !archivesURL} id="submit">
+      <button className="pay" disabled={isLoading || !stripe || !elements || (!archivesURL && !id)} id="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>

@@ -119,6 +119,14 @@
   .in-progress {
     background-color: #FBC175;
   }
+
+  .finalized {
+    background-color: #1BFA07;
+    width: 122px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
   .dropdown div {
     cursor: pointer;

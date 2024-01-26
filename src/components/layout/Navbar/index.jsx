@@ -5,6 +5,7 @@ import { useMainContext } from '../../../context/MainContext'
 import { useAuthentication } from '../../../hooks/useAuthentication'
 import 'boxicons'
 import userImage from './User.svg'
+import './style.css'
 
 const Navbar = ({user, isAdmin, name, setName, hidden, hiddenNavbar = false}) => {
   const [state, actions] = useMainContext()
