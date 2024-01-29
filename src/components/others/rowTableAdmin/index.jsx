@@ -85,7 +85,7 @@ const RowTableAdmin = ({order}) => {
             <td>{order.user?.displayName}</td>
             <td>{order.user?.email}</td>
             {
-                order.paymentInfos.statusPayment === 'unpaid'
+                order.paymentInfos.status === 'requires_payment_method'
                 ?
                 (
                     <>
@@ -97,7 +97,7 @@ const RowTableAdmin = ({order}) => {
                 (
                     <>
                         <td>{order.paymentInfos.datePayment}</td>
-                        <td>{order.paymentInfos.dateDelivery}</td>
+                        <td>{order.finalDate}h</td>
                     </>
                 )
             }
