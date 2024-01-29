@@ -13,8 +13,8 @@ import { useParams } from "react-router-dom";
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
 // This is your test publishable API key.
-const stripePromise = loadStripe("pk_test_51Obph4JGY6R57eKcvgP1L73hodzcTKxzq0LDU6Y66PePYDEU45h8a3AwfmtskFxLmWxigeNFZboclrixOaznmTjy00pUucHq0Q");
-// const stripePromise = loadStripe("pk_test_51OF205HR5yfE4YaF3DfcIVdTvDSgPQcOkpYu7UIVWok5smXOwpTFSvSzvhQ3qHjmolLaCRUB37rtmZOthsnPdmfY00Od0mpp7K"); //minha
+// const stripePromise = loadStripe("pk_test_51Obph4JGY6R57eKcvgP1L73hodzcTKxzq0LDU6Y66PePYDEU45h8a3AwfmtskFxLmWxigeNFZboclrixOaznmTjy00pUucHq0Q");
+const stripePromise = loadStripe("pk_test_51OF205HR5yfE4YaF3DfcIVdTvDSgPQcOkpYu7UIVWok5smXOwpTFSvSzvhQ3qHjmolLaCRUB37rtmZOthsnPdmfY00Od0mpp7K"); //minha
 
 export function Teste({value, setDocument, handleClick, archivesURL, setArchivesURL}) {
   const {id} = useParams()
