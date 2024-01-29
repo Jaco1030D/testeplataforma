@@ -1,5 +1,5 @@
-const stripe = require("stripe")('sk_test_51Obph4JGY6R57eKc0KMCfcVngKRkHV6HIufvenlVl8NcCpaQFZu0LKuvyTVduPSO4I2sWdv4QzSjdC4MHsrDY6S200Ivs2LLnS');
-// const stripe = require("stripe")('sk_test_51OF205HR5yfE4YaFBUT1a4yatFHaX5PYhlFa4mpqRSadaqYngNuWDm9lBqQSgTykKZx519Xb4fMcFn1dZthlKgrK00AwSyXZQx'); //minha
+// const stripe = require("stripe")('sk_test_51Obph4JGY6R57eKc0KMCfcVngKRkHV6HIufvenlVl8NcCpaQFZu0LKuvyTVduPSO4I2sWdv4QzSjdC4MHsrDY6S200Ivs2LLnS');
+const stripe = require("stripe")('sk_test_51OF205HR5yfE4YaFBUT1a4yatFHaX5PYhlFa4mpqRSadaqYngNuWDm9lBqQSgTykKZx519Xb4fMcFn1dZthlKgrK00AwSyXZQx'); //minha
 
 exports.handler = async (event, context) => {
   const  body  = JSON.parse(event.body);

@@ -82,8 +82,8 @@ const RowTableAdmin = ({order}) => {
         <tr>
             <td>{order.numOrder}</td>
             <td>{order.archivesURL.length}</td>
-            <td>{order.user.displayName}</td>
-            <td>{order.user.email}</td>
+            <td>{order.user?.displayName}</td>
+            <td>{order.user?.email}</td>
             {
                 order.paymentInfos.statusPayment === 'unpaid'
                 ?
