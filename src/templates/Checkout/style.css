@@ -1,12 +1,12 @@
-.checkout-main {
+.checkout-main { /*estiliza a parte principal onde aparece o card de pagamento e o resumo da compra*/
     width: 100%;
     background-color: white;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    height: 100vh;
+    grid-template-columns: repeat(2, 1fr);/*separa em 2 frações iguais o checkout*/
+    min-height: 100vh;
 }
 
-.checkout-footer {
+.checkout-footer { /*estiliza aquela linha d todos os direitos na parte de baixo da pagina checkout ('2008 - 2024 Magma Translation')*/
     width: 100%;
     background-color: #fff;
     border-top: 1px solid #d2d6d9;

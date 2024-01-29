@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useMainContext } from '../../context/MainContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useInsertDocuments } from '../../hooks/useInsertDocuments'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
@@ -10,6 +10,7 @@ import PaymentSection from '../../components/others/PaymentSection'
 
 const Checkout = ({name}) => {
   const [state, actions] = useMainContext()
+  const {id} = useParams()
   const [textLoading, setTextLoading] = useState(0)
   const [loading, setLoading] = useState(false)
   const {insertDocument, insertFiles} = useInsertDocuments("archives")
@@ -28,19 +29,6 @@ const Checkout = ({name}) => {
     user: {...state.user, displayName: state.user.displayName || name}
   }
   console.log(cart);
-  const uploadMultipleArchives = async (files) => {
-    const arrayArchive = []
-
-    for (let index = 0; index < files.length; index++) {
-
-        const downloadArchive = await insertFiles(files[index])
-
-        arrayArchive.push({downloadArchive, fileName: files[index].name})
-        
-    }
-
-    return arrayArchive
-  }
 
   const handleClick = async () => {
     try {
@@ -100,7 +88,7 @@ const Checkout = ({name}) => {
       <div className="checkout-main">
         <PaymentSection value={cart.value} archivesURL={archivesURL} setArchivesURL={setArchivesURL} setDocument={setNewDocument} handleClick={handleClick} />
 
-        <OrderResume archiveURL={archivesURL} handleSubmitValues={handleClick} deadline={cart.deadline} arrayValues={cart.arrayValuesLanguage} archiveType={state.archiveTypeSelected.name} numWords={cart.numWords} typeService={cart.typeService} finalDate={cart.finalDate} translation={cart.languageSetings.translation} origin={cart.languageSetings.origin} value={cart.value} />
+        <OrderResume archiveURL={archivesURL} handleSubmitValues={handleClick} deadline={cart.deadline} arrayValues={cart.arrayValuesLanguage} archiveType={state.archiveTypeSelected.name || cart.archiveType} numWords={cart.numWords} typeService={cart.typeService} finalDate={cart.finalDate} translation={cart.languageSetings.translation} origin={cart.languageSetings.origin} value={cart.value} />
       </div>
       <div className="checkout-footer">
         <p>2008 - 2024 Magma Translation<span>TM</span> Todos os Direitos Reservados </p>

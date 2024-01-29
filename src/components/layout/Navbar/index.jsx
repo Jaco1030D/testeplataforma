@@ -15,7 +15,8 @@ const Navbar = ({user, isAdmin, name, setName, hidden, hiddenNavbar = false}) =>
 
   const isLoginPage = location.pathname === '/login';
   const isRegisterPage = location.pathname === '/register';
-  const isCheckoutPage = location.pathname === '/checkout';
+  console.log(location.pathname);
+  const isCheckoutPage = location.pathname.includes('/checkout')
 
   const navigate = useNavigate()
     const {logout} = useAuthentication()

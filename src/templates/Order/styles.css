@@ -1,31 +1,22 @@
-.backgroundView {
-    color: red !important;
-    background-color: red !important;
-}
-.container-itens {
+.orders-main { /*Serve para deixar a navBar e os projetos lado a lado*/
     display: flex;
+    padding-bottom: 50px; /*para quando fazer a rolagem da pagina o ultimo projeto não ficar colado na parte de baixo*/
 }
 
-.orders-main {
-    display: flex;
-    padding-bottom: 50px;
-}
-
-.orders-container { 
-    margin-left: calc(18% + 50px);
+.orders-container { /*como a nav e position:fixed é necessario dar um espaçamento na parte esquerda*/
+    margin-left: calc(18% + 50px); /*como eu coloquei a largura da navbar como 18% o minimo que devo colocar de margin é esse, o + 50px é para ficar um pouco mais distante */
     margin-top: 93px;
 }
 
-.orders-content {
-   display: flex;
-   flex-direction: column;
-   gap: 39px;
-
-}
-
-.orders-title{
+.orders-title{ /*estilizar o 'Meus Projetos'*/
     font-size: 31px;
     color: #000;
     font-family: 'attenExtraBold';
     margin-bottom: 56px;
 }
+
+.orders-content { /*Deixar os projetos um abaixo do outro*/
+    display: flex;
+    flex-direction: column;
+    gap: 39px;
+ }

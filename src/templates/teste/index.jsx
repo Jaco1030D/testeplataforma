@@ -13,8 +13,8 @@ import { useParams } from "react-router-dom";
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
 // This is your test publishable API key.
-// const stripePromise = loadStripe("pk_test_51Obph4JGY6R57eKcvgP1L73hodzcTKxzq0LDU6Y66PePYDEU45h8a3AwfmtskFxLmWxigeNFZboclrixOaznmTjy00pUucHq0Q");
-const stripePromise = loadStripe("pk_test_51OF205HR5yfE4YaF3DfcIVdTvDSgPQcOkpYu7UIVWok5smXOwpTFSvSzvhQ3qHjmolLaCRUB37rtmZOthsnPdmfY00Od0mpp7K"); //minha
+const stripePromise = loadStripe("pk_test_51Obph4JGY6R57eKcvgP1L73hodzcTKxzq0LDU6Y66PePYDEU45h8a3AwfmtskFxLmWxigeNFZboclrixOaznmTjy00pUucHq0Q");
+// const stripePromise = loadStripe("pk_test_51OF205HR5yfE4YaF3DfcIVdTvDSgPQcOkpYu7UIVWok5smXOwpTFSvSzvhQ3qHjmolLaCRUB37rtmZOthsnPdmfY00Od0mpp7K"); //minha
 
 export function Teste({value, setDocument, handleClick, archivesURL, setArchivesURL}) {
   const {id} = useParams()
@@ -56,6 +56,9 @@ export function Teste({value, setDocument, handleClick, archivesURL, setArchives
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
+    if (clientSecret) {
+      return
+    }
     if (id) {
       setClientSecret(id)
     } else {
@@ -88,16 +91,18 @@ export function Teste({value, setDocument, handleClick, archivesURL, setArchives
       return
     }
 
-    const cartWithPaymentInfos = {
-      ...state.cart,
-      paymentInfos: {id_payment, clientSecret, status},
-      numOrder: last_order[0]?.numOrder ? last_order[0].numOrder + 1 : 2963,
-      finalized: false,
-      uid: state.cart.user.uid,
-      archivesURL
+    if (!id) {
+      const cartWithPaymentInfos = {
+        ...state.cart,
+        paymentInfos: {id_payment, clientSecret, status},
+        numOrder: last_order[0]?.numOrder ? last_order[0].numOrder + 1 : 2963,
+        finalized: false,
+        uid: state?.user?.uid,
+        archivesURL
+      }
+      setDocument(cartWithPaymentInfos)
     }
 
-    setDocument(cartWithPaymentInfos)
 
   },[state.cart, id_payment, clientSecret, status, archivesURL, last_order])
 

@@ -1,22 +1,23 @@
-.container-test {
+.container-test { /*container onde vão todos os retangulos/quadrados(num projeto, par de idiomas, tipo...) de um unico projeto*/
     width: 900px;
     height: 150px;
     background-color: white;
     display: flex;
   }
 
-  .small-rectangle {
+  .small-rectangle { /*estiliza cada um dos retangulos do projeto*/
     height: 116px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
-  .with-border {   
+  .with-border { /*caso  tenha borda isso aqui sera adicionado juntamente com o small-rectangle*/
     border: 1px solid #C59318;
   }
 
-  .small-rectangle:nth-child(odd) {
+  /*o valor da largura de cada retagulo*/
+  .small-rectangle:nth-child(odd) { 
     width: 95px;
   }
 
@@ -48,9 +49,8 @@
     width: 82px;
   }
 
-  .content-test {
+  .content-test { /*Estiliza a parte cinza do retangulo*/
     height: 100%;
-    flex-grow: 1;
     background-color: #E9E9F2;
     display: flex;
     align-items: center;
@@ -58,15 +58,15 @@
   }
 
   .content-test span,
-  .typeService {
+  .typeService { /*estiliza a fonte bold dos retangulos('Premiun', 'EUR', textos na parte cinza)*/
     font-size: 14px;
     font-family: 'attenBold';
   }
 
-  .numWords {
+  .numWords { /*cor do numero de palavras*/
     color: #929292;
   }
-  .white-part {
+  .white-part { /*estiliza parte branca dos retangulos*/
     height: 100%;
     position: relative;
     background-color: white;
@@ -75,15 +75,12 @@
     padding-left: 10px;
   }
 
-  .white-part span {
+  .white-part span { /*estiliza o texto da parte branca*/
     font-size: 14px;
     font-family: 'attenBook';
   }
-  .content-test.with-dropdown {
-    
-  }
   
-  .dropdown {
+  .dropdown { /*dropdown de download dos arquivos*/
     position: absolute;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -96,13 +93,13 @@
     z-index: 1;
   }
 
-  .status-actual {
+  .status-actual { /*estiliza o molde do status*/
     font-family: 'attenBold';
     font-size: 16px;
     padding: 10px;
     color: #fff;
   }
-  .button-start{
+  .button-start{ /*estiliza o botão iniciar*/
     display: flex;
     width: 127px;
     height: 37px;
@@ -116,11 +113,11 @@
 
   }
 
-  .in-progress {
+  .in-progress { /*quando o projeto esta em andamendo essa cor é aplicada no status*/
     background-color: #FBC175;
   }
 
-  .finalized {
+  .finalized { /*quando o projeto esta finalizado esso é aplicada no status*/
     background-color: #1BFA07;
     width: 122px;
     display: flex;
@@ -128,16 +125,16 @@
     justify-content: center;
   }
   
-  .dropdown div {
+  .dropdown div { /*estiliza as frases dentro do dropdown('Donwload de arquivos originais', 'Donwload de arquivos traduzidos')*/
     cursor: pointer;
     padding: 5px;
   }
   
-  .dropdown div:hover {
+  .dropdown div:hover { /*quando passa o mouse em cima das frases elas ficam com esse background-color*/
     background-color: #e0e0e0;
   }
 
-  .button-arquivos {
+  .button-arquivos { /*estiliza o botão de download dos arquivos*/
     width: 88px;
     height: 25px;
     background-color: #182b8a;
@@ -149,4 +146,31 @@
     cursor: pointer;
     font-size: 12px;
     margin-right: 10px;
+  }
+
+  .div-order{
+    background-color: #ffffff;
+    height: 527.9px;
+    position: relative;
+    width: 1100px;
+    border-radius: 12px;
+  }
+
+  .container-inputSelect.order {
+    flex-direction: column;
+    align-items: start;
+    position: absolute;
+    left: 140px;
+    top: 103px;
+  }
+  .container-inputSelect.order .content-inputSelect {
+    margin-top: 26.12px;
+  }
+
+  .container-inputSelect.order p {
+    color: #40676A;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 22.88px;
   }

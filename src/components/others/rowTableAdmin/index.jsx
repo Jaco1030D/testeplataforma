@@ -104,7 +104,7 @@ const RowTableAdmin = ({order}) => {
             <td>{order.languageSetings.origin}</td>
             <td>{order.languageSetings.translation.length} idioma(s)</td>
             <td>{order.value}</td>
-            <td>{order?.finalized ? 'Entregue' : order.statusPayment}</td>
+            <td>{order?.finalized ? 'Entregue' : order.paymentInfos.status}</td>
             <button onClick={handleOpen} disabled={order.paymentInfos.statusPayment === 'unpaid'}>Informações do arquivo</button>
             <Modal
             open={open}
@@ -122,10 +122,13 @@ const RowTableAdmin = ({order}) => {
                     {order.numWords}
                     <br />
                     <p>Arquivos para tradução</p>
+                    <div className='archives_download' >
                     {order.archivesURL.map((item, index) => (
 
                     <p key={index} onClick={() => handleDownload(item.downloadArchive, item.fileName)} style={{cursor: 'pointer', color: 'blue'}}>{item.fileName}</p>
                     ))}
+
+                    </div>
                     {order?.archivesTranslated ? (
                         <div>
                             <p>Já entregue:</p>
