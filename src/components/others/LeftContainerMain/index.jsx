@@ -8,7 +8,7 @@ const LeftContainerMain = () => {
       <div className="texts_left">
         <h2 className='title_left_container'>Plataforma de tradução <span>online</span> </h2>
 
-        <p className='subtitle_left_container'>Antes de mergulharmos nos pormenores, conte-nos um pouco sobre o seu projeto</p>
+        <p className='subtitle_left_container'>Orçamento em 5 segundos, preenchaas 3 informações abaixo</p>
       </div>
       <FormArchive />
     </div>
