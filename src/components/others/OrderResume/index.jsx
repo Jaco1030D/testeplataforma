@@ -7,9 +7,6 @@ const OrderResume = ({deadline, translation, origin, value, finalDate, typeServi
   const navigate = useNavigate()
 
   const handleClick = async () => {
-    if (!id) {
-      await handleSubmitValues()
-    }
     navigate('/')
   }
   return (
