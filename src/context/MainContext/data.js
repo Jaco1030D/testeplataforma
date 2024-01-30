@@ -46,8 +46,8 @@ export const initialState = {
     user: null,
     filePending: [],
     selectValues: {
-        origin: 'Português',
-        translation: ['Inglês']
+        origin: '',
+        translation: []
     },
     deadlines: {},
     cart: undefined,
@@ -57,5 +57,27 @@ export const initialState = {
     multiplers: {economy: 0.37, expert: 1, premium: 1.37},
     defaultValue: 0.11,
     archiveTypes: [],
-    archiveTypeSelected: {}
+    archiveTypeSelected: {},
+    languagesData: [
+        { language: 'Português', types: ['Br', 'Pt'] },
+        { language: 'Inglês', types: ['EUA', 'UK'] },
+        { language: 'Chinês', types: ['Simp', 'Tai', 'Hon'] },
+        { language: 'Espanhol', types: ['Es', 'L.A.'] },
+        { language: 'Alemão', types: ['Al', 'Au'] },
+        { language: 'Francês', types: [] },
+        { language: 'Italiano', types: [] },
+        { language: 'Holandês', types: [] },
+        { language: 'Russo', types: [] },
+        { language: 'Japonês', types: [] },
+        { language: 'Árabe', types: [] },
+        { language: 'Hindi', types: [] },
+        { language: 'Coreano', types: [] },
+        { language: 'Turco', types: [] },
+        { language: 'Sueco', types: [] },
+        { language: 'Polonês', types: [] },
+        { language: 'Vietnamita', types: [] },
+        { language: 'Tailandês', types: [] },
+        { language: 'Grego', types: [] },
+        { language: 'Dinamarquês', types: [] }
+      ]
 };

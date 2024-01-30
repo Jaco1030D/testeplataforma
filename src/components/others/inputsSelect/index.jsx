@@ -5,38 +5,15 @@ import frame from './Frame.svg'
 import l from './Label.svg'
 import { useMainContext } from '../../../context/MainContext'
 
-const languagesData = [
-  { language: 'Português', types: ['Brasil', 'Portugal'] },
-  { language: 'Inglês', types: ['EUA', 'UK'] },
-  { language: 'Chinês', types: ['Simplificado', 'Taiwan', 'Hong kong'] },
-  { language: 'Espanhol', types: ['Espanha', 'America latina'] },
-  { language: 'Alemão', types: ['Alemanha', 'Áustria'] },
-  { language: 'Francês', types: [] },
-  { language: 'Italiano', types: [] },
-  { language: 'Holandês', types: [] },
-  { language: 'Russo', types: [] },
-  { language: 'Japonês', types: [] },
-  { language: 'Árabe', types: [] },
-  { language: 'Hindi', types: [] },
-  { language: 'Coreano', types: [] },
-  { language: 'Turco', types: [] },
-  { language: 'Sueco', types: [] },
-  { language: 'Polonês', types: [] },
-  { language: 'Vietnamita', types: [] },
-  { language: 'Tailandês', types: [] },
-  { language: 'Grego', types: [] },
-  { language: 'Dinamarquês', types: [] }
-]; 
-
 const InputSelect = ({handleClose}) => {
-  const [languages, setLanguages] = useState(languagesData)
   const [state, action] = useMainContext()
+  const [languages, setLanguages] = useState(state.languagesData)
   const [inputValue, setInputValue] = useState('')
 
     const filter = (query) => {
         const lowerCaseQuery = query;
 
-        const results = languagesData.filter((language) => {
+        const results = state.languagesData.filter((language) => {
 
           return (
             language.language.toLowerCase().includes(lowerCaseQuery) ||
@@ -64,7 +41,7 @@ const InputSelect = ({handleClose}) => {
         setLanguages(array)
     } else {
 
-        setLanguages(languagesData)
+        setLanguages(state.languagesData)
 
     }
 
@@ -75,14 +52,14 @@ const InputSelect = ({handleClose}) => {
 
         <div className="container-inputSelect">
           <div className="content-inputSelect">
-            {languages.map((item, index) => {
-              if (!state.selectValues.translation.includes(item.language)) {
+            {languages.map((itemLanguage, index) => {
+              if (!state.selectValues.translation.includes(itemLanguage.language)) {
                 return (
-                  <div key={index} className='languages_group pointer' onClick={() => handleClick(item.language)}>
-                    <div className='header_language_languages_group'><span className='name-language'>{item.language}</span> {state.selectValues.origin.includes(item.language) && <box-icon name='check' ></box-icon>}</div>
-                    {item.types.map((item, index) => (
+                  <div key={index} className='languages_group pointer'>
+                    <div className='header_language_languages_group'><span className='name-language' onClick={() => handleClick(itemLanguage.language)}>{itemLanguage.language}</span> {state.selectValues.origin.includes(itemLanguage.language) && <box-icon name='check' ></box-icon>}</div>
+                    {itemLanguage.types.map((item, index) => (
                       <div>
-                      <div className="l"></div> <p className='type-language'>{item}</p>
+                      <div className="l"></div> <p className='type-language' onClick={() => handleClick(itemLanguage.language + ' - ' + item)}>{item}</p>{state.selectValues.origin.includes(itemLanguage.language + ' - ' + item) && <box-icon name='check' style={{marginTop: '-5px'}} ></box-icon>}
                       </div>
                     ))}
                   </div>

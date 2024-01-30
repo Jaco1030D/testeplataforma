@@ -24,6 +24,7 @@ const Login = () => {
         const res = await login(user) 
 
     }
+    
     useEffect(() =>{
         if (errorAuth) {
             setError(errorAuth)
@@ -43,7 +44,7 @@ const Login = () => {
         </div>
         {!loading && <button className='btn' disabled={!email | !password} >Entrar</button> }
         {loading && <button className='btn' disabled>Aguarde...</button> }
-        <p className='reset_password'>Esqueceu a senha?</p>
+        <p className='reset_password pointer' onClick={() => navigate('/resetpassword')}>Esqueceu a senha?</p>
 
         <div id='login_link' onClick={() => navigate('/register')}><p> Não tem uma conta? Cadastre-se </p> <img src={svg} alt="" /></div>
         

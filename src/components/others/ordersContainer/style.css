@@ -1,12 +1,15 @@
 .box {
-	height: 416px;
+	height: 100vh;
 	position: relative;
 	width: 784px;
+	
   }
   
   .box .group {
 	height: 416px;
 	width: 784px;
+	position: absolute;
+    top: 20%;
   }
   
   .box .caixadepreos {

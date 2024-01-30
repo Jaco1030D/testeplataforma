@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { useUpdateDocument } from '../../hooks/useUpdateDocument'
 import { useFetchDocument } from '../../hooks/useFetchDocument'
-import Values from '../../components/others/values'
 import { useMainContext } from '../../context/MainContext'
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 import LanguageValue from '../../components/others/languageValue'
-import Button from '../../components/others/Button'
 import { useInsertDocuments } from '../../hooks/useInsertDocuments'
 
 const languagesOrigin = [
-  { value: 0, label: "Português" },
-  { value: 0, label: "Inglês" },
-  { value: 0, label: "Espanhol" },
+  { value: 0, label: "Português - Br" },
+  { value: 0, label: "Português - Pt" },
+  { value: 0, label: "Inglês - EUA" },
+  { value: 0, label: "Inglês - UK" },
+  { value: 0, label: "Espanhol - Es" },
+  { value: 0, label: "Espanhol - L.A." },
+  { value: 0, label: "Alemão - Al" },
+  { value: 0, label: "Alemão - Au" },
+  { value: 0, label: "Chinês - Simp" },
+  { value: 0, label: "Chinês - Tai" },
+  { value: 0, label: "Chinês - Hon" },
   { value: 0, label: "Francês" },
-  { value: 0, label: "Alemão" },
   { value: 0, label: "Italiano" },
   { value: 0, label: "Holandês" },
   { value: 0, label: "Russo" },
   { value: 0, label: "Japonês" },
-  { value: 0, label: "Chinês" },
   { value: 0, label: "Árabe" },
   { value: 0, label: "Hindi" },
   { value: 0, label: "Coreano" },
@@ -55,7 +59,6 @@ const createLanguageCombination = (languages) => {
 }
 
 const Config = () => {
-  const [state] = useMainContext()
   const {document} = useFetchDocument('configSenting', '2963')
   console.log(document);
   const [numWords, setNumWords] = useState()
@@ -66,8 +69,8 @@ const Config = () => {
   const [typeArchives, setTypeArchives] = useState([])
   const [languages, setLanguages] = useState(languagesOrigin.map(language => language.label))
   const [languageCombinations, setLanguageCombinations] = useState(createLanguageCombination(languages))
-  const {insertDocument, insertFiles} = useInsertDocuments("archives")
-  const {updateDocument, response} = useUpdateDocument("configSenting")
+  const {insertFiles} = useInsertDocuments("archives")
+  const {updateDocument} = useUpdateDocument("configSenting")
   const [message, setMessage] = useState()
 
   console.log(typeArchives);
@@ -200,9 +203,9 @@ const Config = () => {
     setNumWords(document?.deadline.numWords)
     setNumHours(document?.deadline.numHours)
     setBaseDeadline(document?.deadline.baseDeadline)
-    if (document?.languageValues) {
-      setLanguageCombinations(document.languageValues)
-    }
+    // if (document?.languageValues) {
+    //   setLanguageCombinations(document.languageValues)
+    // }
     if (document?.multiplers) {
       
       setMultiplers(document.multiplers)

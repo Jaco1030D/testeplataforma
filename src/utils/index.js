@@ -8,13 +8,13 @@ export const calculateValues = (numWords, infos, valueWords, languages, perCent)
     const originLanguage = infos.origin
 
     languagesTarget.forEach(element => {
-      // console.log(valueWords);
+      console.log(valueWords);
 
       const valueTranslation = getValueTranslation(originLanguage, element, languages, valueWords)
 
       console.log(valueTranslation * numWords);
 
-      const valueFinally = numWords * valueTranslation
+      const valueFinally = numWords * (valueTranslation || 0.11)
 
       let valueLanguage = valueFinally
 
@@ -38,6 +38,7 @@ export const calculateValues = (numWords, infos, valueWords, languages, perCent)
   }
 
   const getValueTranslation = (origin, translated, languagesArray, value) => {
+    console.log(languagesArray);
     for (const subArray of languagesArray) {
       for (const obj of subArray.language) {
         if (obj.origin === origin && obj.translated === translated) {

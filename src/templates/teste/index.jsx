@@ -98,7 +98,8 @@ export function Teste({value, setDocument, handleClick, archivesURL, setArchives
         numOrder: last_order[0]?.numOrder ? last_order[0].numOrder + 1 : 2963,
         finalized: false,
         uid: state?.user?.uid,
-        archivesURL
+        archivesURL,
+        user: state.user
       }
       setDocument(cartWithPaymentInfos)
     }
