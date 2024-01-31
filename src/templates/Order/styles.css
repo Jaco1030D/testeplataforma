@@ -4,7 +4,7 @@
 }
 
 .orders-container { /*como a nav e position:fixed é necessario dar um espaçamento na parte esquerda*/
-    margin-left: calc(18% + 50px); /*como eu coloquei a largura da navbar como 18% o minimo que devo colocar de margin é esse, o + 50px é para ficar um pouco mais distante */
+    margin-left: calc(18.29% + 50px); /*como eu coloquei a largura da navbar como 18% o minimo que devo colocar de margin é esse, o + 50px é para ficar um pouco mais distante */
     margin-top: 93px;
 }
 

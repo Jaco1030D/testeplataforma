@@ -97,7 +97,7 @@ export const useAuthentication = () =>{
                 systemErrorMessage = "Senha esta errada"
             } else{
                 console.log(error.message);
-                systemErrorMessage = "Senha/e-mail estão incorreto"
+                systemErrorMessage = "Senha/e-mail estão incorretos"
             }
             
             setError(systemErrorMessage)

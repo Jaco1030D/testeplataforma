@@ -1,5 +1,5 @@
 .box {
-	height: 100vh;
+	height: 80vh;
 	position: relative;
 	width: 784px;
 	
@@ -9,7 +9,6 @@
 	height: 416px;
 	width: 784px;
 	position: absolute;
-    top: 20%;
   }
   
   .box .caixadepreos {
@@ -43,7 +42,7 @@
   
   .box .text-wrapper {
 	color: #000000;
-	font-family: "Atten New-Bold", Helvetica;
+	font-family: "attenBold", Helvetica;
 	font-size: 22px;
 	font-weight: 700;
 	letter-spacing: 0;
@@ -64,7 +63,7 @@
   
   .box .tradutorseniortexto {
 	color: #000000;
-	font-family: "Atten New-Medium", Helvetica;
+	font-family: "attenmedium", Helvetica;
 	font-size: 14px;
 	font-weight: 500;
 	height: 16px;
@@ -80,7 +79,7 @@
   
   .box .div {
 	color: #000000de;
-	font-family: "Atten New-Book", Helvetica;
+	font-family: "attenBook", Helvetica;
 	font-size: 16px;
 	font-weight: 400;
 	height: 16px;
@@ -103,7 +102,7 @@
   
   .box .textoentrega {
 	color: #7f999b;
-	font-family: "Atten New-Book", Helvetica;
+	font-family: "attenBook", Helvetica;
 	font-size: 14.4px;
 	font-weight: 400;
 	letter-spacing: 0;
@@ -116,7 +115,7 @@
   
   .box .dataentrega {
 	color: #007bff;
-	font-family: "Atten New-Bold", Helvetica;
+	font-family: "attenBold", Helvetica;
 	font-size: 14px;
 	font-weight: 700;
 	height: 21px;
@@ -130,7 +129,7 @@
   
   .box .caixadepreco {
 	color: #000000;
-	font-family: "Atten New-Bold", Helvetica;
+	font-family: "attenBold", Helvetica;
 	font-size: 22px;
 	font-weight: 700;
 	letter-spacing: 0;
@@ -151,7 +150,7 @@
   
   .box .text-wrapper-2 {
 	color: #ffffff;
-	font-family: "Atten New-Medium", Helvetica;
+	font-family: "attenmedium", Helvetica;
 	font-size: 16px;
 	font-weight: 500;
 	height: 25px;
@@ -202,7 +201,7 @@
   
   .box .tradutorseniortexto-2 {
 	color: #000000;
-	font-family: "Atten New-Medium", Helvetica;
+	font-family: "attenmedium", Helvetica;
 	font-size: 14px;
 	font-weight: 500;
 	height: 16px;
@@ -258,7 +257,7 @@
   
   .box .tradutorseniortexto-3 {
 	color: #000000;
-	font-family: "Atten New-Medium", Helvetica;
+	font-family: "attenmedium", Helvetica;
 	font-size: 14px;
 	font-weight: 500;
 	height: 17px;

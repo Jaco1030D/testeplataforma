@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+  
   header { /*Parte principal da navbar seria como o conteiner ela é flex e centraliza todos os elementos dentro dela*/
     width: 100%;
-    height: 70px;
+    height: 66.4px;
     display: flex;
     align-items: center; 
     justify-content: center;
@@ -10,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80%;
+    width: 80.23%;
     position: relative;
   }
 
@@ -33,6 +35,13 @@
     justify-content: center;
     font-size: 12.8px;
     cursor: pointer;
+    color: #0f1728;
+    text-align: center;
+    font-family: Inter;
+    font-size: 12.8px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal
   }
 
   .menu_itens li#contrast { /*estiliza o botão contato*/

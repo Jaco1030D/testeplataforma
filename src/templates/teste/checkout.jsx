@@ -65,7 +65,7 @@ export default function CheckoutForm({archivesURL, handleClick}) {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "https://glowing-profiterole-535857.netlify.app/order",
+        return_url: "https://app.magmatranslation.com/order",
       },
     });
 

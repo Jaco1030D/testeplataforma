@@ -95,6 +95,7 @@ const OrdersContainer = () => {
     
         await actions.changeCartItems(cartItems)
     
+        window.scrollTo(0, 0);
         navigate('/checkout')
 
 

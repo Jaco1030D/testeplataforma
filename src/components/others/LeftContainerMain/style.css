@@ -1,5 +1,5 @@
 .title_left_container { /*definir fonte e tamanho do titulo*/
-    font-size: 30px;
+    font-size: 30.92px;
     font-family: 'attenExtrabold' !important;
 }
 
@@ -24,6 +24,7 @@
     font-style: normal;
     font-weight: 300;
     line-height: 31.46px; 
+    max-width: 511.72px;
 }
 
 .main_left {

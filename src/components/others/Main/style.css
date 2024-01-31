@@ -10,9 +10,13 @@
     display: flex;
     width: 80%;
     justify-content: space-between;
+    gap: 4px;
 }
 
-.main_rigth,
-.main_left { /*define o tamanho dos conteudos da esquerda e direita*/
+.main_left{ /*define o tamanho dos conteudos da esquerda e direita*/
+    width: 50%;
+}
+
+.main_rigth {
     width: 50%;
 }

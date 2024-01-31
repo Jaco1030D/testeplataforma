@@ -22,34 +22,44 @@
     top: 326px;
     width: 100%;
   }
-  
+.flex-correction-archive,
+  .flex-correction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .flex-correction {
+    padding: 0px 15px;
+
+  }
+
   .container-form .text-wrapper {
     color: #40676a;
-    font-family: "Atten New-Book", Helvetica;
+    font-family: "attenBook", Helvetica;
     font-size: 16px;
     font-weight: 400;
     height: 28px;
     left: 13px;
     letter-spacing: 0;
     line-height: 28px;
-    position: absolute;
     text-align: center;
     top: 10px;
     white-space: nowrap;
-    width: 126px;
+    max-width: 90%;
+    overflow: clip;
   }
   
   .container-form .img {
     height: 15px;
     left: 560px;
-    position: absolute;
     top: 17px;
     width: 15px;
   }
   
   .container-form .div {
     color: #000000;
-    font-family: "Atten New-Medium", Helvetica;
+    font-family: "attenMedium", Helvetica;
     font-size: 16px;
     font-weight: 500;
     height: 23px;
@@ -91,7 +101,7 @@
   
   .container-form .text-wrapper-3 {
     color: #000000;
-    font-family: "Atten New-Medium", Helvetica;
+    font-family: "attenMedium", Helvetica;
     font-size: 16px;
     font-weight: 500;
     height: 23px;
@@ -135,7 +145,7 @@
   
   .container-form .text-wrapper-5 {
     color: #000000;
-    font-family: "Atten New-Medium", Helvetica;
+    font-family: "attenMedium", Helvetica;
     font-size: 16px;
     font-weight: 500;
     height: 23px;
@@ -204,7 +214,7 @@
   
   .container-form .p {
     color: #000000;
-    font-family: "Atten New-Medium", Helvetica;
+    font-family: "attenMedium", Helvetica;
     font-size: 16px;
     font-weight: 500;
     height: 23px;

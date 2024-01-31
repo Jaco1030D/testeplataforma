@@ -67,23 +67,23 @@ const FormArchive = () => {
   return (
     <div className="container-form">
       <div className="techdesolicitacao">
-        <div className="upload pointer" onClick={() => handleOpen(0)}>
+        <div className="upload flex-correction pointer" onClick={() => handleOpen(0)}>
           <div className="text-wrapper">{state.filePending ? `${state.filePending.length} arquivo(s) adicionado` : 'Clique para buscar'}</div>
           <img className="img" alt="Upload" src={arrow} />
         </div>
         <div className="div">Upload de Arquivos</div>
-        <div className="listadestino pointer" onClick={() => handleOpen(1)}>
-          <div className="text-wrapper-2">{(state.selectValues.translation && displayLanguages(state.selectValues.translation, 8)) || 'Selecione'}</div>
+        <div className="listadestino flex-correction pointer" onClick={() => handleOpen(1)}>
+          <div className="text-wrapper">{(state.selectValues.translation && displayLanguages(state.selectValues.translation, 8)) || 'Selecione'}</div>
           <img className="img" alt="Frame" src={arrow} />
         </div>
         <div className="text-wrapper-3">Traduza para</div>
-        <div className="listaorigem pointer" onClick={() => handleOpen(2)}>
-          <div className="text-wrapper-4">{state.selectValues.origin || 'Selecione'}</div>
+        <div className="listaorigem flex-correction pointer" onClick={() => handleOpen(2)}>
+          <div className="text-wrapper">{state.selectValues.origin || 'Selecione'}</div>
           <img className="img" alt="Frame" src={arrow} />
         </div>
         <div className="text-wrapper-5">Idioma de Origem</div>
-        <div className="listaareas pointer" onClick={() => handleOpen(3)}>
-        <div className="text-wrapper-4"> <img src={state.archiveTypeSelected.icon} alt={state.archiveTypeSelected.name} /> {state.archiveTypeSelected.name || 'Escolha na lista'}</div>
+        <div className="listaareas flex-correction pointer" onClick={() => handleOpen(3)}>
+        <div className="text-wrapper flex-correction-archive text-first" style={{color: '#000'}}> <img src={state.archiveTypeSelected.icon} alt={state.archiveTypeSelected.name} /> {state.archiveTypeSelected.name || 'Escolha na lista'}</div>
           <img className="img" alt="Frame" src={arrow} />
         </div>
         <p className="p">Sobre o que é seu conteúdo?</p>
@@ -95,7 +95,7 @@ const FormArchive = () => {
       {currentComponent}
       </div>
       </Modal>
-      <button onClick={handleScroll} className='show-values_button'>Mostrar preço <img src={arrowDown} alt="" /></button>
+      <button onClick={handleScroll} className='show-values_button'>Mostrar Preços <img src={arrowDown} alt="" /></button>
     </div>
   )
 }
