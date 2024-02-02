@@ -47,11 +47,11 @@
     background: #C59318;
     display: flex;
     font-family: 'attenMedium';
-    width: 122px;
     color: #fff;
     padding: 10.81px 22.392px 11.582px 23.165px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-size: 9px;
+    width: 150px;
+    font-size: 12px;
   }

@@ -15,7 +15,7 @@ const Sidebar = ({name}) => {
     }
   return (
     <div className="sidebar">
-      <img src={logo} alt="Logo" className="logo-sideBar" />
+      <img src={logo} onClick={() => navigate('/')} alt="Logo" className="logo-sideBar pointer" />
       <div className="menu-item">
         <p className="helo">Olá</p>
         <p className="name">{state.user?.displayName ? state.user?.displayName : name}</p>
