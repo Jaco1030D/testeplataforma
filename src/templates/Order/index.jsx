@@ -19,7 +19,7 @@ const apiUrl = 'https://api.stripe.com/v1/checkout/sessions/'
 
 const token = 'sk_test_51OF205HR5yfE4YaFBUT1a4yatFHaX5PYhlFa4mpqRSadaqYngNuWDm9lBqQSgTykKZx519Xb4fMcFn1dZthlKgrK00AwSyXZQx'
 
-const Order = ({setHiddenNavbar}) => {
+const Order = ({name, setHiddenNavbar}) => {
   const [state] = useMainContext()
   console.log(state);
 
@@ -37,12 +37,12 @@ const Order = ({setHiddenNavbar}) => {
   }
       return (
         <div className='orders-main'>
-          <Sidebar />
+          <Sidebar name={name} />
           <div className='orders-container'>
             <h1 className='orders-title'>Meus Projetos</h1>
           {orders && orders.length === 0 ? (
         < >
-          <p>Não foram encontrados orders</p>
+          <p>Não foram encontrados Projetos</p>
           <Link to='/' className='btn'>
             Faça um pedido
           </Link>

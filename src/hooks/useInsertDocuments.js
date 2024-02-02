@@ -61,22 +61,33 @@ export const useInsertDocuments = (docCollection) => {
             type: "LOADING"
         })
         try {
+            const collectionDoc = collection(db, docCollection)
             const newDocument = {...document, createdAt: Timestamp.now()}
 
-            const insertedDocument = await addDoc(
-                collection(db, docCollection),
+            const insertDocument = await addDoc(
+                collectionDoc,
                 newDocument
             )
 
+            console.log(insertDocument.id);
+
+            // const insertDocument = await db.collection(docCollection).add({
+            //     newDocument
+            // })
+
             checkCancelBeforeDispatch({
                 type: "INSERTED_DOC",
-                payload: insertedDocument,
+                payload: insertDocument,
             })
+
+            return insertDocument.id
+
         } catch (error) {
             checkCancelBeforeDispatch({
                 type: "ERROR",
                 payload: error.message,
             })
+            console.log(error);
         }
     }
     useEffect(() => {

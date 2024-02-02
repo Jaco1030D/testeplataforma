@@ -4,6 +4,33 @@ import button from './Button.svg'
 import frame from './Frame.svg'
 import { useMainContext } from '../../../context/MainContext';
 
+const typeMappings = {
+  Brasil: 'Br',
+  Portugal: 'Pt',
+  'Estados Unidos': 'EUA',
+  'Reino Unido': 'UK',
+  Simplificado: 'Simp',
+  Taiwanês: 'Tai',
+  'Hong Kong': 'Hon',
+  Espanha: 'Es',
+  'América Latina': 'L.A.',
+  Alemão: 'Al',
+  Austrália: 'Au'
+};
+
+const abbreviations = {
+  Br: 'Brasil',
+  Pt: 'Portugal',
+  EUA: 'Estados Unidos',
+  UK: 'Reino Unido',
+  Simp: 'Simplificado',
+  Tai: 'Taiwanês',
+  Hon: 'Hong Kong',
+  Es: 'Espanha',
+  'L.A.': 'América Latina',
+  Al: 'Alemão',
+  Au: 'Austrália'
+}
 
 const InputSelectMultiple = ({handleClose}) => {
   const [state, action] = useMainContext()
@@ -28,17 +55,22 @@ const InputSelectMultiple = ({handleClose}) => {
       action.changeSelectedLanguages(key)
     }
 
-    const handleClick = (name) => {
-      const array = [name]
+    const getAbbreviationAndFullName = (fullName) => typeMappings[fullName] || fullName;
+    const getFullName = (abbre) => typeMappings[abbre] || abbre;
+
+    const handleClick = (name, item) => {
+      const abbre = getAbbreviationAndFullName(item)
+      const value = item ? `${name} - ${abbre}` : name
+      const array = [value]
 
       const arrayPrev = state.selectValues.translation
 
-      if (!arrayPrev.includes(name)) {
+      if (!arrayPrev.includes(value)) {
 
         update({translation: array.concat(state.selectValues.translation)})
 
       } else {
-        const index = arrayPrev.indexOf(name)
+        const index = arrayPrev.indexOf(value)
 
         arrayPrev.splice(index, 1)
 
@@ -88,11 +120,10 @@ const InputSelectMultiple = ({handleClose}) => {
                     {itemLanguage.types.length !== 0 && <div className='header_language_languages_group'><span className='name-language' >{itemLanguage.language}</span> {state.selectValues.translation.includes(itemLanguage.language) && <box-icon name='check' ></box-icon>} </div>}
                     {itemLanguage.types.length === 0 && <div className='header_language_languages_group'><span className='name-language'  onClick={() => handleClick(itemLanguage.language)}>{itemLanguage.language}</span> {state.selectValues.translation.includes(itemLanguage.language) && <box-icon name='check' ></box-icon>} </div>}
                     
-                    {itemLanguage.types.map((item, index) => (
+                    {itemLanguage.types.map((item, indexo) => (
                       
                       <div>
-                      <div className="l"></div> <p className='type-language' onClick={() => handleClick(itemLanguage.language + ' - ' + item)} >{item}</p>{state.selectValues.translation.includes(itemLanguage.language + ' - ' + item) && <box-icon name='check' style={{marginTop: '-5px'}} ></box-icon>}
-
+                        <div className="l"></div> <p className='type-language' onClick={() => handleClick(itemLanguage.language, item)}>{item}</p>{state.selectValues.translation.includes(itemLanguage.language + ' - ' + getFullName(item)) && <box-icon name='check' style={{marginTop: '-5px'}} ></box-icon>}                      
                       </div>
                     ))}
                   </div>

@@ -268,9 +268,6 @@ const Config = () => {
           <h2>Aumentar em:</h2>
           {typeArchives && typeArchives.map((item, index) => (
             <div>
-              <img src={item.icon} alt="" />
-              <label htmlFor="">Icon</label>
-              <input type="file" onChange={(e) => handleChange(e.target.files[0], index, 'icon')} multiple />
               <label htmlFor="">Tipo Arquivo</label>
               <input type="text" value={item.name} onChange={(e) => handleChange(e.target.value, index, 'name')} />
 

@@ -6,8 +6,9 @@ import { useUpdateDocument } from '../../../hooks/useUpdateDocument';
 import { useNavigate } from 'react-router-dom';
 import button from './Button.svg'
 import { useMainContext } from '../../../context/MainContext';
+import arrow from './Arrow.svg'
 
-const SmallRectangle = ({ withBorder, title, numOrder, showDropdown, text, finalized = false, handleDonwload, languageSetings, arrayOriginArchives, archivesTranslated, openModal }) => {
+const SmallRectangle = ({ withBorder, title, icon, numOrder, showDropdown, text, finalized = false, handleDonwload, languageSetings, arrayOriginArchives, archivesTranslated, openModal }) => {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
     const [open, setOpen] = useState()
     const handleOpen = () => setOpen(true);
@@ -40,6 +41,7 @@ const SmallRectangle = ({ withBorder, title, numOrder, showDropdown, text, final
       >
         <div className={`content-test ${showDropdown && isDropdownVisible ? 'with-dropdown' : ''}`}>
           <span>{title}</span>
+          
         </div>
         <div className="white-part">
           {showDropdown && isDropdownVisible && (
@@ -89,7 +91,8 @@ const SmallRectangle = ({ withBorder, title, numOrder, showDropdown, text, final
     </div>
             </Modal>
           )}
-          {!showDropdown && openModal && <span onClick={handleOpen}>{text}</span>}
+          {!showDropdown && openModal && <span className= 'rectangle-icon pointer' onClick={handleOpen}>{text} <img src={icon} alt="" /> </span>}
+      
           {!showDropdown && !openModal && <span>{text}</span>}
         </div>
       </div>
@@ -103,7 +106,7 @@ const OrderCard = ({order}) => {
 
     const rectangles = [
         { withBorder: true, title: 'Número do projeto', text: order.numOrder },
-        { withBorder: false, title: 'Par de idiomas', text: <div><p>{order.languageSetings.origin} &gt; <br/> {order.languageSetings.translation[0]}</p></div>, languageSetings: order.languageSetings, openModal: true, numOrder: order.numOrder },
+        { withBorder: false, title: 'Par de idiomas', icon: arrow, text: <div><p>{order.languageSetings.origin} &gt; <br/> {order.languageSetings.translation[0]}</p></div>, languageSetings: order.languageSetings, openModal: true, numOrder: order.numOrder },
         { withBorder: true, title: 'Tipo', text: <div><p className='typeService'>{order.typeService}</p><p className='numWords'>{order.numWords} palavras</p></div> },
         { withBorder: false, title: 'Arquivos', showDropdown: true, text: '', finalized: order?.finalized, arrayOriginArchives: order.archivesURL, archivesTranslated: order.archivesTranslated},
         { withBorder: true, title: 'Entrega', text: `${order.finalDate}h`},
@@ -204,6 +207,7 @@ const OrderCard = ({order}) => {
               openModal={rectangle.openModal}
               languageSetings={rectangle.languageSetings}
               numOrder={rectangle.numOrder}
+              icon={rectangle.icon}
             />
           ))}
           <div className="large-rectangle">

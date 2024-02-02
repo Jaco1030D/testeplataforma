@@ -167,6 +167,11 @@
     margin-top: 26.12px;
   }
 
+  .rectangle-icon {
+    display: flex;
+    gap: 9px;
+  }
+
   .container-inputSelect.order p {
     color: #40676A;
     font-size: 16px;

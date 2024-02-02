@@ -97,7 +97,7 @@ const App = () => {
               <Route path='/teste' element={<TesteDeComponentes />} />
 
               <Route path='/order' element={
-                user ? <Order setHiddenNavbar={setHiddenNavbar}/> : <Navigate to="/login" />
+                user ? <Order name={name} setHiddenNavbar={setHiddenNavbar}/> : <Navigate to="/login" />
               } />
               <Route path='/checkout/' element={
                 (user && state.cart !== undefined) ? <Checkout name={name}/> : <Navigate to="/register" />

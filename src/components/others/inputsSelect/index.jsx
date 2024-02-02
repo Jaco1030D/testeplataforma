@@ -5,6 +5,34 @@ import frame from './Frame.svg'
 import l from './Label.svg'
 import { useMainContext } from '../../../context/MainContext'
 
+const typeMappings = {
+  Brasil: 'Br',
+  Portugal: 'Pt',
+  'Estados Unidos': 'EUA',
+  'Reino Unido': 'UK',
+  Simplificado: 'Simp',
+  Taiwanês: 'Tai',
+  'Hong Kong': 'Hon',
+  Espanha: 'Es',
+  'América Latina': 'L.A.',
+  Alemão: 'Al',
+  Austrália: 'Au'
+};
+
+const abbreviations = {
+  Br: 'Brasil',
+  Pt: 'Portugal',
+  EUA: 'Estados Unidos',
+  UK: 'Reino Unido',
+  Simp: 'Simplificado',
+  Tai: 'Taiwanês',
+  Hon: 'Hong Kong',
+  Es: 'Espanha',
+  'L.A.': 'América Latina',
+  Al: 'Alemão',
+  Au: 'Austrália'
+}
+
 const InputSelect = ({handleClose}) => {
   const [state, action] = useMainContext()
   const [languages, setLanguages] = useState(state.languagesData)
@@ -28,8 +56,16 @@ const InputSelect = ({handleClose}) => {
     console.log(key + 'aqui');
     action.changeSelectedLanguages(key)
   }
-  const handleClick = (name) => {
-    update({origin: name})
+
+  const getAbbreviationAndFullName = (fullName) => typeMappings[fullName] || fullName;
+  const getFullName = (abbre) => typeMappings[abbre] || abbre;
+
+  
+  const handleClick = (name, item) => {
+    
+    const abbre = getAbbreviationAndFullName(item)
+    const value = item ? `${name} - ${abbre}` : name
+    update({origin: value})
     handleClose()
   }
   useEffect(() => {
@@ -59,7 +95,7 @@ const InputSelect = ({handleClose}) => {
                     <div className='header_language_languages_group'><span className='name-language' onClick={() => handleClick(itemLanguage.language)}>{itemLanguage.language}</span> {state.selectValues.origin.includes(itemLanguage.language) && <box-icon name='check' ></box-icon>}</div>
                     {itemLanguage.types.map((item, index) => (
                       <div>
-                      <div className="l"></div> <p className='type-language' onClick={() => handleClick(itemLanguage.language + ' - ' + item)}>{item}</p>{state.selectValues.origin.includes(itemLanguage.language + ' - ' + item) && <box-icon name='check' style={{marginTop: '-5px'}} ></box-icon>}
+                      <div className="l"></div> <p className='type-language' onClick={() => handleClick(itemLanguage.language, item)}>{item}</p>{state.selectValues.origin.includes(itemLanguage.language + ' - ' + getFullName(item)) && <box-icon name='check' style={{marginTop: '-5px'}} ></box-icon>}
                       </div>
                     ))}
                   </div>

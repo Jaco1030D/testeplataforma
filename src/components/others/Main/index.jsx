@@ -17,11 +17,10 @@ const Main = () => {
         </div>
         {
         state.showValues &&
-        state.archiveTypeSelected.name !== 'Área certificada' &&
+        state.archiveTypeSelected.name !== 'Juramentada /Certificada' &&
+        state.filePending.length !== 0 &&
+        state.archiveTypeSelected?.name &&
         <OrdersContainer /> 
-        }
-        {
-          state.archiveTypeSelected.name === 'Área certificada' && <p>Não trabalhamos com essa conteudo ainda</p>
         }
     </div>
   )

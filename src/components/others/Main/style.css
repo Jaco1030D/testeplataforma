@@ -20,3 +20,24 @@
 .main_rigth {
     width: 50%;
 }
+
+@media (max-width: 1380px) {
+    .main_rigth {
+        width: 45%;
+    }
+    .main_left {
+        width: 55%;
+    }
+}
+
+@media (max-width: 500px) {
+    .main_rigth{
+        width: 0%;
+        display: none;
+    }
+
+    .main_left {
+        width: 100%;
+    }
+
+}

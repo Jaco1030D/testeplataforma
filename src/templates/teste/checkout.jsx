@@ -8,8 +8,10 @@ import { useMainContext } from "../../context/MainContext";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useInsertDocuments } from "../../hooks/useInsertDocuments";
 import { useParams } from "react-router-dom";
+import { useDeleteDocuments } from "../../hooks/useDeleteDocuments";
 
 export default function CheckoutForm({archivesURL, handleClick}) {
+  const {deleteDocument} = useDeleteDocuments('archives')
   const {id} = useParams()
   const stripe = useStripe();
   const elements = useElements();
@@ -50,11 +52,14 @@ export default function CheckoutForm({archivesURL, handleClick}) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let idDoc
 
     if (!id) {
-      await handleClick()
-    }
+      const id = await handleClick()
 
+      idDoc = id
+      console.log('Id Checkout' + id);
+    }
     if (!stripe || !elements) {
       return;
     }
@@ -64,8 +69,7 @@ export default function CheckoutForm({archivesURL, handleClick}) {
     const response = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        // Make sure to change this to your payment completion page
-        return_url: "https://app.magmatranslation.com/order",
+        return_url: "http://localhost:8888/order",
       },
     });
 
@@ -73,9 +77,12 @@ export default function CheckoutForm({archivesURL, handleClick}) {
 
     if (response.error.type === "card_error" || response.error.type === "validation_error") {
       setMessage(response.error.message);
+      deleteDocument(idDoc)
     } else {
-      setMessage("An unexpected error occurred.");
+      setMessage("Tente novamente mais tarde")
+      deleteDocument(idDoc)
     }
+
 
     setIsLoading(false);
   };

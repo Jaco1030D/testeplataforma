@@ -35,7 +35,7 @@ const Checkout = ({name}) => {
 
       // setTextLoading(30)
 
-      await insertDocument(newDocument)
+      const id = await insertDocument(newDocument)
 
       // setTextLoading(80)
 
@@ -57,6 +57,8 @@ const Checkout = ({name}) => {
       // })
 
       // setTextLoading(100)
+
+      return id
 
     } catch (error) {
       console.log(error);

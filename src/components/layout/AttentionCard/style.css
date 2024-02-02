@@ -1,0 +1,27 @@
+.warning-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .warning-content {
+    padding: 20px;
+    border: 2px solid #FF6347; /* Cor vermelha para indicar atenção */
+    border-radius: 8px;
+    text-align: center;
+    background-color: #FFE4E1; /* Cor de fundo rosa claro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+
+  .warning-content h2 {
+    color: #FF6347;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .warning-icon {
+    font-size: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }

@@ -29,6 +29,9 @@
     justify-content: space-between;
   }
 
+  .flex-correction-archive {
+    gap: 5px;
+  }
   .flex-correction {
     padding: 0px 15px;
 
@@ -224,7 +227,6 @@
     position: absolute;
     top: 0;
     white-space: nowrap;
-    width: 566px;
   }
   
   .show-values_button {

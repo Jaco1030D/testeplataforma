@@ -1,5 +1,6 @@
 .sidebar { /*estiliza o container da navbar*/
     width: 18%;
+    font-family: Inter;
     height: 100vh;
     position: fixed; /*para quando rolar a pagina a navbar ficar fixa*/
     border-right: 1px solid #000; /*adicionar a linha de separação entre a navbar e os projetos*/
@@ -26,8 +27,14 @@
   .menu-item p { /*estiliza as letras da navbar*/
     font-size: 12.8px;
     font-style: normal;
+    font-family: Inter;
     font-weight: 400;
-    line-height: normal;
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0em;
+
   }
   
   .menu-item .helo { /*estiliza o 'Ola'*/
@@ -39,10 +46,12 @@
     border-radius: 13.958px;
     background: #C59318;
     display: flex;
+    font-family: 'attenMedium';
     width: 122px;
     color: #fff;
     padding: 10.81px 22.392px 11.582px 23.165px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    font-size: 9px;
   }

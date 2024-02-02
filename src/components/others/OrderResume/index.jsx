@@ -3,7 +3,6 @@ import './style.css'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const OrderResume = ({deadline, translation, origin, value, finalDate, typeService, numWords, archiveType, arrayValues, handleSubmitValues, archiveURL}) => {
-  const {id} = useParams()
   const navigate = useNavigate()
 
   const handleClick = async () => {
@@ -19,9 +18,9 @@ const OrderResume = ({deadline, translation, origin, value, finalDate, typeServi
   <div className="item-resume">De {origin} para:</div>
   {translation.map((item, index) => (
 
-  <div key={item} className="item-resume"><p className='language-item'>{item}</p> <p>{arrayValues[index].toFixed(2)}</p></div>
+  <div key={item} className="item-resume"><p className='language-item'>{item}</p> <p>&euro; {arrayValues[index].toFixed(2)}</p></div>
   ))}
-  <div className="item-resume"><p className='total-item-resume'>TOTAL</p> <p>{value}</p></div>
+  <div className="item-resume"><p className='total-item-resume'>TOTAL</p> <p>&euro; {value}</p></div>
 
 </div>
 
@@ -38,7 +37,7 @@ const OrderResume = ({deadline, translation, origin, value, finalDate, typeServi
   <div className="item-resume"><p>Area do arquivo</p> <p>{archiveType}</p></div>
 </div>
 
-<button className='btn-back' onClick={handleClick} disabled={!archiveURL && !id}>Retornar para etapa anterior</button>
+<button className='btn-back' onClick={handleClick}>Retornar para etapa anterior</button>
         </div>
     </div>
   )
