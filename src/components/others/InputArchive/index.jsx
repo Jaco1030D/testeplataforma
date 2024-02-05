@@ -11,7 +11,7 @@ const InputArchive = ({handleClose, icons}) => {
         handleClose()
     }
   return (
-    <div className="destinoidiomas">
+    <div className="archivesTypes">
       <div className="content-list-archive">
         <div className={`header-list-archive ${!state.archiveTypeSelected.name && 'selected'}`}>
             <p>Escolha na lista</p>

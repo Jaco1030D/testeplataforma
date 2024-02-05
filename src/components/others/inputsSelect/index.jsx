@@ -15,7 +15,7 @@ const typeMappings = {
   'Hong Kong': 'Hon',
   Espanha: 'Es',
   'América Latina': 'L.A.',
-  Alemão: 'Al',
+  Alemanha: 'Al',
   Austrália: 'Au'
 };
 
@@ -29,7 +29,7 @@ const abbreviations = {
   Hon: 'Hong Kong',
   Es: 'Espanha',
   'L.A.': 'América Latina',
-  Al: 'Alemão',
+  Al: 'Alemanha',
   Au: 'Austrália'
 }
 
@@ -105,7 +105,6 @@ const InputSelect = ({handleClose}) => {
           </div>
 
         </div>
-        <div className="overlap">
           <div className="busca">
             <p className="frasehero">Qual é o idioma de origem?</p>
             <img className="img pointer" alt="Button" onClick={handleClose} src={button} />
@@ -119,7 +118,7 @@ const InputSelect = ({handleClose}) => {
               <div className="fieldset" />
             </div>
           </div>
-        </div>
+       
       </div>
     </div>
   )

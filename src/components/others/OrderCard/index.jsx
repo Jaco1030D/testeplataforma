@@ -8,6 +8,33 @@ import button from './Button.svg'
 import { useMainContext } from '../../../context/MainContext';
 import arrow from './Arrow.svg'
 
+const abbreviations = {
+  Br: 'Brasil',
+  Pt: 'Portugal',
+  EUA: 'Estados Unidos',
+  UK: 'Reino Unido',
+  Simp: 'Simplificado',
+  Tai: 'Taiwanês',
+  Hon: 'Hong Kong',
+  Es: 'Espanha',
+  'L.A.': 'América Latina',
+  Al: 'Alemão',
+  Au: 'Austrália'
+}
+
+const getFullName = (abbre) => abbreviations[abbre] || abbre;
+
+const getFullNameLanguage = (languageWithAbreviation) => {
+  const arrayLanguage = languageWithAbreviation.split(' ')
+
+  const language = arrayLanguage[0]
+
+  const subLanguage = arrayLanguage[arrayLanguage.length - 1]
+
+  const fullNameLanguageTypes = getFullName(subLanguage)
+
+  return `${language} - ${fullNameLanguageTypes}`
+}
 const SmallRectangle = ({ withBorder, title, icon, numOrder, showDropdown, text, finalized = false, handleDonwload, languageSetings, arrayOriginArchives, archivesTranslated, openModal }) => {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
     const [open, setOpen] = useState()
@@ -63,16 +90,12 @@ const SmallRectangle = ({ withBorder, title, icon, numOrder, showDropdown, text,
               <div className="destinoidiomas">
       <div className="div-order">
         <div className="container-inputSelect order">
-        <p>Do {languageSetings.origin} para:</p>
+        <p>Do {getFullNameLanguage(languageSetings.origin)} para:</p>
           <div className="content-inputSelect">
             {languageSetings.translation && languageSetings.translation.map((item, index) => (
               <div key={index} className='languages_group pointer'>
-              <div className='header_language_languages_group'><span className='name-language'>{item}</span> </div>
-              {item?.types?.map((item, index) => (
-                <div>
-                <div className="l"></div> <p className='type-language'>{item}</p>
-                </div>
-              ))}
+              <div className='header_language_languages_group'><span className='name-language'>{getFullNameLanguage(item)}</span> </div>
+              
             </div>
             )
             )}
@@ -98,7 +121,7 @@ const SmallRectangle = ({ withBorder, title, icon, numOrder, showDropdown, text,
       </div>
     );
   };
-const OrderCard = ({order}) => {
+const OrderCard = ({order, name}) => {
   const [status, setStatus] = useState()
   const [state, actions] = useMainContext()
   const {updateDocument} = useUpdateDocument("archives")
@@ -166,14 +189,14 @@ const OrderCard = ({order}) => {
               setStatus(<div className='status-actual in-progress' >Em andamento</div>)
 
               axios.post("/.netlify/functions/sendEmail", {
-                  name: order.user.displayName,
+                  name: order.user.displayName || name,
                   email: order.user.email,
                   order: order,
                   fromUser: true,
                   finalized: false
               })
               axios.post("/.netlify/functions/sendEmail", {
-                  name: order.user.displayName,
+                  name: order.user.displayName || name,
                   email: order.user.email,
                   order: order,
                   fromUser: false,
@@ -208,6 +231,7 @@ const OrderCard = ({order}) => {
               languageSetings={rectangle.languageSetings}
               numOrder={rectangle.numOrder}
               icon={rectangle.icon}
+
             />
           ))}
           <div className="large-rectangle">

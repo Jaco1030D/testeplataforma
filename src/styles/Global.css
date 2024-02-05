@@ -190,6 +190,6 @@ nav li a {
   
   .error {
     color: #ff0000;
-    margin-top: 10px;
+    margin-top: -10px;
     font-size: 14px;
   }

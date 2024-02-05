@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
       if (order === null) {
           console.log('login');
             options = {
-              subject: 'Bem vindo a magma translatio',
+              subject: 'Bem vindo a magma translation',
                 html: `
                 <html>
                   <head>
@@ -85,7 +85,7 @@ const transporter = nodemailer.createTransport({
           }
       } else if (fromUser) { // sera enviado ao usuario quando o usuario finalizar compra
         options = {
-          subject: 'Produto comprado com sucesso',
+          subject: 'Pedido recebido e pago com sucesso',
             html: `
             <html>
               <head>
@@ -107,10 +107,31 @@ const transporter = nodemailer.createTransport({
               </head>
               <body>
                 <div class="container">
-                  <h2>Obrigado por se cadastrar!</h2>
-                  <p>Olá ${name},</p>
-                  <p>Seu pedido foi pago com sucesso ja estamos trabalhando na tradução, assim que ficar pronto avisamos por aqui</p>
-                  <p>Atenciosamente,<br>Magma Translation</p>
+                <h2>Confirmação de Pedido</h2>
+                
+                <p>Olá ${name},</p>
+                
+                <p>Obrigado por escolher nossos serviços de tradução. Abaixo estão os detalhes do seu pedido:</p>
+                
+                <strong>Dados do Pedido:</strong>
+                <ul>
+                    <li><strong>Arquivo:</strong> ${order.name}</li>
+                    <li><strong>Tipo de Arquivo:</strong> ${order.archiveType}</li>
+                    <li><strong>Idioma de Origem:</strong> ${order.languageSetings.origin}</li>
+                    <li><strong>Idiomas para Tradução:</strong> ${order.languageSetings.translation.join(', ')}</li>
+                    <li><strong>Plano Escolhido:</strong> ${order.TypeService}</li>
+                    <li><strong>Número de Palavras:</strong> ${order.numWords}</li>
+                    <li><strong>Número de Páginas:</strong> ${order.numPages}</li>
+                    <li><strong>Prazo de Entrega:</strong> ${order.finalDate}h</li>
+                    <li><strong>Valor Total:</strong> ${order.value}</li>
+                </ul>
+                
+                <p>Seu pagamento foi confirmado com sucesso, e seu pedido está em processamento. Em breve, você receberá a tradução concluída.</p>
+                
+                <p>Obrigado novamente por escolher nossos serviços. Se você tiver alguma dúvida ou precisar de mais informações, sinta-se à vontade para entrar em contato conosco.</p>
+                
+                <p>Atenciosamente,<br>
+                Magma translation</p>
                 </div>
               </body>
             </html>

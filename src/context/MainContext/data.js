@@ -63,7 +63,7 @@ export const initialState = {
         { language: 'Inglês', types: ['Estados Unidos', 'Reino Unido'] },
         { language: 'Chinês', types: ['Simplificado', 'Taiwanês', 'Hong Kong'] },
         { language: 'Espanhol', types: ['Espanha', 'América Latina'] },
-        { language: 'Alemão', types: ['Alemão', 'Austrália'] },
+        { language: 'Alemão', types: ['Alemanha', 'Austrália'] },
         { language: 'Francês', types: [] },
         { language: 'Italiano', types: [] },
         { language: 'Holandês', types: [] },

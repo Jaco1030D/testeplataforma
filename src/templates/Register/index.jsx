@@ -5,18 +5,55 @@ import axios from 'axios';
 import svg from './arrow.svg'
 import vector from './vector.svg'
 
+const validatePassword = (password) => {
+    const regexSpecialCharacter = /[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]/;
+    const regexLowercaseLetter = /[a-z]/;
+    const regexUppercaseLetter = /[A-Z]/;
+    const regexNumber = /\d/;
+
+    const hasSpecialCharacter = regexSpecialCharacter.test(password);
+    const hasLowercaseLetter = regexLowercaseLetter.test(password);
+    const hasUppercaseLetter = regexUppercaseLetter.test(password);
+    const hasNumber = regexNumber.test(password);
+    const hasSufficientLength = password.length >= 8;
+
+    // return hasSpecialCharacter && hasLowercaseLetter && hasUppercaseLetter && hasNumber && hasSufficientLength;
+
+    if (hasSpecialCharacter && hasLowercaseLetter && hasUppercaseLetter && hasNumber && hasSufficientLength) {
+        return false;
+    } else {
+        let errorMessage = "A senha deve conter:";
+        
+        if (!hasSpecialCharacter) errorMessage += " um caractere especial;";
+        if (!hasLowercaseLetter) errorMessage += " uma letra minúscula;";
+        if (!hasUppercaseLetter) errorMessage += " uma letra maiúscula;";
+        if (!hasNumber) errorMessage += " um número;";
+        if (!hasSufficientLength) errorMessage += " no mínimo 8 caracteres;";
+
+        return errorMessage;
+    }
+}
+
 function Register({setName}) {
   const [displayName, setDisplayName] = useState("")
   const navigate = useNavigate()
   const [isChecked, setChecked] = useState(false);
     const [email, setEmail] = useState("")
     const [password, setpassword] = useState("")
-    const [confirmpassword, setconfirmpassword] = useState("")
     const [error, setError] = useState("")
+    const [visibility, setVisibility] = useState(false)
 
     const {createUser, loading, error: errorAuth} = useAuthentication()
+
+    
+
     const handleSubmit = async (e) =>{
         e.preventDefault()
+
+        if (validatePassword(password)) {
+            setError('Senha precisa de: 1 caracter especial, 1 letra maiuscula, 1 letra minuscula, 1 numero e 8 caracteres')
+           return 
+        }
         setError("")
 
         const user = {
@@ -30,6 +67,19 @@ function Register({setName}) {
         
         setName(res?.displayName || null)
 
+
+    }
+
+    const onChangePassword = (value) => {
+        const error = validatePassword(value)
+
+        if (error) {
+            setError(error)
+        } else {
+            setError('')
+        }
+
+        setpassword(value)
 
     }
     const handleCheckboxChange = () => {
@@ -51,9 +101,14 @@ function Register({setName}) {
         <label>
             <input type="email" name='email' required placeholder='Email...' value={email} onChange={(e) => setEmail(e.target.value)}/>
         </label>
-        <label>
-            <input type="password" name='password' required placeholder='Senha...' value={password} onChange={(e) => setpassword(e.target.value)} />
+        <label style={{position: 'relative'}}>
+            <input type={visibility ? 'text' : 'password'} name='password' required placeholder='Senha...' value={password} onChange={(e) => onChangePassword(e.target.value)} />
+            {!visibility && <box-icon type='solid' style={{position: 'absolute', top: '25%', right: '1%', opacity: '0.5', cursor: 'pointer'}} onClick={() => setVisibility(!visibility)} name='show'></box-icon>}
+            {visibility && <box-icon type='solid' style={{position: 'absolute', top: '25%', right: '1%', opacity: '0.5', cursor: 'pointer'}} onClick={() => setVisibility(!visibility)} name='hide'></box-icon>} 
+            
+            {/* <box-icon type='solid' style={{position: 'absolute', top: '25%', right: '1%', opacity: '0.5', cursor: 'pointer'}} onClick={() => setVisibility(!visibility)} name='low-vision'></box-icon> */}
         </label>
+            {error && <p className='error' >{error}</p>}
         </div>
         
         {!loading && <button className='btn' disabled={!displayName | !email | !password | !isChecked} >Cadastrar</button> }
@@ -73,7 +128,6 @@ function Register({setName}) {
 
         <div id='login_link' onClick={() => navigate('/login')}><p> Já tem uma conta? Faça login </p> <img src={svg} alt="" /></div>
         
-        {error && <p className='error' >{error}</p>}
         </form>
     <img src={vector} id='img-vector' alt="" />
     </>

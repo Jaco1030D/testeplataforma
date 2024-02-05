@@ -120,12 +120,17 @@ const InputSelectMultiple = ({handleClose}) => {
                     {itemLanguage.types.length !== 0 && <div className='header_language_languages_group'><span className='name-language' >{itemLanguage.language}</span> {state.selectValues.translation.includes(itemLanguage.language) && <box-icon name='check' ></box-icon>} </div>}
                     {itemLanguage.types.length === 0 && <div className='header_language_languages_group'><span className='name-language'  onClick={() => handleClick(itemLanguage.language)}>{itemLanguage.language}</span> {state.selectValues.translation.includes(itemLanguage.language) && <box-icon name='check' ></box-icon>} </div>}
                     
-                    {itemLanguage.types.map((item, indexo) => (
-                      
-                      <div>
-                        <div className="l"></div> <p className='type-language' onClick={() => handleClick(itemLanguage.language, item)}>{item}</p>{state.selectValues.translation.includes(itemLanguage.language + ' - ' + getFullName(item)) && <box-icon name='check' style={{marginTop: '-5px'}} ></box-icon>}                      
-                      </div>
-                    ))}
+                    {itemLanguage.types.map((item, indexo) => 
+                    {
+                      if (!state.selectValues.origin.includes(getAbbreviationAndFullName(item))) {
+                        return (
+                          <div>
+                            <div className="l"></div> <p className='type-language' onClick={() => handleClick(itemLanguage.language, item)}>{item}</p>{state.selectValues.translation.includes(itemLanguage.language + ' - ' + getFullName(item)) && <box-icon name='check' style={{marginTop: '-5px'}} ></box-icon>}                      
+                          </div>
+                        )
+                      }
+                    }
+                    )}
                   </div>
                 )
               }
@@ -133,7 +138,6 @@ const InputSelectMultiple = ({handleClose}) => {
           </div>
 
         </div>
-        <div className="overlap">
           <div className="busca">
             <p className="frasehero">Para quais idiomas você está traduzindo?</p>
             <img className="img pointer" alt="Button" onClick={handleClose} src={button} />
@@ -147,7 +151,7 @@ const InputSelectMultiple = ({handleClose}) => {
               <div className="fieldset" />
             </div>
           </div>
-        </div>
+        
       </div>
     </div>
   )

@@ -50,7 +50,7 @@ const Order = ({name, setHiddenNavbar}) => {
       ) : (
         <div className='orders-content'>
           {orders && orders.map((item, index) => (
-            <OrderCard order={item} />
+            <OrderCard order={item} name={name} />
           ))}
         </div> 
         
