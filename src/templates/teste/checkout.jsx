@@ -69,7 +69,7 @@ export default function CheckoutForm({archivesURL, handleClick}) {
     const response = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:8888/order",
+        return_url: "https://app.magmatranslation.com/order",
       },
     });
 
