@@ -53,7 +53,12 @@ const FormArchive = () => {
   const [state, actions] = useMainContext()
   const [currentComponent, setCurrentComponent] = useState()
   const [open, setOpen] = useState(false);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    if (state.filePending.length !== state.fileUpload.length) {
+      return
+    }
+    setOpen(false)
+  };
   const handleScroll = async () => {
     if (!state.archiveTypeSelected?.name) {
       handleOpen(4, 'Escolha a area de conteudo do arquivo')
@@ -61,9 +66,12 @@ const FormArchive = () => {
     if (state.archiveTypeSelected.name === 'Juramentada /Certificada') {
       handleOpen(4)
     } else
-    if (!state.selectValues.origin || state.selectValues.translation.length === 0) {
-      handleOpen(4, 'Escolha os idiomas')
+    if (!state.selectValues.origin) {
+      handleOpen(4, 'Escolha o idioma de origem')
     } else 
+    if (state.selectValues.translation.length === 0) {
+      handleOpen(4, 'Escolha o idioma de destino')
+    } else
     if (state.filePending.length === 0) {
       handleOpen(4, 'Coloque pelo menos 1 arquivo')
     } else

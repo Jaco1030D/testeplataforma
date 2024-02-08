@@ -22,7 +22,7 @@ const Main = () => {
   return (
     <div className='main_hero'>
         <div className="hero-section">
-        {/* <button onClick={handleClcik}>Teste apagar</button> */}
+        <button onClick={handleClcik}>Teste apagar</button>
         <LeftContainerMain />
         <RigthContainerMain />
         </div>

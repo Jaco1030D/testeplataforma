@@ -326,7 +326,7 @@ const getNumWordsArchive = async (file, progressCallback) => {
 
   const {nameWithout, extension} = getExtension(file)
 
-  const {numWords, numPages} = extension === "pdf" ? await getNumWordsPDF(file, progressCallback) : extension === "docx" ? await getNumWordsDOCX(file, progressCallback) : await countWordsInXLSX(file)
+  const {numWords, numPages} = extension === "pdf" ? await getNumWordsPDF(file, progressCallback) : extension === "docx" ? await getNumWordsDOCX(file, progressCallback) : await countWordsInXLSX(file, progressCallback)
 
   return {nameWithout, numWords, numPages}
 }

@@ -213,7 +213,7 @@ const OrderCard = ({order, name}) => {
           })
         }
         
-      },[])
+      },[order])
 
     
       return (

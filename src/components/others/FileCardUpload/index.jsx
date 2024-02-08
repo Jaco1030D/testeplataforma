@@ -16,8 +16,6 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
   const progressCallback = (value) => {
     setProgressBar(parseInt(value))
   }
-
-  console.log(name.length);
   useEffect(() => {
     
     const isFileUpload = state.fileUpload.find(files => files.name === file.name)
@@ -77,7 +75,7 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
         <i className="fas fa-file-alt"></i>
         <div className="content">
           <div className="details">
-            <span className="name">{name.length > 30 ? `${name.substring(0, 45)}...` : name}</span>
+            <span className="name">{name.length > 30 ? `${name.substring(0, 30)}...` : name}</span>
             <span className="percent">{parseInt(progressBar * multipler)}%</span>
           </div>
           <div className="progress-bar">

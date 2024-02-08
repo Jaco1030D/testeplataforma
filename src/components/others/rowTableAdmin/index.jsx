@@ -47,16 +47,18 @@ const RowTableAdmin = ({order}) => {
 
     const handleClick = async () => {
         const arrayArchive = []
+        const namesTranslated = []
 
         for (let index = 0; index < files.length; index++) {
 
             const downloadArchive = await insertFiles(files[index])
 
             arrayArchive.push({downloadArchive, name: files[index].name})
+            namesTranslated.push(files[index].name)
             
         }
 
-        updateDocument(order.id, {archivesTranslated: arrayArchive, finalized: true})
+        updateDocument(order.id, {archivesTranslated: arrayArchive, finalized: true, namesTranslated})
 
         axios.post("/.netlify/functions/sendEmail", {
             name: order.user.displayName,
@@ -127,6 +129,7 @@ const RowTableAdmin = ({order}) => {
                     <br />
                     <p>Arquivos para tradução</p>
                     <div className='archives_download' >
+                        
                     {order.archivesURL.map((item, index) => (
 
                     <p key={index} onClick={() => handleDownload(item.downloadArchive, item.name)} style={{cursor: 'pointer', color: 'blue'}}>{item?.name}</p>

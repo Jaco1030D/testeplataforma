@@ -16,9 +16,6 @@ const InputDrop = ({handleClose}) => {
     const input = useRef()
   const [functionsExecuted, setFunctionsExecuted] = useState(false);
     const [percent, setPercent] = useState(0.8)
-    const progressCallback = (value) => {
-      setNumWords(parseInt( value ))
-    } 
     // function progressCallback(params) {
     //   console.log(params);
     // }
@@ -44,7 +41,7 @@ const InputDrop = ({handleClose}) => {
       setMessageError('')
       if (e.dataTransfer.files.length > 0) {
         const acceptedFiles = Array.from(e.dataTransfer.files).filter(file =>
-          file.name.toLowerCase().endsWith('.pdf') || file.name.toLowerCase().endsWith('.docx')
+          file.name.toLowerCase().endsWith('.pdf') || file.name.toLowerCase().endsWith('.docx') || file.name.toLowerCase().endsWith('.xlsx')
         );
       
         if (acceptedFiles.length > 0) {
@@ -86,7 +83,7 @@ const InputDrop = ({handleClose}) => {
                 <img src={upload} alt="upload-img" className='img-upload' />
             </label>
             Adicionados: {state.filePending.length}
-            <input ref={input} style={{display: 'none'}} onDragOver={(e) => e.preventDefault()} type="file" id='file' name='archive8' onDrop={handleDrop} onChange={handleFileChange} multiple accept=".pdf, .docx"/>
+            <input ref={input} style={{display: 'none'}} onDragOver={(e) => e.preventDefault()} type="file" id='file' name='archive8' onDrop={handleDrop} onChange={handleFileChange} multiple accept=".pdf, .docx, .xlsx"/>
         </div>
       </div>
       <div className="busca">
@@ -98,7 +95,7 @@ const InputDrop = ({handleClose}) => {
             <div className="text-wrapper pointer" onClick={handleReset}>Resetar</div>
           </div>
           <div className="button pointer" onClick={handleClose}>
-            <div className="text-wrapper-2 drop" >Concluido</div>
+            <div className="text-wrapper-2 drop"  >{state.filePending.length !== state.fileUpload.length ? 'Aguarde...' : 'Concluido'}</div>
           </div>
         </div>
       </div>
