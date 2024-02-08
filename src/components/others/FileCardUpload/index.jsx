@@ -78,10 +78,10 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
         <div className="content">
           <div className="details">
             <span className="name">{name.length > 30 ? `${name.substring(0, 45)}...` : name}</span>
-            <span className="percent">{progressBar * multipler}%</span>
+            <span className="percent">{parseInt(progressBar * multipler)}%</span>
           </div>
           <div className="progress-bar">
-            <div className="progress" style={{width: `${progressBar * multipler}%`}}></div>
+            <div className="progress" style={{width: `${parseInt(progressBar * multipler)}%`}}></div>
           </div>
           {progressBar * multipler === 100 && <span>Palavras {numWords}</span>}
           
