@@ -56,7 +56,7 @@ const FormArchive = () => {
   const handleClose = () => setOpen(false);
   const handleScroll = async () => {
     if (!state.archiveTypeSelected?.name) {
-      handleOpen(4, 'Escolha um tipo de arquivo')
+      handleOpen(4, 'Escolha a area de conteudo do arquivo')
     } else 
     if (state.archiveTypeSelected.name === 'Juramentada /Certificada') {
       handleOpen(4)
@@ -112,7 +112,7 @@ const FormArchive = () => {
       // <SelectInputMultiple languages={state.languages} id={'translation'} title='Traduzir para' values={state.selectValues.origin} name='translation' update={update}/>,
       <InputSelect handleClose={() => handleClick()}  />,
       <InputArchive icons={icons} handleClose={() => handleClick()} />,
-      <AttentionCard text={text || 'Não trabalhamos com a área juramentada.'} />
+      <AttentionCard text={text || 'Atualmente, ainda não estamos trabalhando com Juramentada. Em breve ofereceremos este serviço.'} />
       
     ]
     setCurrentComponent(elements[num])

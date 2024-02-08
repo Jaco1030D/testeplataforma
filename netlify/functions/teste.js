@@ -10,7 +10,7 @@ exports.handler = async (event) => {
 
     try {
         const paymentIntent = await stripe.paymentIntents.create({
-            amount: body.value * 100,
+            amount: parseInt(body.value * 100),
             currency: "eur",
             automatic_payment_methods: {
               enabled: true,

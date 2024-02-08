@@ -95,7 +95,7 @@ export default function CheckoutForm({archivesURL, handleClick}) {
     <form className="pay" id="payment-form" onSubmit={handleSubmit}>
 
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button className="pay" disabled={isLoading || !stripe || !elements || (!archivesURL && !id)} id="submit">
+      <button className="pay" disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>

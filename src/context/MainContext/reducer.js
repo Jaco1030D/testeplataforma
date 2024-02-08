@@ -24,6 +24,10 @@ export const reducer = (state, action) => {
       return {...state, showValues: action.payload}
     case actionTypes.CHANGESELECTED:
       return {...state, selectValues: {...state.selectValues, ...action.payload}}
+    case actionTypes.CHANGEUPLOADFILES:
+      return {...state, fileUpload: [...state.fileUpload, action.payload]}
+    case actionTypes.RESETUPLOADFILES:
+      return {...state, fileUpload: []}
     default:
       break;
   }

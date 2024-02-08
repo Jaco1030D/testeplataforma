@@ -38,7 +38,11 @@ const RowTableAdmin = ({order}) => {
         document.body.removeChild(link);
       }
     
-      
+      const multipleDownload = async (array) => {
+        array.forEach(element => {
+          handleDownload(element.downloadArchive, element.name)
+        });
+      }
 
 
     const handleClick = async () => {
@@ -48,7 +52,7 @@ const RowTableAdmin = ({order}) => {
 
             const downloadArchive = await insertFiles(files[index])
 
-            arrayArchive.push({downloadArchive, fileName: files[index].name})
+            arrayArchive.push({downloadArchive, name: files[index].name})
             
         }
 
@@ -125,23 +129,25 @@ const RowTableAdmin = ({order}) => {
                     <div className='archives_download' >
                     {order.archivesURL.map((item, index) => (
 
-                    <p key={index} onClick={() => handleDownload(item.downloadArchive, item.fileName)} style={{cursor: 'pointer', color: 'blue'}}>{item.fileName}</p>
+                    <p key={index} onClick={() => handleDownload(item.downloadArchive, item.name)} style={{cursor: 'pointer', color: 'blue'}}>{item?.name}</p>
                     ))}
-
+                    <button onClick={() => multipleDownload(order.archivesURL)}>Baixar todos</button>
                     </div>
-                    {order?.archivesTranslated ? (
+                    {order?.archivesTranslated && (
                         <div>
                             <p>Já entregue:</p>
                             {order.archivesTranslated.map(item => (
                                 <p style={{cursor: 'pointer', color: 'blue'}} onClick={() => handleDownload(item.downloadArchive, item.fileName) } >{item.fileName}</p>
                             ))}
                         </div>
-                    ) : <input type="file" onChange={handleFileChange} multiple />}
+                    )}
+                    <br />
+                    <input type="file" onChange={handleFileChange} multiple />
                     <br />
                     {response.loading && <p>Fazendo upload de arquivos...</p>}
                     {messageError && <p>{messageError}</p>}
                     <button onClick={handleClose}>Cancelar</button>
-                    {!order?.archivesTranslated && <button onClick={handleClick} disabled={archivesTotal !== files?.length}>Entregar</button>}
+                    {!order?.archivesTranslated ? <button onClick={handleClick} disabled={archivesTotal !== files?.length}>Entregar</button>: <button onClick={handleClick} disabled={archivesTotal !== files?.length}>Entregar Novamente</button>}
                 </div>
             </Modal>
         </tr>

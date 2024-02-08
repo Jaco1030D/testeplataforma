@@ -27,6 +27,10 @@ const getFullName = (abbre) => abbreviations[abbre] || abbre;
 const getFullNameLanguage = (languageWithAbreviation) => {
   const arrayLanguage = languageWithAbreviation.split(' ')
 
+  if (arrayLanguage.length === 1) {
+    return languageWithAbreviation
+  }
+
   const language = arrayLanguage[0]
 
   const subLanguage = arrayLanguage[arrayLanguage.length - 1]
@@ -102,14 +106,12 @@ const SmallRectangle = ({ withBorder, title, icon, numOrder, showDropdown, text,
           </div>
 
         </div>
-        <div className="overlap">
           <div className="busca">
             <p className="frasehero">Pares de idiomas do Projeto {numOrder}</p>
             <img className="img pointer" alt="Button" onClick={handleClose} src={button} />
             <div className="separator" />
             
           </div>
-        </div>
       </div>
     </div>
             </Modal>
@@ -170,7 +172,7 @@ const OrderCard = ({order, name}) => {
     }
     const multipleDownload = async (array) => {
       array.forEach(element => {
-        handleDownload(element.downloadArchive, element.fileName)
+        handleDownload(element.downloadArchive, element.name)
       });
     }
       useEffect(() => {

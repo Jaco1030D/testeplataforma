@@ -38,32 +38,17 @@ const OrdersContainer = () => {
     }
 
     const calculateNumWords = async (files) => {
-      let numWords = 0;
-      let numPages = 0
-
-      for (let index = 0; index < files.length; index++) {
-          let numWordsFile = 0;
-          let numPagesFile = 0;
-          const file = files[index];
-
-          console.log(file);
-
-          try {
-              const res = await getNumWordsArchive(file);
-              numWordsFile = res.numWords;
-              numPagesFile = res.numPages;
-
-              numWords += numWordsFile;
-              numPages += numPagesFile
-          } catch (error) {
-              console.error(`Error processing file ${file}: ${error}`);
-          }
-      }
+      let numWords = state.fileUpload.reduce((ac, file) => ac + file.numWords, 0);
+      let numPages = state.fileUpload.reduce((ac, file) => ac + file.numPages, 0);
 
       return { numWords, numPages}
     }
 
     const handleSelect = async (valueResult, name, multipler) => {
+        if (state.filePending.length === 0 || state.fileUpload.length !== state.filePending.length) {
+          console.log('não pode');
+          return
+        }
         const files = state.filePending
         const names = []
 
@@ -76,6 +61,7 @@ const OrdersContainer = () => {
     
         const cartItems = {
           names,
+          archivesURL: state.fileUpload,
           numWords,
           numPages,
           typeService: name,
@@ -142,7 +128,7 @@ const OrdersContainer = () => {
       //     setNumWords(1000)
       //     setNumPages(10)
       //   }
-      },[state.filePending, state.deadline, deadline])
+      },[state.filePending, state.deadline, deadline, state.fileUpload])
 
       useEffect(() => {
         const {finalDate} = calculateDates(deadline?.days, deadline?.hours)

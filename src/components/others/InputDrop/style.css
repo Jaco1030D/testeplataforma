@@ -3,8 +3,10 @@
     width: 80%;
     height: 250px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-direction: column;
+    overflow-y: auto;
   }
 .itens-div label,
 .content-div .itens-div { /*centralizar tudo que a dentro do retangulo, tanto a label como o proprio retangulo*/

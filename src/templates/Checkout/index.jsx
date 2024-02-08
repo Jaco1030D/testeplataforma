@@ -30,6 +30,8 @@ const Checkout = ({name}) => {
   }
   console.log(cart);
 
+  console.log(newDocument);
+
   const handleClick = async () => {
     try {
 

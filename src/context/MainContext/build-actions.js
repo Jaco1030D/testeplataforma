@@ -13,6 +13,8 @@ export const buildActions = (dispatch) => {
     changeMultiplers: (payload) => dispatch({type: actionTypes.CHANGEMULTIPLERS, payload}),
     changeArchiveTypes: (payload) => dispatch({type: actionTypes.CHANGEARCHIVETYPES, payload}),
     changeCartItems: (payload) => dispatch({type: actionTypes.CHANGECARTITEMS, payload}),
-    changeShowValues: (payload) => dispatch({type: actionTypes.CHANGESHOWVALUES, payload})
+    changeShowValues: (payload) => dispatch({type: actionTypes.CHANGESHOWVALUES, payload}),
+    changeUploadFiles: (payload) => dispatch({type: actionTypes.CHANGEUPLOADFILES, payload}),
+    resetUploadFiles: () => dispatch({type: actionTypes.RESETUPLOADFILES}),
   };
 };

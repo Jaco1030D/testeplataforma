@@ -1,6 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
 import {db, storage} from '../firebase/Config'
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import 'firebase/storage';
+import { collection, addDoc, Timestamp, onSnapshot } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 const initialstate = {
@@ -41,7 +42,12 @@ export const useInsertDocuments = (docCollection) => {
 
             await uploadBytes(storageRef, file)
 
+            // storageRef.on(`state_changed`, (snapshot) => {
+            // })
+
             const downloadURL = await getDownloadURL(storageRef);
+
+           
             
             checkCancelBeforeDispatch({
                 type: "INSERTED_DOC",

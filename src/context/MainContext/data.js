@@ -79,5 +79,6 @@ export const initialState = {
         { language: 'Tailandês', types: [] },
         { language: 'Grego', types: [] },
         { language: 'Dinamarquês', types: [] }
-      ]
+      ],
+    fileUpload: []
 };

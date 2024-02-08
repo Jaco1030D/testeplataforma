@@ -16,6 +16,13 @@
     gap: 13px;
 }
 
+.img-container {
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .content-list-archive .item-list-archive:hover { /*quando usuario passar o mouse em cima fica mais claro*/
     opacity: 0.8;
     cursor: pointer;

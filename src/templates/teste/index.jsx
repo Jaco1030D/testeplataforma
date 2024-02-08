@@ -87,7 +87,7 @@ export function Teste({value, setDocument, handleClick, archivesURL, setArchives
   };
 
   useEffect(() => {
-    if (!archivesURL || !last_order || id) {
+    if (!last_order || id) {
       return
     }
 
@@ -98,23 +98,13 @@ export function Teste({value, setDocument, handleClick, archivesURL, setArchives
         numOrder: last_order[0]?.numOrder ? last_order[0].numOrder + 1 : 2963,
         finalized: false,
         uid: state?.user?.uid,
-        archivesURL,
         user: state.user
       }
       setDocument(cartWithPaymentInfos)
     }
 
 
-  },[state.cart, id_payment, clientSecret, status, archivesURL, last_order])
-
-  useEffect(() => {
-    if (id) {
-      return
-    }
-      uploadMultipleArchives(state.filePending).then(res =>
-        setArchivesURL(res)
-        )
-    },[state.filePending])
+  },[state.cart, id_payment, clientSecret, status, last_order])
 
   return (
     <div className="App">

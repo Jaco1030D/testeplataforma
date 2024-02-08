@@ -27,7 +27,8 @@ export const useFetchDocuments = (docCollection, search = null, uid = null, admi
                 }else if(uid){
                     console.log("Veio para ca uid");
                     q = await query(collectionRef,
-                        where("uid", "==", uid))
+                        where("uid", "==", uid),
+                        orderBy("createdAt", "desc"))
                         console.log(q);
 
                 } else if(onlyLast) {

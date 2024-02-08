@@ -18,7 +18,9 @@ const InputArchive = ({handleClose, icons}) => {
         </div>
         {state.archiveTypes && state.archiveTypes.map((item, index) => (
             <div key={item.name} onClick={() => handleClick(item, index)} className={`item-list-archive ${state.archiveTypeSelected.name === item.name && 'selected'}`}>
-                <img src={icons[index]} alt="" />
+                <div className='img-container'>
+                  <img src={icons[index]} alt="" />
+                </div>
                 <p>{item.name}</p>
             </div>
         ))}
