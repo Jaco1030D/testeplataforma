@@ -10,28 +10,26 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
   const [progressBar, setProgressBar] = useState(0)
   const [numWords, setNumWords] = useState()
   const [numPages, setNumPages] = useState()
-  const [multipler, setMultipler] = useState(0.8)
   const [downloadArchive, setDownloadArchive] = useState()
-  const {insertFiles} = useInsertDocuments('archives')
+  const {insertFiles, insertFilesAdmin} = useInsertDocuments('archives')
+  const [multipler, setMultipler] = useState(0.8)
   const progressCallback = (value) => {
-    setProgressBar(value)
+    setProgressBar(parseInt(value))
   }
 
-  const progressBarUpload = (value) => {
-  }
-
-  console.log(state);
-
+  console.log(name.length);
   useEffect(() => {
-    
+
     const isFileUpload = state.fileUpload.find(files => files.name === file.name)
 
     console.log(isFileUpload);
     if (isFileUpload && state.fileUpload.length === state.filePending.length) {
+      setMultipler(1)
       setProgressBar(100)
       setNumWords(isFileUpload.numWords)
       return
     } else {
+      setMultipler(0.8)
       setProgressBar(0)
       action.resetUploadFiles()
     }
@@ -41,15 +39,14 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
       setNumPages(res.numPages)
     })
 
-    if (downloadArchive && numWords) {
-      return
-    }
-
-    insertFiles(file, progressBarUpload).then((res) => setDownloadArchive(res))
+    insertFilesAdmin(file).then(res => {
+      setMultipler(1)
+      setDownloadArchive(res)
+    })
 
     setFunctionsExecuted(true)
-    
-    
+
+
   }, [file])
 
   useEffect(() => {
@@ -69,12 +66,6 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
 
   }, [numWords, downloadArchive])
 
-  useEffect(() => {
-    if (downloadArchive) {
-      setMultipler(1)
-    }
-  }, [downloadArchive])
-
   return (
     // <div className='fileCardUpload'>
     //   <p>{numWords}</p>
@@ -86,14 +77,14 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
         <i className="fas fa-file-alt"></i>
         <div className="content">
           <div className="details">
-            <span className="name">{name.length > 30 ? `${name.substring(0, 30)}...` : name}</span>
-            <span className="percent">{downloadArchive && numWords ? '100' : parseInt(progressBar * multipler)}%</span>
+            <span className="name">{name.length > 30 ? `${name.substring(0, 45)}...` : name}</span>
+            <span className="percent">{parseInt(progressBar * multipler)}%</span>
           </div>
           <div className="progress-bar">
-            <div className="progress" style={{width: downloadArchive && numWords ? '100%' : `${parseInt(progressBar * multipler)}%`}}></div>
+            <div className="progress" style={{width: `${progressBar * multipler}%`}}></div>
           </div>
-          {progressBar === 100 && <span>Palavras {numWords}</span>}
-          
+          {progressBar * multipler === 100 && <span>Palavras {numWords}</span>}
+
         </div>
       </li>
     </section>
@@ -101,3 +92,4 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
 }
 
 export default FileCardUpload
+
