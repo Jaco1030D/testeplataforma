@@ -2,8 +2,8 @@ const nodemailer = require('nodemailer')
 
 const transporter = nodemailer.createTransport({
     host: 'email-ssl.com.br',
-    secureConnection : true,
-    port: 465,
+    secure: false,
+    port: 587,
     auth: {
       user: 'tech@magmatranslation.com', // Seu endereço de e-mail trial
       pass: 'cvSp$48Z!cRZk8B' // Sua senha de e-mail moAoqdeR8780
@@ -191,14 +191,9 @@ exports.handler = async (event) => {
 
       console.log('chegou aqui');
 
-      transporter.sendMail(mailOptions, (error, info) => {
-        console.log('pelo menos enviou');
-        if (error) {
-          return console.log(error);
-        }
-        console.log('E-mail enviado: ' + info.response);
-      })
+      const result = await transporter.sendMail(mailOptions)
 
+      console.log(result);
       return {
         statusCode: 200,
         body: JSON.stringify({operation: 'succes'})
