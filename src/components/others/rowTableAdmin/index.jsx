@@ -15,7 +15,7 @@ const RowTableAdmin = ({order}) => {
     const handleClose = () => setOpen(false);
     const [messageError, setMessageError] = useState()
     const {updateDocument} = useUpdateDocument("archives")
-    const { insertFiles, response} = useInsertDocuments("archives")
+    const { insertFilesAdmin, response} = useInsertDocuments("archives")
     const archivesTotal = order.languageSetings.translation.length * order.names.length
 
     const handleDownload = async (downloadURL, fileName) => {
@@ -45,13 +45,17 @@ const RowTableAdmin = ({order}) => {
       }
 
 
+      const progressCallback = (value) => {
+
+      }
     const handleClick = async () => {
+       try {
         const arrayArchive = []
         const namesTranslated = []
 
         for (let index = 0; index < files.length; index++) {
 
-            const downloadArchive = await insertFiles(files[index])
+            const downloadArchive = await insertFilesAdmin(files[index])
 
             arrayArchive.push({downloadArchive, name: files[index].name})
             namesTranslated.push(files[index].name)
@@ -67,6 +71,9 @@ const RowTableAdmin = ({order}) => {
             fromUser: true,
             finalized: true
         })
+       } catch (error) {
+        console.log(error);
+       }
 
         handleClose()
 
@@ -140,7 +147,7 @@ const RowTableAdmin = ({order}) => {
                         <div>
                             <p>Já entregue:</p>
                             {order.archivesTranslated.map(item => (
-                                <p style={{cursor: 'pointer', color: 'blue'}} onClick={() => handleDownload(item.downloadArchive, item.fileName) } >{item.fileName}</p>
+                                <p style={{cursor: 'pointer', color: 'blue'}} onClick={() => handleDownload(item.downloadArchive, item.name) } >{item.name}</p>
                             ))}
                         </div>
                     )}

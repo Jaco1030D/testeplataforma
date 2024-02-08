@@ -10,15 +10,17 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
   const [progressBar, setProgressBar] = useState(0)
   const [numWords, setNumWords] = useState()
   const [numPages, setNumPages] = useState()
+  const [multipler, setMultipler] = useState(0.8)
   const [downloadArchive, setDownloadArchive] = useState()
   const {insertFiles} = useInsertDocuments('archives')
   const progressCallback = (value) => {
-    
+    setProgressBar(value)
   }
 
   const progressBarUpload = (value) => {
-    setProgressBar(value)
   }
+
+  console.log(state);
 
   useEffect(() => {
     
@@ -38,6 +40,10 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
       setNumWords(res.numWords)
       setNumPages(res.numPages)
     })
+
+    if (downloadArchive && numWords) {
+      return
+    }
 
     insertFiles(file, progressBarUpload).then((res) => setDownloadArchive(res))
 
@@ -63,6 +69,12 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
 
   }, [numWords, downloadArchive])
 
+  useEffect(() => {
+    if (downloadArchive) {
+      setMultipler(1)
+    }
+  }, [downloadArchive])
+
   return (
     // <div className='fileCardUpload'>
     //   <p>{numWords}</p>
@@ -75,10 +87,10 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
         <div className="content">
           <div className="details">
             <span className="name">{name.length > 30 ? `${name.substring(0, 30)}...` : name}</span>
-            <span className="percent">{parseInt(progressBar)}%</span>
+            <span className="percent">{downloadArchive && numWords ? '100' : parseInt(progressBar * multipler)}%</span>
           </div>
           <div className="progress-bar">
-            <div className="progress" style={{width: `${parseInt(progressBar)}%`}}></div>
+            <div className="progress" style={{width: downloadArchive && numWords ? '100%' : `${parseInt(progressBar * multipler)}%`}}></div>
           </div>
           {progressBar === 100 && <span>Palavras {numWords}</span>}
           

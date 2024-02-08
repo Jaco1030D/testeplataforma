@@ -20,6 +20,8 @@ const InputDrop = ({handleClose}) => {
     //   console.log(params);
     // }
     const handleFileChange = async (e) => {
+      actions.resetUploadFiles()
+
         const files = e.target.files
         // if (files[0]) {
         //   setPercent(0.8)
@@ -38,6 +40,8 @@ const InputDrop = ({handleClose}) => {
     }
     const handleDrop = (e) => {
       e.preventDefault()
+      actions.resetUploadFiles()
+
       setMessageError('')
       if (e.dataTransfer.files.length > 0) {
         const acceptedFiles = Array.from(e.dataTransfer.files).filter(file =>

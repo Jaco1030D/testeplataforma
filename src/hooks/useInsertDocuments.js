@@ -76,6 +76,31 @@ export const useInsertDocuments = (docCollection) => {
             })
         }
     }
+    const insertFilesAdmin = async(file) => {
+        checkCancelBeforeDispatch({
+            type: "LOADING"
+        })
+        try {
+
+            const storageRef = ref(storage, file.name)
+
+            await uploadBytes(storageRef, file)
+
+            const downloadURL = await getDownloadURL(storageRef);
+            
+            checkCancelBeforeDispatch({
+                type: "INSERTED_DOC",
+            })
+            
+            return downloadURL
+
+        } catch (error) {
+            checkCancelBeforeDispatch({
+                type: "ERROR",
+                payload: error.message,
+            })
+        }
+    }
     const insertDocument = async(document) =>{
         checkCancelBeforeDispatch({
             type: "LOADING"
@@ -114,5 +139,5 @@ export const useInsertDocuments = (docCollection) => {
         return () => setCancelled(true)
     }, [])
 
-    return {insertDocument, insertFiles, response}
+    return {insertDocument, insertFiles, insertFilesAdmin, response}
 }
