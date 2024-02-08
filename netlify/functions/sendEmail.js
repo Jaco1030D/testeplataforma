@@ -189,9 +189,10 @@ exports.handler = async (event) => {
         ...html
       };
 
-      // console.log(mailOptions);
+      console.log('chegou aqui');
 
       transporter.sendMail(mailOptions, (error, info) => {
+        console.log('pelo menos enviou');
         if (error) {
           return console.log(error);
         }
