@@ -109,7 +109,7 @@ const RowTableAdmin = ({order}) => {
                 : 
                 (
                     <>
-                        <td>{order.paymentInfos.datePayment}</td>
+                        <td>{order.initialDate}</td>
                         <td>{order.finalDate}h</td>
                     </>
                 )

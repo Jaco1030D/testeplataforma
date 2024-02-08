@@ -14,3 +14,36 @@
     overflow-y: auto;
     height: 300px;
 }
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Estilo das células da tabela */
+  .admin-table th, .admin-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Estilo do cabeçalho da tabela */
+  .admin-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  /* Estilo das linhas alternadas da tabela */
+  .admin-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Estilo dos links na tabela */
+  .admin-table a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  
+  /* Estilo dos links ao passar o mouse */
+  .admin-table a:hover {
+    text-decoration: underline;
+  }

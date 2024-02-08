@@ -14,6 +14,7 @@ const OrdersContainer = () => {
     const [arrayValues, setArrayValues] = useState([])
     const [numPages, setNumPages] = useState(10)
     const [finalDate, setFinalDate] = useState()
+    const [initialDate, setInitialDate] = useState()
     const [value, setValue] = useState(0)
     const [deadline, setDeadline] = useState()
     const navigate = useNavigate()
@@ -67,6 +68,7 @@ const OrdersContainer = () => {
           typeService: name,
           deadline,
           finalDate,
+          initialDate,
           languageSetings: state.selectValues,
           value: valueResult,
           user: state.user,
@@ -131,9 +133,11 @@ const OrdersContainer = () => {
       },[state.filePending, state.deadline, deadline, state.fileUpload])
 
       useEffect(() => {
-        const {finalDate} = calculateDates(deadline?.days, deadline?.hours)
+        const {finalDate, initialDate} = calculateDates(deadline?.days, deadline?.hours)
 
         setFinalDate(finalDate)
+
+        setInitialDate(initialDate)
 
       }, [deadline])
 

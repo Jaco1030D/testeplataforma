@@ -6,7 +6,7 @@ const Admin = () => {
 
   return (
     <div>
-      <table>
+      <table className='admin-table'>
         <thead>
           <tr>
               <th>Numero do pedido</th>
