@@ -2,7 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 import {db, storage} from '../firebase/Config'
 import 'firebase/storage';
 import { collection, addDoc, Timestamp, onSnapshot } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes, uploadBytesResumable } from 'firebase/storage';
 
 const initialstate = {
     loading: null,
@@ -32,7 +32,7 @@ export const useInsertDocuments = (docCollection) => {
         }
     }
 
-    const insertFiles = async(file) => {
+    const insertFiles = async(file, progressCallback) => {
         checkCancelBeforeDispatch({
             type: "LOADING"
         })
@@ -40,20 +40,34 @@ export const useInsertDocuments = (docCollection) => {
 
             const storageRef = ref(storage, file.name)
 
-            await uploadBytes(storageRef, file)
+            const uploadTask = uploadBytesResumable(storageRef, file)
 
             // storageRef.on(`state_changed`, (snapshot) => {
             // })
 
+            uploadTask.on('state_changed', 
+                    (snapshot) => {
+                        // Observe state change events such as progress, pause, and resume
+                        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        progressCallback(progress)
+                        console.log('Upload is ' + progress + '% done');
+                    }, 
+                    (error) => {
+                        // Handle unsuccessful uploads
+                    }
+            )
+            
+
             const downloadURL = await getDownloadURL(storageRef);
 
-           
-            
             checkCancelBeforeDispatch({
                 type: "INSERTED_DOC",
             })
-            
+
             return downloadURL
+
+           
 
         } catch (error) {
             checkCancelBeforeDispatch({

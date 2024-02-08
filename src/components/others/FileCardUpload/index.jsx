@@ -12,22 +12,24 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
   const [numPages, setNumPages] = useState()
   const [downloadArchive, setDownloadArchive] = useState()
   const {insertFiles} = useInsertDocuments('archives')
-  const [multipler, setMultipler] = useState(0.8)
   const progressCallback = (value) => {
-    setProgressBar(parseInt(value))
+    
   }
+
+  const progressBarUpload = (value) => {
+    setProgressBar(value)
+  }
+
   useEffect(() => {
     
     const isFileUpload = state.fileUpload.find(files => files.name === file.name)
 
     console.log(isFileUpload);
     if (isFileUpload && state.fileUpload.length === state.filePending.length) {
-      setMultipler(1)
       setProgressBar(100)
       setNumWords(isFileUpload.numWords)
       return
     } else {
-      setMultipler(0.8)
       setProgressBar(0)
       action.resetUploadFiles()
     }
@@ -37,10 +39,7 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
       setNumPages(res.numPages)
     })
 
-    insertFiles(file).then(res => {
-      setMultipler(1)
-      setDownloadArchive(res)
-    })
+    insertFiles(file, progressBarUpload).then((res) => setDownloadArchive(res))
 
     setFunctionsExecuted(true)
     
@@ -76,12 +75,12 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
         <div className="content">
           <div className="details">
             <span className="name">{name.length > 30 ? `${name.substring(0, 30)}...` : name}</span>
-            <span className="percent">{parseInt(progressBar * multipler)}%</span>
+            <span className="percent">{parseInt(progressBar)}%</span>
           </div>
           <div className="progress-bar">
-            <div className="progress" style={{width: `${parseInt(progressBar * multipler)}%`}}></div>
+            <div className="progress" style={{width: `${parseInt(progressBar)}%`}}></div>
           </div>
-          {progressBar * multipler === 100 && <span>Palavras {numWords}</span>}
+          {progressBar === 100 && <span>Palavras {numWords}</span>}
           
         </div>
       </li>

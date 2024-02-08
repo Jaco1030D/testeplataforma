@@ -60,6 +60,7 @@ const InputDrop = ({handleClose}) => {
     }
     const handleReset = () => {
         actions.changeFiles([])
+        actions.resetUploadFiles()
     }
     useEffect(() => {
       setNumArchives(state.filePending.length)
