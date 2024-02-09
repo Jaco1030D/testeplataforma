@@ -8,6 +8,7 @@ import InputSelect from '../inputsSelect'
 import InputDrop from '../InputDrop'
 import InputSelectMultiple from '../inputSelectMultiple'
 import InputArchive from '../InputArchive'
+import ReactLoading from 'react-loading';
 import carro from './icons/carro.svg';
 import circumMedicalCase from './icons/circum_medical-case.svg';
 import iconMidias from './icons/icon midias.svg';
@@ -117,8 +118,8 @@ const FormArchive = () => {
       setOpen(false)
     }
     const elements = [
-      <InputDrop handleClose={() => handleClick()} />,
-      <InputSelectMultiple handleClose={() => handleClose()}  />,
+      <InputDrop setOpen={handleClose} />,
+      <InputSelectMultiple handleClose={() => handleClick()}  />,
       // <SelectInputMultiple languages={state.languages} id={'translation'} title='Traduzir para' values={state.selectValues.origin} name='translation' update={update}/>,
       <InputSelect handleClose={() => handleClick()}  />,
       <InputArchive icons={icons} handleClose={() => handleClick()} />,

@@ -2,18 +2,27 @@ import React, { useEffect, useRef, useState } from 'react'
 import upload from './upload.svg'
 import './style.css'
 import button from './Button.svg'
+import ReactLoading from 'react-loading';
 import { useMainContext } from '../../../context/MainContext'
 import { getNumWordsArchive, getNumWordsPDF } from '../../../hooks/useCalculateValue'
 import { useInsertDocuments } from '../../../hooks/useInsertDocuments'
 import FileCardUpload from '../FileCardUpload'
 
-const InputDrop = ({handleClose}) => {
+
+const InputDrop = ({setOpen}) => {
     const [state, actions] = useMainContext()
     const [numArchives, setNumArchives] = useState(0)
     const [messageError, setMessageError] = useState()
     const {insertFiles} = useInsertDocuments('archives')
     const [numWords, setNumWords] = useState()
     const input = useRef()
+    const handleClose = () => {
+      console.log(state.filePending, state.fileUpload);
+      if (state.filePending.length > state.fileUpload.length) {
+        return
+      }
+      setOpen(false)
+    };
   const [functionsExecuted, setFunctionsExecuted] = useState(false);
     const [percent, setPercent] = useState(0.8)
     // function progressCallback(params) {
@@ -100,7 +109,8 @@ const InputDrop = ({handleClose}) => {
             <div className="text-wrapper pointer" onClick={handleReset}>Resetar</div>
           </div>
           <div className="button pointer" onClick={handleClose}>
-            <div className="text-wrapper-2 drop"  >{state.filePending.length !== state.fileUpload.length ? 'Aguarde...' : 'Concluido'}</div>
+        
+            <div className="text-wrapper-2 drop"  >{state.filePending.length !== state.fileUpload.length ? <ReactLoading type={'spin'} color={'#fff'} height={'50%'} width={'50%'} /> : 'Concluido'}</div>
           </div>
         </div>
       </div>
