@@ -32,6 +32,7 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
       setMultipler(0.8)
       setProgressBar(0)
       action.resetUploadFiles()
+      console.log('reseto');
     }
 
     getNumWordsArchive(file, progressCallback).then(res => {
@@ -64,7 +65,7 @@ const FileCardUpload = ({file, functionsExecuted, setFunctionsExecuted}) => {
       })
     }
 
-  }, [numWords, downloadArchive])
+  }, [numWords, downloadArchive, state.fileUpload])
 
   return (
     // <div className='fileCardUpload'>

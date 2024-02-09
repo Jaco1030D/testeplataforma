@@ -25,6 +25,11 @@
     padding: 8px;
     border: 1px solid #ddd;
   }
+
+  .translatedArchives {
+    max-height: 100px;
+    overflow-y: auto;
+  }
   
   /* Estilo do cabeçalho da tabela */
   .admin-table th {

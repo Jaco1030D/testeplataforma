@@ -53,8 +53,10 @@ const FormArchive = () => {
   const [state, actions] = useMainContext()
   const [currentComponent, setCurrentComponent] = useState()
   const [open, setOpen] = useState(false);
+  console.log(state);
   const handleClose = () => {
-    if (state.filePending.length !== state.fileUpload.length) {
+    console.log(state.filePending, state.fileUpload);
+    if (state.filePending.length > state.fileUpload.length) {
       return
     }
     setOpen(false)

@@ -135,20 +135,26 @@ const RowTableAdmin = ({order}) => {
                     {order.numWords}
                     <br />
                     <p>Arquivos para tradução</p>
+                    <button onClick={() => multipleDownload(order.archivesURL)}>Baixar todos</button>
                     <div className='archives_download' >
+
                         
                     {order.archivesURL.map((item, index) => (
 
                     <p key={index} onClick={() => handleDownload(item.downloadArchive, item.name)} style={{cursor: 'pointer', color: 'blue'}}>{item?.name}</p>
                     ))}
-                    <button onClick={() => multipleDownload(order.archivesURL)}>Baixar todos</button>
                     </div>
+                    <br />
                     {order?.archivesTranslated && (
-                        <div>
+                        <div >
                             <p>Já entregue:</p>
+                            <button onClick={() => multipleDownload(order.archivesTranslated)}>Baixar todos</button>
+                            <div className='translatedArchives'>
+                                
                             {order.archivesTranslated.map(item => (
                                 <p style={{cursor: 'pointer', color: 'blue'}} onClick={() => handleDownload(item.downloadArchive, item.name) } >{item.name}</p>
                             ))}
+                            </div>
                         </div>
                     )}
                     <br />

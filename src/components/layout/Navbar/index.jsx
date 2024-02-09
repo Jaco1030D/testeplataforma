@@ -51,9 +51,6 @@ const Navbar = ({user, isAdmin, name, setName, hidden, hiddenNavbar = false}) =>
             <li>
               <NavLink to='/config'>Configurações</NavLink>
             </li>
-            <li>
-              <button className='navButton' onClick={logout}>Logout</button>
-            </li>
           </>
         ) : (
           <>
@@ -69,7 +66,7 @@ const Navbar = ({user, isAdmin, name, setName, hidden, hiddenNavbar = false}) =>
             )}
           </>
         )}
-        {!isLoginPage && !isRegisterPage && !isCheckoutPage && (
+        {!isLoginPage && !isRegisterPage && !isCheckoutPage && !isAdmin && (
           <>
             <li>Tradutores</li>
             <li id='contrast'>Contato</li>

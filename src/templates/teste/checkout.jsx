@@ -69,7 +69,7 @@ export default function CheckoutForm({archivesURL, handleClick}) {
     const response = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "https://app.magmatranslation.com/order",
+        return_url: "https://glowing-profiterole-535857.netlify.app/order",
       },
     });
 
