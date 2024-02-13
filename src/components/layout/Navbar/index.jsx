@@ -82,7 +82,9 @@ const Navbar = ({user, isAdmin, name, setName, hidden, hiddenNavbar = false}) =>
         )}
         {!isLoginPage && !isRegisterPage && !isCheckoutPage && !isAdmin && (
           <>
-            <li id='contrast-contact'>Contato</li>
+            <li id='contrast-contact'>
+              <a href="https://pages.magmatranslation.com/solicite-um-orcamento">Contato</a>
+            </li>
             {isCompanyPage && (
               <li id='contrast'>
                 <NavLink to={'/'}>Orçamento Online</NavLink>
