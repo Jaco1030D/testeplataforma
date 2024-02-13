@@ -1,0 +1,76 @@
+.rigthEvaluated-container {
+    display: flex;
+    gap: 50px;
+}
+.rigthEvaluated-first-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12.6px;
+    position: relative;
+}
+
+.rigthEvaluated-first-column::after {
+    content: '';
+    position: absolute;
+    top: 0; /* Inicia no topo do contêiner */
+    bottom: 0; /* Estende até o fundo do contêiner */
+    left: 50%; /* Posiciona no meio do contêiner */
+    width: 0.68px; /* Largura da linha */
+    height: calc(100% + 63px);
+    background-color: #DEE6F1; /* Cor da linha */
+    transform: translateX(-50%); /* Ajusta a posição para o centro do contêiner */
+}
+
+/* Linha horizontal à direita para div 2 */
+.rigthEvaluated-first-column > div:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    top: 50%; /* Posiciona no meio da div */
+    right: -49px; /* Posiciona fora da div à direita */
+    width: 49px; /* Largura da linha */
+    height: 0.68px; /* Altura da linha */
+    background-color: #DEE6F1; /* Cor da linha */
+    transform: translateY(-50%); /* Ajusta a posição verticalmente */
+}
+
+/* Linha horizontal à direita para div 4 */
+.rigthEvaluated-first-column > div:nth-child(4)::after {
+    content: '';
+    position: absolute;
+    top: 50%; /* Posiciona no meio da div */
+    right: -49px; /* Posiciona fora da div à direita */
+    width: 49px; /* Largura da linha */
+    height: 0.68px; /* Altura da linha */
+    background-color: #DEE6F1; /* Cor da linha */
+    transform: translateY(-50%); /* Ajusta a posição verticalmente */
+}
+
+.rigthEvaluated-second-column {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 70px;
+    margin-top: 70px;
+}
+
+.rigthEvaluated-second-column_message {
+    width: 187px;
+    height: 40px;
+    border: 1px solid #DBDCFF;
+    background-color: #eeeeff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #5857FF;
+    font-family: 'Lato';
+    font-size: 12.6px;
+    font-weight: bold;
+    margin-left: 20px;
+    position: relative;
+}
+
+.rigthEvaluated-second-column_message_logo {
+    position: absolute;
+    right: -50px;
+}

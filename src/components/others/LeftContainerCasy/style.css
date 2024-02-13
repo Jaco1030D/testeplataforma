@@ -1,0 +1,26 @@
+.leftContainerCase_texts {
+    margin-top: 80px;
+}
+
+.leftContainerCase_texts h2,
+.leftContainerCase_texts span {
+    font-family: 'Inter';
+    line-height: 48px;
+    font-weight: bolder;
+}
+
+.leftContainerCase_texts h2 {
+    font-size: 40.25px;
+}
+
+.leftContainerCase_texts span {
+    font-size: 25px;
+}
+
+.leftContainerCase_texts p {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 33px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}

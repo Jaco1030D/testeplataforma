@@ -1,0 +1,12 @@
+.HeroCase-container,
+.homeCompany-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 63px;
+    margin-bottom: 200px;
+}
+.HeroCase-content,
+.homeCompany-content {
+    display: flex;
+    justify-content: space-between;
+}

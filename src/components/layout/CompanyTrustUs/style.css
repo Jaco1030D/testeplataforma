@@ -1,0 +1,73 @@
+.br {
+    border: 1px solid red;
+}
+.bb {
+    border: 1px solid blue;
+}
+.company-trust-container {
+    position: relative;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.gradient {
+    background-color: #fff;
+}
+
+.button-container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.company-trust_gradient {
+    position: absolute;
+    top: 0;
+    height: 240px;
+    width: 100%;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(230,241,254,1) 100%);
+    display: flex;
+    align-items: center;
+}
+
+.backgroundcolorwhite {
+    background-color: #fff;
+}
+
+.company-trust_gradient img {
+    margin-left: 100px;
+}
+
+.company-trust-content {
+    min-height: 434px;
+    z-index: 1;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fafafa;
+    padding-top: 61px;
+    gap: 72px;
+}
+
+.company-trust-content h2 {
+    font-size: 28.35px;
+    font-family: 'Inter';
+    font-weight: 600;
+}
+
+.company-trust_logo {
+    width: 80%;
+    min-height: 160px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.company-trust_logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

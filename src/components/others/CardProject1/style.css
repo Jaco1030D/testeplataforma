@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+.cardProject {
+    display: flex;
+    background-color: #fff;
+    border-radius: 6px;
+    z-index: 3;
+    font-family: 'Lato';
+    position: relative;
+    box-shadow: 0px 3.1499998569488525px 14.962499618530273px 0px #00000040;
+
+}
+
+.cardProject_texts_type2 {
+    font-size: 12.3px;
+}
+.scale {
+    scale: 1.2;
+    position: absolute;
+    bottom: -120px;
+    right: -15px;
+
+}
+
+.cardProject.type1 {
+    width: 192px;
+    height: 60px;
+    padding: 9px 12px;
+    gap: 15px;
+}
+
+.cardProject.type2 {
+    width: 228px;
+    height: 71px;
+    padding: 7px 10px;
+    gap: 17px;
+}
+.cardProject_texts_type2,
+.cardProject_texts {
+    font-family: 'Lato';
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cardProject_texts span {
+    font-size: 11px;
+    font-weight: 500;
+}
+.cardProject_texts_type2 span{
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.cardProject_texts_type2 p {
+    font-size: 11px;
+}
+
+.cardProject_texts_type2 #percent {
+    font-size: 11px;
+    font-weight: 900;
+}
+.cardProject_texts p {
+    font-size: 8.66px;
+    font-weight: 400;
+}
+
+
+.scale span {
+    font-weight: 500;
+    font-size: 13.75px;
+}
+
+.scale p {
+    font-weight: 700;
+    font-size: 18px;
+}

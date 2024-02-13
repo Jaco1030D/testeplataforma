@@ -1,3 +1,52 @@
+import tiago from './img/tiago.png'
+import Shopee from './img/Shoppee.png'
+import mandarin from './img/Ellipse 5.png'
+import glo from './img/Ellipse 5-1.png'
+import qua from './img/Ellipse 5-3.png'
+import Leandro from './img/Leandro.png'
+import Ana from './img/Ana.png'
+import zfLogo from './img/logozf.png'
+import correction from './img/correction.png'
+import traduction from './img/traduction.png'
+import people from './img/people.png'
+import people1 from './img/people1.png'
+import bruno from './img/bruno.png'
+import daniele from './img/daniele.png'
+import milton from './img/milton santanda.png'
+import featured from './img/featured.png'
+import logo from './img/Logo.png'
+import Shopeehome from './img/Shoppeehome.png'
+import smartphone from './img/smartphone.png'
+import logo1 from './img/image 4.png'
+import logo2 from './img/image 5.png'
+import logo3 from './img/image 6.png'
+import logo4 from './img/image 7.png'
+import logo5 from './img/image 8.png'
+import logo6 from './img/image 9.png'
+import logo7 from './img/image 18.png'
+import logo8 from './img/image 11.png'
+import logo9 from './img/image 12.png'
+import logo10 from './img/image 13.png'
+import logo11 from './img/image 14.png'
+import logo12 from './img/image 15.png'
+import logo13 from './img/image 16.png'
+import logo14 from './img/image 17.png'
+import stamp1 from './img/Vector.png'
+import stamp2 from './img/Vector-3.png'
+import stamp3 from './img/Vector-1.png'
+import stamp4 from './img/Vector-2.png'
+import vector0 from './img/Vector.svg'
+import vector1 from './img/Vector-1.svg'
+import vector2 from './img/Vector-2.svg'
+import vector3 from './img/Vector-3.svg'
+import vector4 from './img/Vector-4.svg'
+import vector5 from './img/Vector-5.svg'
+import daniele2 from './img/daniele2.png'
+import miltonShopee from './img/milton.png'
+import tablet from './img/tablet.png'
+import homeSectionImg from './img/Group 47.png'
+import zf from './img/zf.png'
+
 export const termsText = {
     title: "Termos de uso",
     explication: "",
@@ -486,4 +535,343 @@ export const termsText = {
         },
         
     ]
+}
+export const textsServiceOffered = {
+    featured: {
+        title: 'O que nós fazemos',
+        text: 'A tradução é apenas o começo. Nossos especialistas em idiomas oferecem uma série de serviços profissionais de tradução  e soluções de localização para ajudar a concluir qualquer projeto.'
+    },
+    card: [
+        {
+            title: 'Correções e QA',
+            text: 'Não importa o quão boa seja uma tradução, ela sempre pode ser revisada. Depois da revisão, há verificação vocabular, de estilo, coesão textual e várias outras. '
+        },
+        {
+            title: 'Tradução Técnica',
+            text: 'Pode ser sobre sua máquina sou sobre seu produto, a tradução técnica sempre requer tradutores técnicos e experientes e muito bem treinados.'
+        },
+        {
+            title: 'Tradução de Sites',
+            text: 'Crie websites multilíngues com facilidade. Aumente o tráfego, as conversões e a receita em qualquer mercado com sites que atraiam o público local em seu idioma.'
+        },
+        {
+            title: 'Legendagem',
+            text: 'Destaque sua mensagem global com legendagem profissional. Tradução de qualidade que conecta o mundo, é na nossa empresa.'
+        },
+        {
+            title: 'Tradução de Manual',
+            text: 'É muito comum no Brasil a solicitação de Tradução de Manuais Técnicos. Em geral, são traduções de Maquinário Pesado e industrial. '
+        },
+        {
+            title: 'Catálogos',
+            text: 'Igualmente comum é a solicitação de tradução de catálogos de produtos. Vão desde maquinário a produtos de beleza. '
+        },
+        {
+            title: 'Tradução científica',
+            text: 'Tradução científica precisa e confiável: desvende o mundo das descobertas com nossa expertise linguística especializada'
+        },
+        {
+            title: 'Traduções Automáticas',
+            text: 'Realizamos traduções automáticas principalemtne para grandes corporações, sempre acompanhado de correção e avaliação humana.'
+        },
+    ]
+}
+
+export const textsFeedBack = {
+    title: 'O que nossos clientes dizem',
+    textsCard: [
+        {
+            img: milton,
+            name: 'Bárbara Markurson',
+            company: 'cloudwords',
+            feedback: ' Foi fundamental o trabalho da Magma para atingirmos o Time To Marketing esperado. Conseguimos encontrar a linguagem certa para nossos clientes em tempo récord.'
+        },
+        {
+            img: bruno,
+            name: 'Emmanuel Marcel',
+            company: 'EF',
+            featured: true,
+            feedback: 'Na Magma, estávamos em busca de profissionais com domínio em contextualização cultural, capazes de entender profundamente as perspectivas nos EUA, Reino Unido e Alemanha para aplicação em nossos projetos.'
+        },
+        {
+            img: daniele,
+            name: 'Arlene Schmitt',
+            company: 'Ziemann Group',
+            feedback: 'Como uma cervejaria alemã, nos posicionamos na vanguarda da produção de cerveja a nível mundial. Para nós, a segurança dos dados é um pilar fundamental. A Magma Translation é reconhecida por sua confiabilidade.'
+        },
+    ]
+}
+
+export const textsEvaluatedProjects = {
+    leftContainer: {
+        title: 'Projetos avaliados para uma máxima qualidade',
+        text: 'Somente com a avaliação contínua da qualidade conseguimos atingir o que há de mais avançado em tradução humana. Na Magma, avaliamos cada projeto, cada tradutor, sempre. ',
+        buttonText: 'Veja o estudo de caso'
+    },
+    rigthContainer: {
+        firstColumn: [
+            {
+                img: Shopee,
+                title: 'Projeto Shopee',
+                subTitle: '30 milhões de palavras'
+            },
+            {
+                img: mandarin,
+                title: 'Tradução para Mandarim',
+                subTitle: 'Escolha de Tradutor'
+            },
+            {
+                img: glo,
+                title: 'Aplicação de  Glossário ',
+                subTitle: 'Estudo de Terminologia'
+            },
+            {
+                img: mandarin,
+                title: 'Correção',
+                subTitle: 'Escolha de Proofreader'
+            },
+            {
+                img: qua,
+                title: 'Quality Assurance',
+                subTitle: 'Technologia Magma'
+            },
+        ],
+        featured: {
+            img: featured,
+            name: 'Qualidade do projeto',
+            numWords: '98,87%'
+        },
+        secondColumn: [
+            {
+                img: people,
+                name: 'Xīn Yí',
+                numWords: '1,9 milhões de palavras',
+                percent: '98,56%'
+            },
+            {
+                img: people1,
+                name: 'Xīn Yí',
+                numWords: '1,3 milhões de palavras',
+                percent: '98,87%'
+            },
+        ]
+    }
+}
+export const textsEvaluatedProjectssecond = {
+    leftContainer: {
+        title: 'Traduções bem avaliadas',
+        text: 'Usando os projetos da ZF Friedrichshafen como exemplo: nós pautamos nosso trabalho nas avaliações constantes, uso de tecnologia e expertise gerencial. Com isto, atingimos uma qualidade de 99,79%. ',
+        buttonText: 'Veja o estudo de caso'
+    },
+    rigthContainer: {
+        firstColumn: [
+            {
+                img: zfLogo,
+                title: 'ZF',
+                subTitle: '10 pares de diomas'
+            },
+            {
+                img: traduction,
+                title: 'Tradução para Inglês',
+                subTitle: 'Escolha de Tradutor'
+            },
+            {
+                img: glo,
+                title: 'Aplicação de  Glossário ',
+                subTitle: 'Estudo de Terminologia'
+            },
+            {
+                img: correction,
+                title: 'Correção',
+                subTitle: 'Escolha de Proofreader'
+            },
+            {
+                img: qua,
+                title: 'Quality Assurance',
+                subTitle: 'Technologia Magma'
+            },
+        ],
+        featured: {
+            img: featured,
+            name: 'Qualidade do projeto',
+            numWords: '98,87%'
+        },
+        secondColumn: [
+            {
+                img: Leandro,
+                name: 'Leandro',
+                numWords: '1,1 milhões de palavras',
+                percent: '99,56%'
+            },
+            {
+                img: Ana,
+                name: 'Anamaria',
+                numWords: '1,4 milhões de palavras',
+                percent: '98,83%'
+            },
+        ]
+    }
+}
+
+export const textsContactTiago = {
+    title: 'Representa uma empresa ou tem um projetomais complexo?',
+    subtitle: 'Envie uma mensagem para Tiago, nosso Senior Account Manager',
+    img: tiago
+}
+
+export const textsHomeCompany = {
+    img: homeSectionImg,
+    leftContent: {
+        subtitle: 'Entre em contato com um especialista para um projeto de sua empresa ou clique em orçamento rápido para traduzir seu arquivo pessoal.',
+        textButton: ['Fale com um especialista', 'Orçamento Online'],
+        icons: [stamp1, stamp2, stamp3, stamp4]
+    }
+}
+
+export const icons = [logo1, logo2,logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14]
+
+export const textsExpert = {
+    cards: [
+        {
+            title: 'Automotivo',
+            subtitle: 'Tradução precisa para o universo automotivo, respeitando terminologias técnicas e tendências do setor.'
+        },
+        {
+            title: 'E-learning',
+            subtitle: 'Traduções que potencializam o aprendizado, garantindo clareza e eficácia para conteúdos educacionais digitais.'
+        },
+        {
+            title: 'Jurídico',
+            subtitle: 'Navegue com segurança pelo jargão legal com nossas traduções jurídicas meticulosas e precisas.'
+        },
+        {
+            title: 'Saúde',
+            subtitle: 'Traduções especializadas na área da saúde, garantindo o cuidado e precisão que profissionais e pacientes merecem.'
+        },
+        {
+            title: 'E-commerce',
+            subtitle: 'Comunicação clara para o mundo do comércio eletrônico, conectando produtos e consumidores globalmente.'
+        },
+        {
+            title: 'Finanças',
+            subtitle: 'Nossas traduções financeiras são rigorosas e claras, facilitando decisões e transações em mercados globais.  '
+        },
+    ]
+}
+
+export const textsExampleTraduction = {
+    title: 'Exemplos de Materiais que Traduzimos',
+    subtitle: 'Nossos tradutores proficientes têm a capacidade de traduzir qualquer tipo de documento, com suporte para os tipos de arquivo mencionados abaixo',
+    cards: [
+        {
+            img: vector0,
+            title: 'Documentos',
+            subTitle: 'Traduções precisas para relatórios, contratos, certificados e mais.'
+        },
+        {
+            img: vector1,
+            title: 'Marketing Material & Ads',
+            subTitle: 'Mensagens de impacto global para campanhas e anúncios.'
+        },
+        {
+            img: vector2,
+            title: 'Website & Apps',
+            subTitle: 'Torne seu site ou aplicativo acessível para públicos internacionais.'
+        },
+        {
+            img: vector3,
+            title: 'Legenda de vídeos',
+            subTitle: 'Expanda seu alcance com legendas claras e contextuais.'
+        },
+        {
+            img: vector4,
+            title: 'Descrição de produtos',
+            subTitle: 'Apresente seus produtos de forma atraente em múltiplos idiomas.'
+        },
+        {
+            img: vector5,
+            title: 'Artigos científicos, certificados;',
+            subTitle: 'Tradução meticulosa para pesquisas e publicações acadêmicas.'
+        },
+    ]
+}
+
+export const textsFooterCompany = {
+    logo,
+    paragraph: 'A MAGMA é uma fornecedora global de soluções de localização, que permite que as marcas estabeleçam uma presença autêntica em diversos mercados do mundo.',
+    rights: 'Magma Translation | Todos os direitos reservados. ©Magma™'
+}
+
+export const textsMainCaseStudyZF = {
+    title: '10 idiomas traduzidos todos os dias',
+    cards: [
+        {
+            name: 'Se você não sabe',
+            paragraph: 'A ZF Friedrichshain é a maior produtora de autopeças do mundo. O mais provével é que você tenha alguma peça da ZF no seu carro.'
+        },
+        {
+            name: 'A Estratégia',
+            paragraph: 'Todos os manuais das peças tem que ser traduzidos. Cursos, apresentações para investidores etc. estão diariamente sendo traduzidas, para alemão, espanhol, francês etc. '
+        },
+        {
+            name: 'Poucas empresas',
+            paragraph: 'De tradução no Brasil tem o mesmo nível tecnológico que a Magma Translation. Nos projetos da ZF, o uso de tecnologias específicas para tradução, qualidade e principalmente segurança foram um diferencial.'
+        },
+        {
+            name: 'Nós implementamos',
+            paragraph: 'Diversos controles de qualidade e tecnologias para conseguir trazer os produtos para a realidade brasileira. '
+        },
+    ],
+    img: tablet
+}
+
+export const textsMainCaseStudyShopee = {
+    title: 'Mais de 300 milhões de palavras Traduzidas',
+    cards: [
+        {
+            name: 'A Estratégia',
+            paragraph: 'Foi Traduzir os produtos de Singapura, Tailândia, Filipinas etc. do Mandarim e Inglês para Português.'
+        },
+        {
+            name: 'O problema',
+            paragraph: 'Era que muitos desses produtos tinham um texto muito ruim, ou haviam sido traduzidos pelos próprios vendedores para inglês com Tradução Automática. '
+        },
+        {
+            name: 'Nós Introduzimos',
+            paragraph: 'Diversos controles de qualidade e tecnologias para conseguir trazer os produtos para a realidade brasileira. '
+        },
+        {
+            name: 'Qualidade Garantida',
+            paragraph: 'Nós desenvolvemos novos métodos de garantia de qualidade, conseguindo chegar a incríveis  98,87% de acerto.'
+        },
+    ],
+    img: smartphone
+}
+
+export const textsHomeCaseStudyZF = {
+    title: 'O caso ZF',
+    subtitle: 'E o Serviço de tradução automotiva',
+    paragraph: 'Faça como a ZF, abra um novo mercado com a gente',
+    img: zf
+}
+
+export const textsHomeCaseStudyShopee = {
+    title: 'Caso Shopee',
+    subtitle: 'E o Serviço de tradução de E-commerce',
+    paragraph: 'Faça como a Shopee, abra um novo mercado com a gente',
+    img: Shopeehome
+}
+
+export const textsFeedBackCaseStudyZF = {
+    img: daniele2,
+    name: 'Danielle Schmitt',
+    company: 'ZF Friedrichshafen',
+    feedback: 'Somos uma empresa alemã, o maior fabricante de peças de automóveis do mundo. Para nós, a confiança na segurança de dados é essencial. A Magma Translation é uma empresa confiável.'
+}
+
+export const textsFeedBackCaseStudyShopee = {
+    img: miltonShopee,
+    name: 'Milton Santana',
+    company: 'Shopee',
+    feedback: 'Sem a Magma Translation, nosso crescimento e processo de internacionalização não teriam sido bem-sucedidos, devido à competência de sua equipe.'
 }

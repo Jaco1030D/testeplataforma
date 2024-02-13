@@ -1,0 +1,18 @@
+.leftEvaluated-container {
+    font-family: 'attenRegular';
+    width: 41%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.leftEvaluated-container h2 {
+    font-size: 38.45px;
+    line-height: 121.5%;
+    letter-spacing: -4%;
+}
+
+.leftEvaluated-container p {
+    font-size: 15.75px;
+    line-height: 234%;
+}

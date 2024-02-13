@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+
+
+.feedback-card {
+    font-family: 'Inter';
+    /* height: 300px; */
+    width: 400px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 42.91px 31.5px;
+    gap: 15px;
+    background-color: #f8f9ff;
+    z-index: 4;
+}
+
+.feedback-card .feedback_message {
+    font-size: 12.6px;
+    line-height: 25px;
+    font-weight: 500;
+    max-width: 90%;
+}
+.feedBack-card-infos {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.feedBack-card-infos .feedBack-card-infos_texts span {
+    font-weight: 200;
+    font-size: 22.05px;
+}
+
+.feedBack-card-infos .feedBack-card-infos_texts p {
+    font-size: 15.75px;
+    font-weight: 500;
+}
+
+.feedback-card.featured {
+    background-color: #5857FF;
+    color: #fff;
+}

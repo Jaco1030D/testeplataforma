@@ -15,6 +15,11 @@
   src: url('./atten-new/AttenNewMedium.otf')  format('opentype');
   font-weight: medium;
 }
+@font-face {
+  font-family: 'attenRegular';
+  src: url('./atten-new/AttenNewRegular.otf')  format('opentype');
+  font-weight: 400;
+}
 
 @font-face {
   font-family: 'attenExtraBold';

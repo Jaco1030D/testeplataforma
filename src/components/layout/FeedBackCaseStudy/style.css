@@ -1,0 +1,8 @@
+.feedBackCaseStudy {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    padding-top: 10px;
+    position: relative;
+    padding-bottom: 36px;
+}

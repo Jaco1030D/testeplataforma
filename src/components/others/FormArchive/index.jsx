@@ -81,12 +81,15 @@ const FormArchive = () => {
     {
       await actions.changeShowValues(true)
       const elementoDestino = document.getElementById('container_values');
+      const topPosition = elementoDestino.offsetTop;
+      const windowHeight = window.innerHeight;
+      const scrollPosition = topPosition - (windowHeight / 5);
 
       if (elementoDestino) {
-        elementoDestino.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: 'smooth'
+        })
       }
     }
     

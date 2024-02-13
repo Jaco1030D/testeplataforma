@@ -1,0 +1,23 @@
+.feedBack-container {
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    padding-top:80px ;
+    flex-direction: column;
+    position: relative;
+    gap: 45px;
+}
+
+.background-color-change {
+    background-color: #fff;
+    color: #000;
+    min-height: 650px;
+
+}
+
+.feedBack-content {
+    display: flex;
+    width: 92%;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+}

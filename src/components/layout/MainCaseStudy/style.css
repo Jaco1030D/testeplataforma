@@ -1,0 +1,16 @@
+.mainCaseStudy-container {
+    background-color: #fff;
+    position: relative;
+    min-height: 842px;
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    justify-content: center;
+}
+
+.mainCaseStudy-elipse {
+    position: absolute;
+    right: 500px;
+    top: 30px;
+    z-index: 2;
+}

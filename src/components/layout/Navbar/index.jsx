@@ -15,7 +15,7 @@ const Navbar = ({user, isAdmin, name, setName, hidden, hiddenNavbar = false}) =>
 
   const isLoginPage = location.pathname === '/login';
   const isRegisterPage = location.pathname === '/register';
-  console.log(location.pathname);
+  const isCompanyPage = location.pathname === '/company';
   const isCheckoutPage = location.pathname.includes('/checkout')
 
   const navigate = useNavigate()
@@ -55,26 +55,42 @@ const Navbar = ({user, isAdmin, name, setName, hidden, hiddenNavbar = false}) =>
         ) : (
           <>
             {!isLoginPage && !isRegisterPage && !isCheckoutPage && (
+              <>
               <li id='home'>
                 <NavLink to='/'>Home</NavLink>
               </li>
+              <li>
+                <NavLink to='/company'>Para Empresas</NavLink>
+              </li>
+              {!user && !isCheckoutPage && (
+                <li>
+                  <NavLink to='/login' >Log in</NavLink>
+                </li>
+              ) }
+              </>
             )}
             {user && !isCheckoutPage && (
               <li>
-                <NavLink to='/order'>Pedidos</NavLink>
+                <NavLink to='/order'>Meus Projetos</NavLink>
               </li>
             )}
           </>
         )}
-        {!isLoginPage && !isRegisterPage && !isCheckoutPage && !isAdmin && (
-          <>
-            <li>Tradutores</li>
-            <li id='contrast'>Contato</li>
-          </>
-        )}
+        
         {user && !isCheckoutPage && (
           <li onClick={handleClick}>logout</li>
         )}
+        {!isLoginPage && !isRegisterPage && !isCheckoutPage && !isAdmin && (
+          <>
+            <li id='contrast-contact'>Contato</li>
+            {isCompanyPage && (
+              <li id='contrast'>
+                <NavLink to={'/'}>Orçamento Online</NavLink>
+              </li>
+            )}
+          </>
+        )}
+        
         {isCheckoutPage && (
           <>
           <li><img src={userImage} alt="" /></li>

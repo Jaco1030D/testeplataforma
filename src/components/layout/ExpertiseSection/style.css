@@ -1,0 +1,50 @@
+.expertiseSection-container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.expertiseSection_texts {
+    padding-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 68px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.expertiseSection_texts-subtitle {
+    width: 70%;
+    font-size: 16px;
+    text-align: center;
+}
+
+.expertiseSection-card p {
+    font-size: 12px;
+}
+.expertiseSection-content {
+    width: 65%;
+    margin-left: 50px;
+    display: flex;
+    padding-bottom: 180px;
+}
+
+.expertiseSection-infos {
+    gap: 90px;
+}
+
+.expertiseSection-infos {
+    margin-top: 70px;
+}
+.expertiseSection-card {
+    width: 40%;
+
+}
+
+.expertiseSection-infos {
+    flex: 2 1 300px;
+    display: flex;
+    flex-wrap: wrap
+}

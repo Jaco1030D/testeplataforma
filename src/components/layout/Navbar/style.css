@@ -40,15 +40,26 @@
     font-family: Inter;
     font-size: 12.8px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     line-height: normal
   }
 
+  .menu_itens li#contrast-contact {
+    color: #090909;
+    background-color: #fff;
+    border: 1px solid #CBC5C5;
+    border-radius: 5px;
+    width: 92px;
+  }
   .menu_itens li#contrast { /*estiliza o botão contato*/
     background-color: #1a23ee;
     color: #fff;
-    width: 90px;
+    width: 128px;
     border-radius: 5px;
+  }
+
+  .menu_itens li#contrast a {
+    color: #fff;
   }
 
   @media (max-width: 700px) { /*diminui o espaçamento entre os itens do menu quando chega em 700*/

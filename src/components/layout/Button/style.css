@@ -1,0 +1,22 @@
+.button-action {
+    width: 219px;
+    height: 44px;
+    border-radius: 78px;
+    background-color: #C59318;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 15.75px;
+    font-family: 'Inter';
+    font-weight: bold;
+}
+
+.button-type2 {
+    background-color:transparent ;
+    color: #000;
+    border: 1px solid #C59318;
+}
+
+.button-type2:hover {
+    color: #000;
+}

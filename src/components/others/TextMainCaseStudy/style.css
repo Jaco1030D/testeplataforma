@@ -1,0 +1,35 @@
+.TextMainCaseStudy-container {
+    font-family: 'Inter';
+    width: 43%;
+}
+.TextMainCaseStudy-container h2 {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 40px;
+    margin-bottom: 32px;
+}
+
+.textMainCaseStudy-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.textMainCaseStudy-card h4 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.textMainCaseStudy-card {
+    padding: 16px;
+    background-color: #f8f8f8;
+}
+
+.textMainCaseStudy-card p {
+    margin-top: 8px;
+    max-width: 260px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+}

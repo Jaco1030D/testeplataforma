@@ -1,0 +1,40 @@
+.contactTiago-container {
+    display: flex;
+    justify-content: center;
+}
+
+.contactTiago-content {
+    position: relative;
+    width: 700px;
+    display: flex;
+    align-items: center;
+    gap: 21px;
+}
+
+.contactTiago_button {
+    font-family: 'attenMedium';
+    border: none;
+    font-size: 16px;
+    position: absolute;
+    right: 15px;
+    bottom: 0;
+    width: 150px;
+    height: 50px;
+    border-radius: 21px;
+    background-color: #1829C5;
+    color: #fff;
+    cursor: pointer;
+}
+
+.contactTiago_texts span{
+    font-family: 'attenBold';
+    font-size: 22px;
+}
+
+.contactTiago_texts p {
+    font-family: 'attenBook';
+    font-size: 16px;
+    letter-spacing: 0.15px;
+    line-height: 24px;
+    width: 400px;
+}

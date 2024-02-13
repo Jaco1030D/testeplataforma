@@ -15,6 +15,8 @@ import { useFetchDocument } from './hooks/useFetchDocument.js';
 import Checkout from './templates/Checkout/index.jsx';
 import TesteDeComponentes from './templates/TesteDeComponentes/index.jsx';
 import ResetPassword from './templates/ResetPassword/index.jsx';
+import Company from './templates/Company/index.jsx';
+import CaseStudy from './templates/CaseStudy/index.jsx';
 
 const App = () => {
     const {document: allSetings} = useFetchDocument("configSenting", '2963')
@@ -102,6 +104,9 @@ const App = () => {
               <Route path='/checkout/' element={
                 (user && state.cart !== undefined) ? <Checkout name={name}/> : <Navigate to="/register" />
               } />
+              <Route path='/caseStudy/:type' element={
+                <CaseStudy />
+              } />
               <Route path='/checkout/:id' element={
                 (user && state.cart !== undefined) ? <Checkout name={name}/> : <Navigate to="/register" />
               } />
@@ -120,6 +125,7 @@ const App = () => {
                   }/>
               </>
             )}
+            <Route path='/company' element={<Company />} />
             <Route path='/*' element={<Navigate to={'/'}/>} />
             </Routes>
           </BrowserRouter>

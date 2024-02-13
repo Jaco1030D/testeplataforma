@@ -1,0 +1,124 @@
+.serviceOffered-container {
+    min-height: 1000px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    padding-bottom: 100px;
+    justify-content: center;
+}
+
+
+.serviceOffered-content {
+    width: 78%;
+    position: relative;
+    display: flex;
+	flex-wrap: wrap;
+    gap: 30px;
+}
+
+.serviceOffered_gradient {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(230,241,254,1) 100%);
+    display: flex;
+    align-items: center;
+}
+
+.serviceOffered-elipse {
+    position: absolute;
+    right: 0;
+    top: -30px;
+    z-index: 2;
+}
+
+#serviceOffered-logo-Left {
+    position: absolute;
+    bottom: 25%;
+    left: -50px;
+}
+
+#serviceOffered-logo-Rigth {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 28%;
+    bottom: 29%;
+}
+
+.serviceOffered_featured-card {
+    height: 329px;
+    width: 333px;
+    border-radius: 19px;
+    padding: 0px 43.31px;
+    background-color: #5857FF;
+    color: #fff;
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.serviceOffered_featured-card h2 {
+    font-size: 27px;
+    font-family: 'Inter';
+    font-weight: 900;
+}
+
+.serviceOffered_featured-card p {
+    font-size: 14.34px;
+    font-family: 'Inter';
+    font-weight: 400;
+    width: 248px;
+    line-height: 25px;
+}
+
+.serviceOffered-content_card {
+    flex: 1 1 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.serviceOffered_card {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    padding: 33.07px 33.07px 39.85px 33.07px;
+    background-color: #fff;
+    position: relative;
+}
+
+.serviceOffered_card h2 {
+    font-size: 19.72px;
+    font-weight:bold;
+    line-height: 24.3px;
+}
+
+.serviceOffered_card p {
+    font-size: 12.29px;
+    color: #094254;
+    line-height: 21.3px;
+    height: 85px;
+}
+.serviceOffered-card_rectangle{
+    position: absolute;
+    right: 20px;
+    bottom: -15px;
+    width: 100px;
+    height: 30px;
+    background-color: #5857FF;
+}
+
+@media (max-width: 1250px) {
+    .serviceOffered-content{
+        margin-top: 50px;
+    }
+    #serviceOffered-logo-Left,
+    #serviceOffered-logo-Rigth {
+        display: none;
+    }
+}
