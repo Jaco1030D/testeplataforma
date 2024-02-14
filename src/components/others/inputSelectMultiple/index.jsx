@@ -106,8 +106,8 @@ const InputSelectMultiple = ({handleClose}) => {
             <div className="text-wrapper pointer index" onClick={handleReset}>Resetar</div>
           </div>
           <div className="button index pointer" onClick={handleClose}>
-            <div className="text-wrapper-2">Concluido</div>
-            <div className="text-wrapper-3">⟶</div>
+            <p>Concluido ⟶</p>
+            
           </div>
         </div>
 

@@ -107,13 +107,13 @@ const transporter = nodemailer.createTransport({
               </head>
               <body>
                 <div class="container">
-                <h2>Confirmação de Pedido</h2>
+                <h2>Confirmação de Projeto</h2>
                 
                 <p>Olá ${name},</p>
                 
                 <p>Obrigado por escolher nossos serviços de tradução. Abaixo estão os detalhes do seu pedido:</p>
                 
-                <strong>Dados do Pedido:</strong>
+                <strong>Dados do Projeto:</strong>
                 <ul>
                     <li><strong>Arquivo:</strong> ${order.names.join(', ')}</li>
                     <li><strong>Área do projeto:</strong> ${order.archiveType}</li>
@@ -123,7 +123,7 @@ const transporter = nodemailer.createTransport({
                     <li><strong>Número de Palavras:</strong> ${order.numWords}</li>
                     <li><strong>Número de Páginas:</strong> ${order.numPages}</li>
                     <li><strong>Prazo de Entrega:</strong> ${order.finalDate}h</li>
-                    <li><strong>Valor Total:</strong> ${order.value}</li>
+                    <li><strong>Valor Total:</strong>&euro; ${order.value}</li>
                 </ul>
                 
                 <p>Seu pagamento foi confirmado com sucesso, e seu pedido está em processamento. Em breve, você receberá a tradução concluída.</p>

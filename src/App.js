@@ -17,6 +17,10 @@ import TesteDeComponentes from './templates/TesteDeComponentes/index.jsx';
 import ResetPassword from './templates/ResetPassword/index.jsx';
 import Company from './templates/Company/index.jsx';
 import CaseStudy from './templates/CaseStudy/index.jsx';
+import src from './components/others/RigthContainerMain/image.svg'
+
+const img = new Image();
+img.src = src;
 
 const App = () => {
     const {document: allSetings} = useFetchDocument("configSenting", '2963')

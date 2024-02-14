@@ -110,7 +110,7 @@ const InputDrop = ({setOpen}) => {
           </div>
           <div className="button pointer" onClick={handleClose}>
         
-            <div className="text-wrapper-2 drop"  >{state.filePending.length !== state.fileUpload.length ? <ReactLoading type={'spin'} color={'#fff'} height={'50%'} width={'50%'} /> : 'Concluido'}</div>
+            <div className="text-wrapper-2 drop"  >{state.filePending.length !== state.fileUpload.length ? <div className='inputDrop-text-button'>Aguarde<ReactLoading type={'spin'} color={'#fff'} height={'28.35px'} width={'28.35px'} /></div> : 'Concluido'}</div>
           </div>
         </div>
       </div>
