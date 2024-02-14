@@ -115,11 +115,11 @@ const transporter = nodemailer.createTransport({
                 
                 <strong>Dados do Pedido:</strong>
                 <ul>
-                    <li><strong>Arquivo:</strong> ${order.name}</li>
-                    <li><strong>Tipo de Arquivo:</strong> ${order.archiveType}</li>
+                    <li><strong>Arquivo:</strong> ${order.names.join(', ')}</li>
+                    <li><strong>Área do projeto:</strong> ${order.archiveType}</li>
                     <li><strong>Idioma de Origem:</strong> ${order.languageSetings.origin}</li>
                     <li><strong>Idiomas para Tradução:</strong> ${order.languageSetings.translation.join(', ')}</li>
-                    <li><strong>Plano Escolhido:</strong> ${order.TypeService}</li>
+                    <li><strong>Plano Escolhido:</strong> ${order.typeService}</li>
                     <li><strong>Número de Palavras:</strong> ${order.numWords}</li>
                     <li><strong>Número de Páginas:</strong> ${order.numPages}</li>
                     <li><strong>Prazo de Entrega:</strong> ${order.finalDate}h</li>
