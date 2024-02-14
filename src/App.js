@@ -19,6 +19,7 @@ import Company from './templates/Company/index.jsx';
 import CaseStudy from './templates/CaseStudy/index.jsx';
 
 const App = () => {
+  
     const {document: allSetings} = useFetchDocument("configSenting", '2963')
     const [state, actions] = useMainContext()
     const [user, setUser] = useState(undefined)
